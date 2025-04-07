@@ -83,6 +83,10 @@
         margin-right: 80px;
       }
 
+      .introduce__myInfo > span {
+        margin-bottom: 5px;
+      }
+
       .title {
         background-color: white;
         width: 150px;
@@ -112,7 +116,7 @@
         background-position: center;
         background-size: cover;
         border-radius: 10px;
-        box-shadow: 0 0 2px;
+        box-shadow: 0 0 8px;
       }
 
       .panel {
@@ -135,6 +139,15 @@
 
       .hash__btns {
         display: flex;
+      }
+
+      .hash img {
+        background-color: green;
+        width: 100px;
+        height: 100px;
+
+        background-position: center;
+        background-size: cover;
       }
 
       .btn {
@@ -205,9 +218,9 @@
         <div class="introduce_container panel">
           <div class="introduce__myInfo">
             <div class="name">이름 : 김용준</div>
-            <span>백엔드 개발자 취준생</span>
+            <span>- 백엔드 개발자 취준생 -</span>
             <ul>
-              <li>→ 취미 : 코딩</li>
+              <li>취미 : 코딩</li>
               <li>운동 : 헬스</li>
               <li>MBTI : ISTP</li>
             </ul>
@@ -225,15 +238,17 @@
       <h3 class="title">#해쉬태그</h3>
       <div class="hash">
         <div class="hash__btns">
-          <button class="btn btn-outline-dark">#취미</button>
+          <button class="btn btn-outline-dark">#사진</button>
           <button class="btn btn-outline-dark">#MBTI</button>
           <button class="btn btn-outline-dark">#</button>
         </div>
         <div class="panel hidden">
-          <h1>취미</h1>
-          <li>1. 운동하기</li>
-          <li>2. 운동하기</li>
-          <li>3. 운동하기</li>
+          <h1>사진</h1>
+          <div>
+            <img src="" />
+            <img src="" />
+            <img src="" />
+          </div>
         </div>
         <div class="panel hidden">
           <h1>MBTI</h1>
