@@ -5,14 +5,18 @@
 <head>
   <!-- Bootstrap 5 CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
   <title>나를 소개합니다.</title>
   <style>
     body, ul, li {
       margin: 0;
       padding: 0;
       list-style: none;
+      font-family: 'Nanum Brush Script', sans-serif;
     }
 
     a {
@@ -33,23 +37,13 @@
       --highlight-yellow: #ffc107;
     }
 
-    .side-bar {
-      position: fixed;
-      background-color: white;
-      width: var(--side-bar-width);
-      min-height: var(--side-bar-height);
-    }
-
-    .side-bar ul>li>a {
-      display: block;
-      color: black;
-      font-size: 1.4rem;
-      font-weight: bold;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      padding-left: 50px;
-    }
-
+    .sidebar {
+            height: 100vh;
+            width: 250px;
+            background-color: wheat;
+            padding: 50px;
+        }
+        
     .mytitle>button {
       width: 150px;
       height: 50px;
@@ -67,7 +61,7 @@
       width: 300px;
       height: 300px;
       object-fit: cover;
-      border-radius: 60%;
+      border-radius: 50%;
       border: 5px solid #ffecb3;
       margin-bottom: 1rem;
     }
@@ -97,19 +91,37 @@
 
     .card {
       border: 2px solid #fff3cd;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <aside class="side-bar">
-    <ul>
-      <li><a href="#">Menu 1</a></li>
-      <li><a href="#">Menu 2</a></li>
-      <li><a href="#">Menu 3</a></li>
-      <li><a href="#">Menu 4</a></li>
-    </ul>
-  </aside>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <h2>멤버들</h2>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../TeamWeb.html">메인으로</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hyeonhaWEB.html">이현하</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="WSVWeb.html">우새빛</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CHEWeb.html">최경진</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HJ.html">윤희준</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="KYGWeb.html">김용준</a>
+                    </li>
+                </ul>
+            </nav>
 
   <!-- Main Content -->
   <div class="content">
@@ -119,10 +131,10 @@
       <img src="C:/Users/COM/Desktop/sparta/미니프로젝트/htmlProject/HTML_Project/picture/CHE/CHE_face.jpg" class="프로필사진" alt="최경진 프로필사진">
     </div>
 
-    <div class="card bg-white shadow-sm mb-4">
+    <div class="card bg-white shadow-sm mb-4" background-size: cover; background-position: center; color: white;>
       <div class="card-body">
         <h4 class="card-title">자기소개</h4>
-        <p class="card-text">
+        <p class="card-text" style="color: #333;">
           ✨ <strong>새로운 경험을 통해 성장</strong>하는 것을 즐기며, <strong class="text-warning">팀워크</strong>를 소중히 생각합니다.<br>
           💻 <span class="fw-bold text-success">웹 개발과 디자인</span>에 흥미를 갖고 꾸준히 공부하고 있어요.<br>
           😊 밝고 긍정적인 에너지로 주변에 <span class="text-warning">좋은 영향</span>을 주고 싶은 사람입니다 ⎝⍢⎠<br>
@@ -151,7 +163,7 @@
         <div class="card bg-light">
           <div class="card-header">🎵 취미</div>
           <div class="card-body">
-            <p class="card-text">
+            <p class="card-text" style="color: #333;">
               음악을 정말 사랑하고 무대에 서는 걸 좋아해요.<br>
               앨범도 직접 만들어보고 제 방식대로 음악을 계속하고 있습니다.<br>
               취미지만 마음만큼은 프로처럼! 🎧
