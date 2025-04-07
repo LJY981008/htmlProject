@@ -1,5 +1,3 @@
-//사이드바
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Black+Han+Sans&display=swa');
 
         * {
-            font-family: 'Gowun Dodum', sans-serif;
+            font-family: "42dot Sans", sans-serif;
         }
 
         body,
@@ -26,65 +25,41 @@
             /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
         }
 
-        a {
-            color: inherit;
-            /* 부모 엘리먼트의 값을 물려받는다 */
-            text-decoration: none;
-            /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
-        }
-
-        /* 노멀라이즈 끝 */
-        /* 2차 이상의 메뉴를 숨기기 */
-        .side-bar>ul ul {
-            display: none;
-        }
-
-        /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
         body {
-            height: 5000px;
             background-color: white;
         }
 
-        /* 사이드바의 너비와 높이를 변수를 통해 통제 */
-        :root {
-            --side-bar-width: 200px;
-            --side-bar-height: 100vh;
-        }
-
-        .side-bar {
+        .sidebar {
             position: fixed;
-            background-color: white;
-            width: var(--side-bar-width);
-            min-height: var(--side-bar-height);
-        }
-
-        /* 모든 메뉴의 a에 속성값 부여 */
-        .side-bar ul>li>a {
-            display: block;
-            color: black;
-            font-size: 1.4rem;
-            font-weight: bold;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 50px;
+            height: 100vh;
+            width: 250px;
+            background-color: wheat;
+            padding: 50px;
         }
 
         .card-img {
             width: 700px;
             position: left;
+            box-shadow: 3px 3px 10px rgba(242, 255, 66, 0.3);
         }
 
         .card-header {
+            font-weight: bold;
             background-color: #ffc83d;
+        }
+
+        /*본문 위 50px 아래 70px 여백주기*/
+        .headerContent {
+            margin: 50px auto 70px auto;
         }
 
         .mainContent {
             display: flex;
-            margin: auto auto auto 300px;
+            margin: auto;
         }
 
         .subContent {
-            margin: 100px auto auto 300px;
+            margin: auto;
         }
 
         .subContent1 {
@@ -93,6 +68,7 @@
             background-image: url("../picture/LHH/yellow1.jpeg");
             background-position: center;
             background-size: 1200px 300px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
         .subContent2 {
@@ -101,82 +77,91 @@
             background-image: url("../picture/LHH/yellow2.jpg");
             background-position: center;
             background-size: 1000px 300px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
         .container-fluid {
             background: linear-gradient(to right, rgba(255, 254, 192, 0.7) 0%, rgba(250, 255, 214, 0) 100%);
         }
-        .btn{
-            color:rgb(75, 75, 75);
+
+        .btn {
+            color: rgb(75, 75, 75);
         }
     </style>
 </head>
 
 <body>
-    <aside class="side-bar">
-        <ul>
-            <li>
-                <a href="#">최경진</a>
-            </li>
-            <li>
-                <a href="#">이준영</a>
-            </li>
-            <li>
-                <a href="#">김용준</a>
-            </li>
-            <li>
-                <a href="#">윤희준</a>
-            </li>
-            <li>
-                <a href="#">우새빛</a>
-            </li>
-        </ul>
-    </aside>
-
-
-    <div class="mainContent">
-        <img src="../picture/LHH/LHH_image.jpeg" class="card-img" alt="...">
-        <div class="card text-bg-warning mb-3" style="max-width: 18rem; margin-left : 30px">
-            <div class="card-header">It's Me</div>
-            <div class="card-body">
-                <h5 class="card-title">이현하</h5>
-                <p class="card-text" style="margin-top:30px;">MBTI : ISFP</p>
-                <p class="card-text">취미 : 게임</p>
-                <p class="card-text">한 줄 소개 : <br>코딩의 세계를 다시 공부해보려고 합니다.</p>
-            </div>
-        </div>
-    </div>
-    <div class="subContent">
-        <div class="subContent1">
-            <div class="mbti">
-                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">MBTI : ISFP</h1>
-                        <p class="col-md-8 fs-4">저는 하루종일 누워있을 수 있고, <br>하루종일 아무것도 안할 수 있는 ISFP 입니다.</p>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <h2>멤버들</h2>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../TeamWeb.html">메인으로</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LJYWeb.HTML">이준영</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="WSVWeb.html">우새빛</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CHEWeb.html">최경진</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HJ.html">윤희준</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="KYGWeb.html">김용준</a>
+                    </li>
+                </ul>
+            </nav>
+            <main class="col-md-9 ms-sm-auto col-lg-10 content">
+                <div class="headerContent">
+                    <h1>Weekly Me 👑</h1>
+                </div>
+                <div class="mainContent">
+                    <img src="../picture/LHH/LHH_image.jpeg" class="card-img" alt="...">
+                    <div class="card text-bg-warning mb-3" style="max-width: 18rem; margin-left : 30px">
+                        <div class="card-header">It's Me</div>
+                        <div class="card-body">
+                            <h5 class="card-title">이현하</h5>
+                            <p class="card-text" style="margin-top:30px;">MBTI : ISFP</p>
+                            <p class="card-text">취미 : 게임</p>
+                            <p class="card-text">한 줄 소개 : <br>백엔드 개발은 처음이지만 코딩 기억을 되살려 잘 따라가보려고 합니다.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="subContent2">
-            <div class="hobbit">
-                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">취미 : 게임</h1>
-                        <p class="col-md-8 fs-4">저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br>
-                        우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.</p>
-                        <button type="button" class="btn btn-warning">오버워치 직장인 토너먼트</button>
-                        <button type="button" class="btn btn-warning">R6 유니버시티리그
-                        </button>
+                <div class="subContent1">
+                    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                        <div class="container-fluid py-5">
+                            <h1 class="display-5 fw-bold">MBTI는 ISFP 입니다</h1>
+                            <p class="col-md-8 fs-4">저는 하루종일 누워있을 수 있고, <br>하루종일 아무것도 안할 수 있는 ISFP 입니다.</p>
+                            <p>앉아있는 동안은 열심히 코딩 공부를 합니다~</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="subContent2">
+                    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                        <div class="container-fluid py-5">
+                            <h1 class="display-5 fw-bold">취미는 게임이에요</h1>
+                            <p class="col-md-8 fs-4">저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br>
+                                우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.</p>
+                            <p>대회 영상이 궁금하시다면 아래 버튼을 눌러 구경 해주셔도 좋습니다! <span style="color:dimgray;">잘하진
+                                    못했지만..</span></p>
+                            <button type="button" class="btn btn-warning"
+                                onclick="window.open('https://youtu.be/Xu8prsaWhb0?si=LMP1ynzHVkdCViq0')">오버워치
+                                직장인 토너먼트</button>
+                            <button type="button" class="btn btn-warning"
+                                onclick="window.open('https://www.youtube.com/live/Fm7p4aEbnPs?si=pEfZKVpNH-0NZ4W2&t=5737')">R6
+                                유니버시티리그
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
-    </div>
-
-
-
-
 </body>
 
 </html>

@@ -13,6 +13,24 @@
 </head>
 
 <style>
+    .head1{
+            background-color:white;
+            width: 100%;
+            display: block;
+
+        }
+
+        .head2{
+            width: 60%;
+            background-color: rgb(213, 228, 193);
+            margin: 0 auto 0 auto;  
+            height: 150px;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
      
      .content1 {
         background-image: url("https://cdn.pixabay.com/photo/2018/12/06/16/12/birds-3860034_1280.jpg");
@@ -95,8 +113,41 @@
         .text1{
             flex: 1; /* 글 영역을 유연하게 */
         }
+        .like-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+        }
+        .heart {
+            font-size: 2rem;
+            color: red;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .heart:hover {
+            transform: scale(1.2);
+        }
+        .count {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .outline-text{
+            
+            font-size: 50px;
+            font-weight: bold; 
+            color: black;   /*글자내부*/
+            -webkit-text-stroke: 2px red;/*글자외부*/
+        }
+        
 </style>
 <body>
+    <div class="head1">
+    <div class="head2">
+        <h1   class="outline-text">WANTED</h1>
+    <h3 class="outline-text">Dead or Alive</h3>
+</div>
+</div>
     <aside class="side-bar">
         <section class="side-bar__icon-box">
             <section class="side-bar__icon-1">
@@ -107,32 +158,55 @@
         </section>
         <ul>
             <li>
-                <a href="#"><i class="fa-solid fa-cat"></i> 김용준</a>
+                <a href="KYGWeb.html"><i class="fa-solid fa-cat"></i> 김용준</a>
             </li>
             <li>
-                <a href="#">최경진</a>
+                <a href="CHEWeb.html">최경진</a>
             </li>
             <li>
-                <a href="#">이현하</a>
+                <a href="hyeonhaWEB.html">이현하</a>
             </li>
             <li>
-                <a href="#">우새빛</a>
+                <a href="WSVWeb.html">우새빛</a>
             </li>
             <li>
-                <a href="#">이준영</a>
+                <a href="LJYWeb.HTML">이준영</a>
             </li>
         </ul>
+
+        
     </aside>
+    
+   
     <div class="content1"> 
+        
         <div class="text1">
         <p>이름 : 윤희준</p>
         <p>한줄소개 : 백엔드개발자 취업 화이팅</p>
         <p>취미 : 러닝</p>
         <p>mbti : INTJ</p>
+        <div class="like-container">
+            <span class="heart">👍</span>
+            <span class="count">0</span>
+        </div>
+        <script>
+            // DOM 요소 가져오기
+            const heart = document.querySelector('.heart');
+            const count = document.querySelector('.count');
+    
+            // 초기 카운트 값
+            let likeCount = 0;
+    
+            // 클릭 이벤트 리스너 추가
+            heart.addEventListener('click', () => {
+                likeCount++; // 카운트 증가
+                count.textContent = likeCount; // 화면에 업데이트
+            });
+        </script>
     </div>
        
        
-       <div class="img1"> <img src="C:\Users\LG02\Desktop\1주차 과제\htmlProject\HTML_Project\picture\HJ\YHJ.png.png" alt="">
+       <div class="img1"> <img border-radius:20px src="C:\Users\LG02\Desktop\1주차 과제\htmlProject\HTML_Project\picture\HJ\YHJ.png.png" alt="">
         </div>
     </div>
         
