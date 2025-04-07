@@ -77,8 +77,24 @@
             padding-left: 50px;
         }    
     
-        
-   
+        .img1{
+            
+            flex: 1; /* 이미지 영역을 유연하게 */
+            height:auto; /* 이미지 정렬 */
+            border-radius: 8px;
+
+        }
+        .content1 {
+            display: flex; /* Flexbox 레이아웃 설정 */
+            justify-content: space-between; /* 글과 이미지를 양쪽으로 배치 */
+            align-items: flex-start; /* 세로 방향 가운데 정렬 */
+            gap: 20px; /* 글과 이미지 사이의 간격 */
+            padding: 20px; /* 컨테이너 안쪽 여백 설정 */
+            
+        }
+        .text1{
+            flex: 1; /* 글 영역을 유연하게 */
+        }
 </style>
 <body>
     <aside class="side-bar">
@@ -91,26 +107,34 @@
         </section>
         <ul>
             <li>
-                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+                <a href="#"><i class="fa-solid fa-cat"></i> 김용준</a>
             </li>
             <li>
-                <a href="#">menu2</a>
+                <a href="#">최경진</a>
             </li>
             <li>
-                <a href="#">menu3</a>
+                <a href="#">이현하</a>
             </li>
             <li>
-                <a href="#">menu4</a>
+                <a href="#">우새빛</a>
+            </li>
+            <li>
+                <a href="#">이준영</a>
             </li>
         </ul>
     </aside>
-    <div class="content1">
-        <p>mbti 취미 한줄소개 이름사진 양사이드줄이기</p>
-        <p>이름 윤희준</p>
-        <p>취미 러닝</p>
-        <p>mbti INTJ</p>
-        <img src="C:\Users\LG02\Desktop\1주차 과제\htmlProject\HTML_Project\picture\YHJ\YHJ.png.png" alt="">
-        <p>왜안돼..</p>
+    <div class="content1"> 
+        <div class="text1">
+        <p>이름 : 윤희준</p>
+        <p>한줄소개 : 백엔드개발자 취업 화이팅</p>
+        <p>취미 : 러닝</p>
+        <p>mbti : INTJ</p>
+    </div>
+       
+       
+       <div class="img1"> <img src="C:\Users\LG02\Desktop\1주차 과제\htmlProject\HTML_Project\picture\HJ\YHJ.png.png" alt="">
+        </div>
+    </div>
         
     </div>
 </body>
