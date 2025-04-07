@@ -78,7 +78,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-right: 50px;
+        margin-right: 80px;
       }
 
       .title {
@@ -110,7 +110,7 @@
         width: 200px;
         height: 200px;
 
-        background-image: url("HTML_Project/picture/KYG/KYG_face.png");
+        background-image: url("../picture/KYG/KYG_face.png");
         background-position: center;
         background-size: cover;
         border-radius: 10px;
@@ -124,12 +124,33 @@
         margin: 0px 0px 80px 0px;
       }
 
-      .short {
-        border-radius: 8px;
-        margin: 0px 0px 80px 0px;
+      .panel > p {
+        margin: 0px;
+        text-align: center;
       }
 
-      .short > p {
+      .hash {
+        border-radius: 8px;
+        background-color: white;
+        padding: 25px;
+      }
+
+      .hash__btns {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      .btn {
+        padding: 10px;
+        background-color: black;
+        width: 100%;
+        color: white;
+      }
+
+      .hash > .panel {
+        background-color: black;
+        height: 400px;
         margin: 0px;
         text-align: center;
       }
@@ -161,19 +182,18 @@
     </aside>
     <div class="my_page">
       <div class="introduce">
-        <h3 class="title">자기 소개</h3>
+        <h3 class="title">#자기소개</h3>
         <div class="content panel">
           <div class="introduce__myInfo">
             <div class="name">이름 : 김용준</div>
             <ul>
-              <li>백엔드 개발자 취준생</li>
+              <li>- 백엔드 개발자 취준생 -</li>
             </ul>
           </div>
           <div class="my_profile"></div>
         </div>
-
-        <h3 class="title">한줄 소개</h3>
-        <div class="short panel">
+        <h3 class="title">#한줄소개</h3>
+        <div class="panel">
           <p>
             안녕하세요. 저는 이번에 백엔드로 취업하기위해 내일배움캠프를
             시작하게 되었습니다.
@@ -181,45 +201,17 @@
         </div>
       </div>
       <h3 class="title">#해쉬태그</h3>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
+      <div class="hash">
+        <div class="hash__btns">
+          <button class="btn btn-outline-dark">#취미</button>
+          <button class="btn btn-outline-dark">#MBTI</button>
+          <button class="btn btn-outline-dark">#</button>
         </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </p>
-            </div>
-          </div>
+        <div class="panel">
+          <h1>취미</h1>
+          <li>1. 운동하기</li>
+          <li>2. 운동하기</li>
+          <li>3. 운동하기</li>
         </div>
       </div>
     </div>
