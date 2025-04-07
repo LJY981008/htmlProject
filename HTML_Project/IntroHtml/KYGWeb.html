@@ -137,8 +137,6 @@
 
       .hash__btns {
         display: flex;
-        gap: 10px;
-        margin-bottom: 25px;
       }
 
       .btn {
@@ -149,10 +147,15 @@
       }
 
       .hash > .panel {
+        margin-top: 25px;
         background-color: black;
         height: 400px;
         margin: 0px;
         text-align: center;
+      }
+
+      .hidden {
+        display: none;
       }
     </style>
   </head>
@@ -167,16 +170,19 @@
       </section>
       <ul>
         <li>
-          <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+          <a href="#"><i class="fa-solid fa-cat"></i>우새빛</a>
         </li>
         <li>
-          <a href="#">menu2</a>
+          <a href="#">이준영</a>
         </li>
         <li>
-          <a href="#">menu3</a>
+          <a href="#">윤희준</a>
         </li>
         <li>
-          <a href="#">menu4</a>
+          <a href="#">이현하</a>
+        </li>
+        <li>
+          <a href="#">최경진</a>
         </li>
       </ul>
     </aside>
@@ -186,9 +192,7 @@
         <div class="content panel">
           <div class="introduce__myInfo">
             <div class="name">이름 : 김용준</div>
-            <ul>
-              <li>- 백엔드 개발자 취준생 -</li>
-            </ul>
+            <span>- 백엔드 개발자 취준생 -</span>
           </div>
           <div class="my_profile"></div>
         </div>
@@ -207,13 +211,44 @@
           <button class="btn btn-outline-dark">#MBTI</button>
           <button class="btn btn-outline-dark">#</button>
         </div>
-        <div class="panel">
+        <div class="panel hidden">
           <h1>취미</h1>
+          <li>1. 운동하기</li>
+          <li>2. 운동하기</li>
+          <li>3. 운동하기</li>
+        </div>
+        <div class="panel hidden">
+          <h1>MBTI</h1>
+          <li>1. 운동하기</li>
+          <li>2. 운동하기</li>
+          <li>3. 운동하기</li>
+        </div>
+        <div class="panel hidden">
+          <h1>#</h1>
           <li>1. 운동하기</li>
           <li>2. 운동하기</li>
           <li>3. 운동하기</li>
         </div>
       </div>
     </div>
+    <script>
+      const btns = document.querySelectorAll(".hash__btns button");
+      const panels = document.querySelectorAll(".hash .panel");
+
+      const handleBtnClick = (event) => {
+        const clickedButton = event.target.innerText.split("#")[1];
+
+        panels.forEach((panel) => {
+          const panelName = panel.querySelector(".panel h1").innerText;
+          clickedButton == panelName
+            ? (panel.className = "panel")
+            : (panel.className = "panel hidden");
+        });
+      };
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", handleBtnClick);
+      });
+    </script>
   </body>
 </html>
