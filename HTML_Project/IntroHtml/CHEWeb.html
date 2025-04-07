@@ -2,145 +2,164 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나를 소개합니다.</title>
-    <style>
-        body,
-        ul,
-        li {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
-        }
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>나를 소개합니다.</title>
+  <style>
+    body, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
 
-        a {
-            color: inherit;
-            /* 부모 엘리먼트의 값을 물려받는다 */
-            text-decoration: none;
-            /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* 노멀라이즈 끝 */
-        /* 2차 이상의 메뉴를 숨기기 */
-        .side-bar>ul ul {
-            display: none;
-        }
+    body {
+      height: 100%;
+      background-color: #fffef2;
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+    }
 
-        /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
-        body {
-            height: 5000px;
-            background-color: white;
-        }
+    :root {
+      --side-bar-width: 200px;
+      --side-bar-height: 100vh;
+      --main-yellow: #ffdd57;
+      --highlight-yellow: #ffc107;
+    }
 
-        /* 사이드바의 너비와 높이를 변수를 통해 통제 */
-        :root {
-            --side-bar-width: 200px;
-            --side-bar-height: 100vh;
-        }
+    .side-bar {
+      position: fixed;
+      background-color: white;
+      width: var(--side-bar-width);
+      min-height: var(--side-bar-height);
+    }
 
-        .side-bar {
-            position: fixed;
-            background-color: white;
-            width: var(--side-bar-width);
-            min-height: var(--side-bar-height);
-        }
+    .side-bar ul>li>a {
+      display: block;
+      color: black;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 50px;
+    }
 
-        /* 모든 메뉴의 a에 속성값 부여 */
-        .side-bar ul>li>a {
-            display: block;
-            color: black;
-            font-size: 1.4rem;
-            font-weight: bold;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 50px;
-        }
+    .mytitle>button {
+      width: 150px;
+      height: 50px;
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      border: 1px solid white;
+      margin-top: 20px;
+    }
 
-        .mytitle>button {
-            width: 150px;
-            height: 50px;
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
+    .프로필사진 {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 60%;
+      border: 5px solid #ffecb3;
+      margin-bottom: 1rem;
+    }
 
-            border: 1px solid white;
-            margin-top: 20px;
-        }
+    .content {
+      width: 70%;
+      margin-left: 220px;
+      padding: 2rem;
+    }
 
-        .자기소개 {
-            width: 60%;
-            margin: 20px auto;
-        }
+    .card-header {
+      background-color: var(--highlight-yellow);
+      font-weight: bold;
+    }
 
-        .프로필사진 {
-            width: 50%;
-            margin: 10px auto;
-        }
-    </style>
+    .card-title {
+      color: #ff9900;
+    }
+
+    .badge.bg-secondary {
+      background-color: #f0ad4e;
+    }
+
+    h2, h4 {
+      color: #f39c12;
+    }
+
+    .card {
+      border: 2px solid #fff3cd;
+    }
+  </style>
 </head>
-
 <body>
-    <aside class="side-bar">
-        <section class="side-bar__icon-box">
-            <section class="side-bar__icon-1">
-                <div></div>
-                <div></div>
-                <div></div>
-            </section>
-        </section>
-        <ul>
-            <li>
-                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
-            </li>
-            <li>
-                <a href="#">menu2</a>
-            </li>
-            <li>
-                <a href="#">menu3</a>
-            </li>
-            <li>
-                <a href="#">menu4</a>
-            </li>
-        </ul>
-    </aside>
+  <!-- Sidebar -->
+  <aside class="side-bar">
+    <ul>
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+      <li><a href="#">Menu 4</a></li>
+    </ul>
+  </aside>
 
+  <!-- Main Content -->
+  <div class="content">
+    <h2 class="mb-4 border-bottom pb-2">🙋‍♂️ 최경진 - Weekly Me</h2>
 
+    <div class="text-center">
+      <img src="C:/Users/COM/Desktop/sparta/미니프로젝트/htmlProject/HTML_Project/picture/CHE/CHE_face.jpg" class="프로필사진" alt="최경진 프로필사진">
+    </div>
+
+    <div class="card bg-white shadow-sm mb-4">
+      <div class="card-body">
+        <h4 class="card-title">자기소개</h4>
+        <p class="card-text">
+          ✨ <strong>새로운 경험을 통해 성장</strong>하는 것을 즐기며, <strong class="text-warning">팀워크</strong>를 소중히 생각합니다.<br>
+          💻 <span class="fw-bold text-success">웹 개발과 디자인</span>에 흥미를 갖고 꾸준히 공부하고 있어요.<br>
+          😊 밝고 긍정적인 에너지로 주변에 <span class="text-warning">좋은 영향</span>을 주고 싶은 사람입니다 ⎝⍢⎠<br>
+          🙏 부족한 점도 많지만 잘 부탁드립니다!
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card bg-light">
+          <div class="card-header">📌 MBTI</div>
+          <div class="card-body">
+            <ul class="list-unstyled mb-2">
+              <li>Extroversion (외향성) <span class="badge bg-secondary">E</span></li>
+              <li>iNtuition (직관형) <span class="badge bg-secondary">N</span></li>
+              <li>Feeling (감정형) <span class="badge bg-secondary">F</span></li>
+              <li>Perceiving (인식형) <span class="badge bg-secondary">P</span></li>
+            </ul>
+            <p class="mb-0">활발한 호기심 많은 활동가✌🏻‪·͜·✌🏻</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card bg-light">
+          <div class="card-header">🎵 취미</div>
+          <div class="card-body">
+            <p class="card-text">
+              음악을 정말 사랑하고 무대에 서는 걸 좋아해요.<br>
+              앨범도 직접 만들어보고 제 방식대로 음악을 계속하고 있습니다.<br>
+              취미지만 마음만큼은 프로처럼! 🎧
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
-<div class="자기소개">
-    <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        1조 - Weekly Me
-    </h3>
-
-    <article class="이름">
-        <h2 class="display-5 link-body-emphasis mb-1">🙋‍♂️ 저는 이런 사람 입니다!</h2>
-        <img src="C:\Users\COM\Desktop\sparta\미니프로젝트\htmlProject\HTML_Project\picture\CHE\CHE_face.jpg"
-            class="프로필사진" alt="...">
-        <p> 안녕하세요! 저는 25살
-        <h1>최경진 입니다!</h1>
-        새로운 경험을 통해 성장하는 걸 즐기며, 팀워크를 소중히 생각합니다.<p>
-        <p>요즘은 웹 개발과 디자인에 흥미가 많아서 관련 공부도 열심히 하고 있어요.</p>
-        </p>밝고 긍정적인 에너지로 주변 사람들에게 좋은 영향을 주는 사람이 되고 싶습니다 :)</p>
-        <hr>
-        <h2>꒰⍢꒱ M.B.T.I</h2>
-
-        <h1>Extroversion(외향성) <span class="badge text-bg-secondary">E</span></h1>
-<h2>iNtuition(직관형) <span class="badge text-bg-secondary">N</span></h2>
-<h3>Feeling(감정) <span class="badge text-bg-secondary">F</span></h3>
-<h4>Perceiving(인식) <span class="badge text-bg-secondary">P</span></h4>
-         
-        <h2>취미</h2>
-        <h3>음악</h3>
-        <p>어릴 때부터 음악을 정말 좋아해 꿈꿨지만, 현실은 쉽지 않더라고요.
-            그래도 포기하지 않고 앨범을 내고, 무대에도 오르며 제 방식대로 음악을 계속하고 있어요.
-            직업으로 삼진 않았지만, 지금도 은 제 삶에서 가장 큰 즐거움이자 위로입니다.
-            취미지만, 진심만큼은 프로입니다.</p>
-</div>
-
 </html>
