@@ -9,6 +9,16 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Batang&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&display=swap');
+
+        * {
+            font-family: "IBM Plex Sans KR", sans-serif;
+        }
+        
+        .name {
+            font-family: "Black Han Sans", sans-serif;
+        }
+
         body,
         ul,
         li {
@@ -61,16 +71,27 @@
             padding-left: 50px;
         }
 
-        .mypage{
+
+        .mypage {
             margin: 0px 100px 0px 300px;
         }
 
         .header {
-            background-color: yellow;
+            background-color: rgb(255, 230, 2);
+            padding:20px;
+            margin-bottom: 40px;
         }
 
         .card {
-            padding: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 5px 0px gray;
+        }
+
+        .sp-bubble {
+            margin: 10px 0px 10px 0px;
+            padding: 20px;
+            background-color: rgb(255, 255, 149);
+            box-shadow: 3px 3px 3px 0px lightgray;
         }
     </style>
 </head>
@@ -102,35 +123,30 @@
 
     <div class="mypage">
         <div class="header">
-            <div class="p-3 mb-4 bg-body-tertiary rounded-3">
-                <div class="container-fluid py-5">
-                    <h1 class="display-5 fw-bold">나에대해 소개합니다</h1>
-                    <p class="col-md-8 fs-4">ㅇㅇㅇ</p>
-                </div>
-            </div>
+            <h1><b>나를 소개합니다</b></h1>
+            <p>1조 Weekly Me</p>
         </div>
-        <div class="card mb-1">
-            <div class="row g-0">
+
+        <div class="card">
+            <div class="row g-3">
                 <div class="col-md-4">
-                    <img src="https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                        class="img-fluid rounded-start" alt="...">
+                    <img src="../picture/WSV/WSV_p.jpg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><h3>우새빛</h3>
-                            <li class="list-group-item">mbti: INFJ</li>
-                            <li class="list-group-item">취미: 일기쓰기, 영화 보기</li>
-                            <li class="list-group-item">한줄소개</li>
-                        </ul>
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><h3 class="name">우새빛✨</h3></li>
+                        <li class="list-group-item"><b>MBTI</b><br> 통찰력 있는 선지자 INFJ</li>
+                        <li class="list-group-item"><b>취미</b><br> 일기나 다양한 것들을 기록하길 좋아합니다!</li>
+                        <li class="list-group-item"><div class="sp-bubble">안녕하세요!<br>
+                            내일배움캠프 Spring 7기를 수강하게 된 우새빛입니다.<br>
+                            성실함과 꾸준함을 바탕으로 성장해 나가고 싶습니다.<br>
+                            우리 모두 힘내보아요~ 파이팅~~</div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
-    </div>
-
-
-
 </body>
 
 </html>
