@@ -141,11 +141,16 @@
         display: flex;
       }
 
-      .hash img {
-        background-color: green;
-        width: 100px;
-        height: 100px;
+      .imgs {
+        display: flex;
+        justify-content: space-between;
+      }
 
+      .imgs > div {
+        width: 150px;
+        height: 150px;
+
+        background-image: url("https://media.istockphoto.com/id/1317323736/ko/%EC%82%AC%EC%A7%84/%EB%82%98%EB%AC%B4-%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C-%ED%95%98%EB%8A%98%EB%A1%9C-%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94-%EA%B2%BD%EC%B9%98.jpg?s=612x612&w=0&k=20&c=0xTghmMTXJ5ITCZ-LKTABbaPIK_1kWNf0FSFl_GL_7I=");
         background-position: center;
         background-size: cover;
       }
@@ -196,19 +201,19 @@
       </section>
       <ul>
         <li>
-          <a href="#"><i class="fa-solid fa-cat"></i>우새빛</a>
+          <a href="WSVWeb.html"><i class="fa-solid fa-cat"></i>우새빛</a>
         </li>
         <li>
-          <a href="#">이준영</a>
+          <a href="LJYWeb.HTML">이준영</a>
         </li>
         <li>
-          <a href="#">윤희준</a>
+          <a href="HJ.html">윤희준</a>
         </li>
         <li>
-          <a href="#">이현하</a>
+          <a href="hyeonhaWEB.html">이현하</a>
         </li>
         <li>
-          <a href="#">최경진</a>
+          <a href="CHEWeb.html">최경진</a>
         </li>
       </ul>
     </aside>
@@ -240,27 +245,31 @@
         <div class="hash__btns">
           <button class="btn btn-outline-dark">#사진</button>
           <button class="btn btn-outline-dark">#MBTI</button>
-          <button class="btn btn-outline-dark">#</button>
+          <button class="btn btn-outline-dark">#풍경</button>
         </div>
         <div class="panel hidden">
           <h1>사진</h1>
-          <div>
-            <img src="" />
-            <img src="" />
-            <img src="" />
+          <div class="imgs">
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
         <div class="panel hidden">
           <h1>MBTI</h1>
-          <li>1. 운동하기</li>
-          <li>2. 운동하기</li>
-          <li>3. 운동하기</li>
+          <div class="imgs">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
         <div class="panel hidden">
-          <h1>#</h1>
-          <li>1. 운동하기</li>
-          <li>2. 운동하기</li>
-          <li>3. 운동하기</li>
+          <h1>풍경</h1>
+          <div class="imgs">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -269,13 +278,12 @@
       const panels = document.querySelectorAll(".hash .panel");
 
       const handleBtnClick = (event) => {
-        const clickedButton = event.target.innerText.split("#")[1];
+        const clickedTarget = event.target;
+        const text = clickedTarget.innerText.split("#")[1];
 
         panels.forEach((panel) => {
-          const panelName = panel.querySelector(".panel h1").innerText;
-          clickedButton == panelName
-            ? (panel.className = "panel")
-            : (panel.className = "panel hidden");
+          const panelName = panel.querySelector("h1").innerText;
+          panel.classList.toggle("hidden", panelName !== text);
         });
       };
 
