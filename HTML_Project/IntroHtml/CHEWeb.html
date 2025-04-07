@@ -1,0 +1,149 @@
+//사이드바
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나를 소개합니다.</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+        }
+
+        a {
+            color: inherit;
+            /* 부모 엘리먼트의 값을 물려받는다 */
+            text-decoration: none;
+            /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+        }
+
+        /* 노멀라이즈 끝 */
+        /* 2차 이상의 메뉴를 숨기기 */
+        .side-bar>ul ul {
+            display: none;
+        }
+
+        /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
+        body {
+            height: 5000px;
+            background-color: white;
+        }
+
+        /* 사이드바의 너비와 높이를 변수를 통해 통제 */
+        :root {
+            --side-bar-width: 200px;
+            --side-bar-height: 100vh;
+        }
+
+        .side-bar {
+            position: fixed;
+            background-color: white;
+            width: var(--side-bar-width);
+            min-height: var(--side-bar-height);
+        }
+
+        /* 모든 메뉴의 a에 속성값 부여 */
+        .side-bar ul>li>a {
+            display: block;
+            color: black;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 50px;
+        }
+
+        .mytitle>button {
+            width: 150px;
+            height: 50px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+
+            border: 1px solid white;
+            margin-top: 20px;
+        }
+
+        .자기소개 {
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        .프로필사진 {
+            width: 50%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="side-bar">
+        <section class="side-bar__icon-box">
+            <section class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </section>
+        </section>
+        <ul>
+            <li>
+                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+            </li>
+            <li>
+                <a href="#">menu2</a>
+            </li>
+            <li>
+                <a href="#">menu3</a>
+            </li>
+            <li>
+                <a href="#">menu4</a>
+            </li>
+        </ul>
+    </aside>
+
+
+</body>
+<div class="자기소개">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        1조 - Weekly Me
+    </h3>
+
+    <article class="이름">
+        <h2 class="display-5 link-body-emphasis mb-1">저는 이런 사람 입니다!</h2>
+        <img src="https://images.unsplash.com/photo-1446768500601-ac47e5ec3719?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1446&q=80"
+            class="프로필사진" alt="...">
+        <p> 안녕하세요! 저는 25살
+        <h1>최경진 입니다!</h1>
+        새로운 경험을 통해 성장하는 걸 즐기며, 팀워크를 소중히 생각합니다.<p>
+        <p>요즘은 웹 개발과 디자인에 흥미가 많아서 관련 공부도 열심히 하고 있어요.</p>
+        </p>밝고 긍정적인 에너지로 주변 사람들에게 좋은 영향을 주는 사람이 되고 싶습니다 :)</p>
+        <hr>
+        <h2>Mbti</h2>
+        <h3>E N F P</h3>
+        <p>호기심이 많고 사람들과 소통하는 걸 좋아하는 ENFP 성격이에요!</p>
+        <h2>취미</h2>
+        <h3>음악</h3>
+        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and
+            show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+            demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        <h3>게임</h3>
+        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and
+            show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the
+            demonstration flowing, so be on the lookout for this exact same string of text.</p>
+        <pre><code>Example code block</code></pre>
+        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly
+            repetitive body text used throughout.</p>
+    </article>
+</div>
+
+</html>
