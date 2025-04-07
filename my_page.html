@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <title>나를 소개합니다.</title>
+    <style>
+      body,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+      }
+
+      a {
+        color: inherit;
+        /* 부모 엘리먼트의 값을 물려받는다 */
+        text-decoration: none;
+        /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+      }
+
+      .my_page {
+        width: 60%;
+        margin: 20px auto 0px auto;
+      }
+
+      /* 노멀라이즈 끝 */
+      /* 2차 이상의 메뉴를 숨기기 */
+      .side-bar > ul ul {
+        display: none;
+      }
+
+      /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
+      body {
+        background-color: white;
+      }
+
+      /* 사이드바의 너비와 높이를 변수를 통해 통제 */
+      :root {
+        --side-bar-width: 200px;
+        --side-bar-height: 100vh;
+      }
+
+      .side-bar {
+        position: fixed;
+        background-color: white;
+        width: var(--side-bar-width);
+        min-height: var(--side-bar-height);
+      }
+
+      /* 모든 메뉴의 a에 속성값 부여 */
+      .side-bar ul > li > a {
+        display: block;
+        color: black;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 50px;
+      }
+
+      .my_page {
+        background-color: black;
+        height: 100%;
+        padding: 25px;
+      }
+
+      .introduce__myInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 50px;
+      }
+
+      .title {
+        background-color: white;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 0px 0px 25px 0px;
+        font-weight: 600;
+      }
+
+      .content {
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        margin: 0px auto 80px auto;
+      }
+
+      .introduce__myInfo > .name {
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 500;
+      }
+
+      .my_profile {
+        width: 200px;
+        height: 200px;
+
+        background-image: url("HTML_Project/picture/KYG/KYG_face.png");
+        background-position: center;
+        background-size: cover;
+        border-radius: 10px;
+        box-shadow: 0 0 2px;
+      }
+
+      .panel {
+        border-radius: 8px;
+        background-color: white;
+        padding: 25px;
+        margin: 0px 0px 80px 0px;
+      }
+
+      .short {
+        border-radius: 8px;
+        margin: 0px 0px 80px 0px;
+      }
+
+      .short > p {
+        margin: 0px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="side-bar">
+      <section class="side-bar__icon-box">
+        <section class="side-bar__icon-1">
+          <div></div>
+          <div></div>
+          <div></div>
+        </section>
+      </section>
+      <ul>
+        <li>
+          <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+        </li>
+        <li>
+          <a href="#">menu2</a>
+        </li>
+        <li>
+          <a href="#">menu3</a>
+        </li>
+        <li>
+          <a href="#">menu4</a>
+        </li>
+      </ul>
+    </aside>
+    <div class="my_page">
+      <div class="introduce">
+        <h3 class="title">자기 소개</h3>
+        <div class="content panel">
+          <div class="introduce__myInfo">
+            <div class="name">이름 : 김용준</div>
+            <ul>
+              <li>백엔드 개발자 취준생</li>
+            </ul>
+          </div>
+          <div class="my_profile"></div>
+        </div>
+
+        <h3 class="title">한줄 소개</h3>
+        <div class="short panel">
+          <p>
+            안녕하세요. 저는 이번에 백엔드로 취업하기위해 내일배움캠프를
+            시작하게 되었습니다.
+          </p>
+        </div>
+      </div>
+      <h3 class="title">#해쉬태그</h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
