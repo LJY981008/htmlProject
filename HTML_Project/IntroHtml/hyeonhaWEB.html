@@ -1,0 +1,110 @@
+//사이드바
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나를 소개합니다.</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+        }
+
+        a {
+            color: inherit;
+            /* 부모 엘리먼트의 값을 물려받는다 */
+            text-decoration: none;
+            /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+        }
+
+        /* 노멀라이즈 끝 */
+        /* 2차 이상의 메뉴를 숨기기 */
+        .side-bar>ul ul {
+            display: none;
+        }
+
+        /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
+        body {
+            height: 5000px;
+            background-color: white;
+        }
+
+        /* 사이드바의 너비와 높이를 변수를 통해 통제 */
+        :root {
+            --side-bar-width: 200px;
+            --side-bar-height: 100vh;
+        }
+
+        .side-bar {
+            position: fixed;
+            background-color: white;
+            width: var(--side-bar-width);
+            min-height: var(--side-bar-height);
+        }
+
+        /* 모든 메뉴의 a에 속성값 부여 */
+        .side-bar ul>li>a {
+            display: block;
+            color: black;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 50px;
+        }
+
+        .card-img {
+            width : 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="side-bar">
+        <section class="side-bar__icon-box">
+            <section class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </section>
+        </section>
+        <ul>
+            <li>
+                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+            </li>
+            <li>
+                <a href="#">menu2</a>
+            </li>
+            <li>
+                <a href="#">menu3</a>
+            </li>
+            <li>
+                <a href="#">menu4</a>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="introduce_image"> 
+    <div class="card text-bg-dark">
+        <img src="https://img.notionusercontent.com/s3/prod-files-secure%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2F6e22a4b8-9817-444b-a810-5cf53436c0bb%2FIMG_8920.jpeg/size/w=1420?exp=1744084573&sig=YJdny12DbnM4ROdf6gqbC0P7hXDT3z2NBzRJPdgqTZs&id=1c72dc3e-f514-8048-bbba-d4c56cf6e330&table=block" class="card-img" alt="...">
+        <div class="card-img-overlay">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      </div>
+
+
+
+
+</body>
+
+</html>
