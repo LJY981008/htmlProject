@@ -6,8 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나를 소개합니다.</title>
+    <title>이현하</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+        * {
+            font-family: 'Gowun Dodum', sans-serif;
+        }
+
         body,
         ul,
         li {
@@ -61,46 +70,109 @@
         }
 
         .card-img {
-            width : 500px;
+            width: 700px;
+            position: left;
+        }
+
+        .card-header {
+            background-color: #ffc83d;
+        }
+
+        .mainContent {
+            display: flex;
+            margin: auto auto auto 300px;
+        }
+
+        .subContent {
+            margin: 100px auto auto 300px;
+        }
+
+        .subContent1 {
+            margin-top: 50px;
+            width: 1200px;
+            background-image: url("../picture/LHH/yellow1.jpeg");
+            background-position: center;
+            background-size: 1200px 300px;
+        }
+
+        .subContent2 {
+            margin-top: 100px;
+            width: 1200px;
+            background-image: url("../picture/LHH/yellow2.jpg");
+            background-position: center;
+            background-size: 1000px 300px;
+        }
+
+        .container-fluid {
+            background: linear-gradient(to right, rgba(255, 254, 192, 0.7) 0%, rgba(250, 255, 214, 0) 100%);
+        }
+        .btn{
+            color:rgb(75, 75, 75);
         }
     </style>
 </head>
 
 <body>
     <aside class="side-bar">
-        <section class="side-bar__icon-box">
-            <section class="side-bar__icon-1">
-                <div></div>
-                <div></div>
-                <div></div>
-            </section>
-        </section>
         <ul>
             <li>
-                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
+                <a href="#">최경진</a>
             </li>
             <li>
-                <a href="#">menu2</a>
+                <a href="#">이준영</a>
             </li>
             <li>
-                <a href="#">menu3</a>
+                <a href="#">김용준</a>
             </li>
             <li>
-                <a href="#">menu4</a>
+                <a href="#">윤희준</a>
+            </li>
+            <li>
+                <a href="#">우새빛</a>
             </li>
         </ul>
     </aside>
 
-    <div class="introduce_image"> 
-    <div class="card text-bg-dark">
-        <img src="https://img.notionusercontent.com/s3/prod-files-secure%2F83c75a39-3aba-4ba4-a792-7aefe4b07895%2F6e22a4b8-9817-444b-a810-5cf53436c0bb%2FIMG_8920.jpeg/size/w=1420?exp=1744084573&sig=YJdny12DbnM4ROdf6gqbC0P7hXDT3z2NBzRJPdgqTZs&id=1c72dc3e-f514-8048-bbba-d4c56cf6e330&table=block" class="card-img" alt="...">
-        <div class="card-img-overlay">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+    <div class="mainContent">
+        <img src="../picture/LHH/LHH_image.jpeg" class="card-img" alt="...">
+        <div class="card text-bg-warning mb-3" style="max-width: 18rem; margin-left : 30px">
+            <div class="card-header">It's Me</div>
+            <div class="card-body">
+                <h5 class="card-title">이현하</h5>
+                <p class="card-text" style="margin-top:30px;">MBTI : ISFP</p>
+                <p class="card-text">취미 : 게임</p>
+                <p class="card-text">한 줄 소개 : <br>코딩의 세계를 다시 공부해보려고 합니다.</p>
+            </div>
         </div>
-      </div>
-      </div>
+    </div>
+    <div class="subContent">
+        <div class="subContent1">
+            <div class="mbti">
+                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                    <div class="container-fluid py-5">
+                        <h1 class="display-5 fw-bold">MBTI : ISFP</h1>
+                        <p class="col-md-8 fs-4">저는 하루종일 누워있을 수 있고, <br>하루종일 아무것도 안할 수 있는 ISFP 입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="subContent2">
+            <div class="hobbit">
+                <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                    <div class="container-fluid py-5">
+                        <h1 class="display-5 fw-bold">취미 : 게임</h1>
+                        <p class="col-md-8 fs-4">저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br>
+                        우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.</p>
+                        <button type="button" class="btn btn-warning">오버워치 직장인 토너먼트</button>
+                        <button type="button" class="btn btn-warning">R6 유니버시티리그
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
 
 

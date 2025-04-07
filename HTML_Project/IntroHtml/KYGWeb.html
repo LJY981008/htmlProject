@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
+    -->
     <title>나를 소개합니다.</title>
     <style>
       body,
@@ -28,7 +30,7 @@
       }
 
       .my_page {
-        width: 60%;
+        width: 55%;
         margin: 20px auto 0px auto;
       }
 
@@ -91,13 +93,9 @@
         font-weight: 600;
       }
 
-      .content {
+      .introduce_container {
         display: flex;
         justify-content: center;
-        background-color: white;
-        padding: 25px;
-        border-radius: 8px;
-        margin: 0px auto 80px auto;
       }
 
       .introduce__myInfo > .name {
@@ -144,14 +142,29 @@
         background-color: black;
         width: 100%;
         color: white;
+        border: none;
+      }
+
+      .btn:first-child {
+        border-radius: 8px 0px 0px 0px;
+      }
+
+      .btn:last-child {
+        border-radius: 0px 8px 0px 0px;
+      }
+
+      .btn:hover,
+      :focus {
+        background-color: gray;
       }
 
       .hash > .panel {
-        margin-top: 25px;
         background-color: black;
+        color: white;
         height: 400px;
-        margin: 0px;
         text-align: center;
+        margin: 0px 0px 0px 0px;
+        border-radius: 0px 0px 8px 8px;
       }
 
       .hidden {
@@ -189,10 +202,15 @@
     <div class="my_page">
       <div class="introduce">
         <h3 class="title">#자기소개</h3>
-        <div class="content panel">
+        <div class="introduce_container panel">
           <div class="introduce__myInfo">
             <div class="name">이름 : 김용준</div>
-            <span>- 백엔드 개발자 취준생 -</span>
+            <span>백엔드 개발자 취준생</span>
+            <ul>
+              <li>→ 취미 : 코딩</li>
+              <li>운동 : 헬스</li>
+              <li>MBTI : ISTP</li>
+            </ul>
           </div>
           <div class="my_profile"></div>
         </div>
