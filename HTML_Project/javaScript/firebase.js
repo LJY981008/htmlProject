@@ -112,7 +112,7 @@ $("#register").click(async function () {
 });
 
 /* 댓글 작성 */
-$('postingComment').click(async function () {
+$('#postingComment').click(async function () {
     if (!isLogin) {
         /* 비로그인 상태일 때 */
         alert('로그인을 하고 시도해주세요.');
