@@ -15,6 +15,16 @@
   <link rel="stylesheet" href="HTML_Project/css/login.css" />
   <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR");
+    
+    * {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .nav-link, .shine-text, .introsub_text {
+      font-family: "Black Han Sans", sans-serif;
+    }
+
     /*배경설정정*/
     body {
       height: 5000px;
@@ -23,7 +33,7 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-blend-mode: overlay;
-      background-color: rgba(0, 0, 255, 0.2);
+      background-color: rgba(0, 0, 255, 0.1);
     }
 
     /*카테고리 폰트*/
@@ -45,7 +55,7 @@
       margin-top: 200px;
       padding-top: 50px;
       padding-bottom: 50px;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -78,12 +88,21 @@
       margin-top: 600px;
       padding-top: 50px;
       padding-bottom: 50px;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-right: 100px;
       padding-left: 50px;
+    }
+
+    .comment__box {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+
+    .comment_text {
+      font-weight: 900;
     }
   </style>
 </head>
@@ -109,7 +128,7 @@
   <div class="intro" id="teamIntro">
     <div class="introText">
       <h1><span class="shine-text">Weekly Me</span> 👑</h1>
-      <p>“이번 주의 주인공은 누구?” <br>
+      <p class="introsub_text">“이번 주의 주인공은 누구?” <br>
         바로 저희 Weekly Me, 1조입니다! <br>
       </p>
       <p style="font-size: 1.5rem;">이름처럼 이번 주의 주인공(일주인공)은 바로 우리이고,<br>
@@ -182,7 +201,7 @@
 
   <!--댓글 최경진-->
   <div class="comment__box" id="homeComment">
-    <h1>방명록</h1>
+    <h1 class="comment_text">방명록</h1>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
         aria-describedby="button-addon2" id="homeCommentText" />
