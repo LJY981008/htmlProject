@@ -125,11 +125,11 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
         <div class="card" id="card_LJY">
-            <img src="HTML_Project/picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><b>이준영</b></h5>
-              <p class="card-text">팀장</p>
-            </div>
+          <img src="HTML_Project/picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>이준영</b></h5>
+            <p class="card-text">팀장</p>
+          </div>
         </div>
       </div>
       <div class="col">
@@ -170,11 +170,11 @@
       </div>
       <div class="col">
         <div class="card" id="card_KYG">
-            <img src="HTML_Project/picture/KYG/KYG_face.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><b>김용준</b></h5>
-              <p class="card-text">팀원</p>
-            </div>
+          <img src="HTML_Project/picture/KYG/KYG_face.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>김용준</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
     <h1>방명록</h1>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-        aria-describedby="button-addon2" id="commentIn"/>
+        aria-describedby="button-addon2" id="homeCommentText" />
       <button type="button" class="btn btn-primary" id="postingComment">게시</button>
     </div>
   </div>
@@ -246,9 +246,8 @@
   </div>
 
   <script src="HTML_Project/javaScript/card.js"></script>
-  <script src="HTML_Project/javaScript/KYG_comment.js"></script>
   <script src="HTML_Project/javaScript/register_login.js"></script>
-  <script  type="module">
+  <script type="module">
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
@@ -257,14 +256,14 @@
 
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-        apiKey: "AIzaSyDIYr5xaD01ndxx0anOhCgoKRHT6rAHWnc",
-        authDomain: "weeklyme-4e92d.firebaseapp.com",
-        projectId: "weeklyme-4e92d",
-        storageBucket: "weeklyme-4e92d.firebasestorage.app",
-        messagingSenderId: "499565676750",
-        appId: "1:499565676750:web:60aa159f30a4917fe6689f",
-        measurementId: "G-2D8RFG5CVT"
-      };
+      apiKey: "AIzaSyDIYr5xaD01ndxx0anOhCgoKRHT6rAHWnc",
+      authDomain: "weeklyme-4e92d.firebaseapp.com",
+      projectId: "weeklyme-4e92d",
+      storageBucket: "weeklyme-4e92d.firebasestorage.app",
+      messagingSenderId: "499565676750",
+      appId: "1:499565676750:web:60aa159f30a4917fe6689f",
+      measurementId: "G-2D8RFG5CVT"
+    };
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -276,134 +275,180 @@
 
     /* 로그인 버튼 */
     $("#login").click(async function () {
-        let docs = await getDocs(collection(db, "info"));
-        docs.forEach((doc) => {
-            let row = doc.data();
-            let nickname = row['name'];
-            let id = row['id'];
-            let pw = row['pw'];
+      let docs = await getDocs(collection(db, "info"));
+      docs.forEach((doc) => {
+        let row = doc.data();
+        let nickname = row['name'];
+        let id = row['id'];
+        let pw = row['pw'];
 
-            let inputID = $('#loginID').val();
-            let inputPW = $('#loginPW').val();
+        let inputID = $('#loginID').val();
+        let inputPW = $('#loginPW').val();
 
-            if (inputID == id) {
-                if (inputPW == pw) {
-                    /* 로그인 성공 */
-                    name = nickname;
-                    myid = id;
-                    isLogin = true;
-                    alert('어서오세요' + name + '님');
-                    /* ui변경 필요 */
-                    isLogin = true;
-                    $('#loginPopup').css("display", "none");
-                    $('#floatingUI').css("display", "none");
-                    $('#loginName').css("display", "flex");
-                    $('#loginNameText').text(name);
-                    return true;
-                }
-                else {
-                    /* 비밀번호 틀림 */
-                    alert('비밀번호가 틀렸습니다.');
-                    return false;
-                }
-            }
-        });
+        if (inputID == id) {
+          if (inputPW == pw) {
+            /* 로그인 성공 */
+            name = nickname;
+            myid = id;
+            isLogin = true;
+            alert('어서오세요' + name + '님');
+            /* ui변경 필요 */
+            isLogin = true;
+            $('#loginPopup').css("display", "none");
+            $('#floatingUI').css("display", "none");
+            $('#loginName').css("display", "flex");
+            $('#loginNameText').text(name);
+            return true;
+          }
+          else {
+            /* 비밀번호 틀림 */
+            alert('비밀번호가 틀렸습니다.');
+            return false;
+          }
+        }
+      });
     })
 
     /* 가입 버튼  */
     $("#register").click(async function () {
-        let regID = $('#registerId').val();
-        let regPW = $('#registerPassword').val();
-        let regPWCheck = $('#registerPasswordConfirm').val();
-        let regName = $('#regName').val();
-        let flag = false;
+      let regID = $('#registerId').val();
+      let regPW = $('#registerPassword').val();
+      let regPWCheck = $('#registerPasswordConfirm').val();
+      let regName = $('#regName').val();
+      let flag = false;
 
-        if (regPW != regPWCheck) {
-            alert("비밀번호를 확인해주세요.");
+      if (regPW != regPWCheck) {
+        alert("비밀번호를 확인해주세요.");
+        return false;
+      }
+      else if (!regID || pattern.test(regID)) { // 수정된 부분
+        alert('아이디에 공백을 포함할 수 없습니다.');
+        return false;
+      }
+      else {
+        let docs = await getDocs(collection(db, "info"));
+        docs.forEach((doc) => {
+          let row = doc.data();
+          let id = row['id'];
+          if (id == regID) {
+            alert('아이디가 이미 존재합니다.');
+            flag = true;
             return false;
-        }
-        else if (!regID || pattern.test(regID)) { // 수정된 부분
-            alert('아이디에 공백을 포함할 수 없습니다.');
+          }
+          if (regName == row['name']) {
+            alert('사용할 수 없는 이름입니다.');
+            flag = true;
             return false;
-        }
-        else {
-            let docs = await getDocs(collection(db, "info"));
-            docs.forEach((doc) => {
-                let row = doc.data();
-                let id = row['id'];
-                if (id == regID) {
-                    alert('아이디가 이미 존재합니다.');
-                    flag = true;
-                    return false;
-                }
-                if (regName == row['name']) {
-                    alert('사용할 수 없는 이름입니다.');
-                    flag = true;
-                    return false;
-                }
-            });
+          }
+        });
 
-            if (!flag) {
-                let doc = {
-                    'id': regID,
-                    'pw': regPW,
-                    'name': regName
-                };
-                try {
-                    const addedDocRef = await addDoc(collection(db, "info"), doc);
-                    alert('환영합니다. ' + regName + '님');
-                    myid = regID;
-                    name = regName;
-                    isLogin = true;
-                    $('#registerPopup').css("display", "none");
-                    $('#floatingUI').css("display", "none");
-                    $('#loginName').css("display", "flex");
-                    $('#loginNameText').text(name);
-                } catch (error) {
-                    console.error("Firebase 회원가입 오류:", error);
-                    alert('회원가입 중 오류가 발생했습니다.');
-                }
-            }
+        if (!flag) {
+          let doc = {
+            'id': regID,
+            'pw': regPW,
+            'name': regName
+          };
+          try {
+            const addedDocRef = await addDoc(collection(db, "info"), doc);
+            alert('환영합니다. ' + regName + '님');
+            myid = regID;
+            name = regName;
+            isLogin = true;
+            $('#registerPopup').css("display", "none");
+            $('#floatingUI').css("display", "none");
+            $('#loginName').css("display", "flex");
+            $('#loginNameText').text(name);
+          } catch (error) {
+            console.error("Firebase 회원가입 오류:", error);
+            alert('회원가입 중 오류가 발생했습니다.');
+          }
         }
+      }
     });
 
     /* 댓글 작성 */
-    $('#postingComment').click(async function () {
-        if (!isLogin) {
-            /* 비로그인 상태일 때 */
-            alert('로그인을 하고 시도해주세요.');
-            return false;
-        }
-        let comment = $('#commentIn').val();
-        let today = new Date();
-        let year = today.getFullYear();
-        let month = today.getMonth();
-        let date = today.getDate();
-        let ymd = year + '/' + month + '/' + date;
-        console.log(comment);
-        let doc = {
-            'id': myid,
-            'name':name,
-            'comment': comment,
-            'date': ymd
-        }
+    const commentBox = document.querySelector(".comment__box");
+    const commentInput = commentBox.querySelector("input");
+    const commentBtn = commentBox.querySelector("button");
+
+    // Firebase 저장 함수 (두 번째 JS 파일의 로직을 가져옴)
+    const saveCommentToFirebase = async (commentText) => {
+      if (!isLogin) {
+        alert('로그인을 하고 시도해주세요.');
+        return false;
+      }
+      let today = new Date();
+      let year = today.getFullYear();
+      let month = today.getMonth();
+      let date = today.getDate();
+      let ymd = year + '/' + month + '/' + date;
+      console.log("Firebase에 저장할 댓글:", commentText);
+      let doc = {
+        'id': myid,
+        'name': name,
+        'comment': commentText,
+        'date': ymd
+      };
+      try {
         await addDoc(collection(db, "comments"), doc);
-        alert('작성이 완료되었습니다.');
-    })
+        console.log('Firebase에 댓글 저장 완료');
+        // alert('작성이 완료되었습니다.'); // Firebase 저장이 완료되면 알림 (선택 사항)
+      } catch (error) {
+        console.error("Firebase 댓글 저장 오류:", error);
+        alert('댓글 저장 중 오류가 발생했습니다.');
+      }
+    };
+    const addComment = (input) => {
+      if (input == "") return;
+      const comment = document.createElement("div");
+      const commentPanel = document.querySelector(".comment__panel");
+
+      const commentName = document.createElement("span");
+      commentName.classList.add("comment__name");
+      commentName.innerText = "김아무개";
+
+      const commentText = document.createElement("span");
+      commentText.classList.add("comment__text");
+
+      const today = new Date();
+      const todayDate = document.createElement("span");
+      todayDate.classList.add("comment__date");
+      todayDate.innerText = `방문 날짜 : ${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 ${today.getHours()}시 ${today.getMinutes()}분`
+
+      commentText.innerText = input;
+      comment.className = "comment";
+
+      commentPanel.appendChild(comment);
+      comment.appendChild(commentName);
+      comment.appendChild(commentText);
+      comment.appendChild(todayDate);
+      commentPanel.classList.remove("hidden");
+
+      // 댓글이 화면에 추가된 후 Firebase 저장 함수 호출
+      saveCommentToFirebase(input);
+    };
+
+    const handleCommentClick = () => {
+      const input = commentInput.value;
+      addComment(input);
+      commentInput.value = "";
+    };
+
+    commentBtn.addEventListener("click", handleCommentClick);
 
     /* 댓글 갱신 */
     let commentsDocs = await getDocs(collection(db, "comments"));
     commentsDocs.forEach((doc) => {
-        let row = doc.data();
-        let name = row['name'];
-        let date = row['date'];
-        let comment = row['comment'];
+      let row = doc.data();
+      let name = row['name'];
+      let date = row['date'];
+      let comment = row['comment'];
 
-        /* 댓글 html코드 */
-        let text = ``;
+      /* 댓글 html코드 */
+      let text = ``;
 
-        $('#commentArea').append(text);
+      $('#commentArea').append(text);
     })
   </script>
-  
+
 </html>
