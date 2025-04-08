@@ -25,3 +25,36 @@
         background-position: -200% center;
     }
 }
+
+/*카테고리 그림자 추가 -이현하*/
+.nav-link {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 3px 3px 3px rgba(170, 168, 134, 0.5);
+}
+
+/*내비게이션 상단고정 및 배경, 블러 효과 추가 -이현하*/
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+}
+
+/*카테고리 버튼 간격 주기 -이현하*/
+.nav-item {
+    margin: 0 15px;
+}
+
+/*카테고리 메뉴 클릭 후 이동 시 카테고리 높이만큼 상단 여백을 줌 -이현하*/
+div {
+    scroll-margin-top: 85px;
+}
+
+/*팀소개 텍스트 왼쪽여백 추가 -이현하*/
+.introText {
+    align-items: center;
+    margin-left: 50px;
+}
