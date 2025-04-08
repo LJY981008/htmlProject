@@ -181,8 +181,7 @@
         border-radius: 0px 8px 0px 0px;
       }
 
-      .hash__btn:hover,
-      :focus {
+      .hash__btn.active {
         background-color: gray;
       }
 
@@ -253,7 +252,7 @@
           <h3 class="title">#사진</h3>
           <div class="hash__box">
             <div class="hash__btns">
-              <button class="hash__btn" style="background-color: gray;">음식</button>
+              <button class="hash__btn">음식</button>
               <button class="hash__btn">고양이</button>
               <button class="hash__btn">풍경</button>
             </div>
@@ -291,9 +290,17 @@
       const btns = document.querySelectorAll(".hash__btns button");
       const panels = document.querySelectorAll(".hash__box .panel");
 
+      btns[0].classList.add("active");
+
       const handleBtnClick = (event) => {
         const clickedTarget = event.target;
         const text = clickedTarget.innerText;
+
+      // 모든 버튼에서 active 클래스 제거
+      btns.forEach((btn) => btn.classList.remove("active"));
+
+      // 클릭한 버튼에 active 클래스 추가
+      clickedTarget.classList.add("active");
 
         panels.forEach((panel) => {
           const panelName = panel.querySelector("h1").innerText;
