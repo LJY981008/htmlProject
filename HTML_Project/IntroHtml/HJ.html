@@ -1,51 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-      crossorigin="anonymous"
-    />
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hj</title>
-</head>
+    <title>Document</title>
 
-<style>
-    
-    .head1{
-            background-color:white;
-            width: 100%;
-            display: block;
-        }
-
-        .head2{
-            width: 60%;
-            background-color:wheat;
-            margin: 0 auto 0 auto;  
-            height: 150px;
-            border-radius: 20px;
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-     
-     .content1 {
-        background-image: url("https://cdn.pixabay.com/photo/2018/12/06/16/12/birds-3860034_1280.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: right;
-        border-radius: 20px;
-           
-            width: 60%; /* 콘텐츠의 너비를 70%로 설정 */
-            margin: 0 auto; /* 위/아래는 0, 좌/우는 자동으로 균등 배치 */
-           height: 100vh;
-           
-        }
-        body,
+    <style>
         ul,
         li {
             margin: 0;
@@ -96,35 +56,56 @@
             padding-bottom: 20px;
             padding-left: 50px;
         }    
-    
-        .img1{
-            
-            flex: 1; /* 이미지 영역을 유연하게 */
-            height:auto; /* 이미지 정렬 */
-            
-            
-
-        }
-        .img1 img{
-            border-radius: 20px ;
-        }
-        .content1 {
-            display: flex; /* Flexbox 레이아웃 설정 */
-            justify-content: space-between; /* 글과 이미지를 양쪽으로 배치 */
-            align-items: flex-start; /* 세로 방향 가운데 정렬 */
-            gap: 20px; /* 글과 이미지 사이의 간격 */
-            padding: 20px; /* 컨테이너 안쪽 여백 설정 */
-            
-        }
-        .text1{
-            flex: 1; /* 글 영역을 유연하게 */
-        }
-        .like-container {
+        /* ///////////////////////사이드바 */
+        
+        ._0{
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            font-family: Arial, sans-serif;
+            height: 100%;
+            background: linear-gradient(to left,wheat, rgb(255, 255, 255))
+            
+            
         }
+        .fl0{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-items: center;
+            background-color: transparent;
+            width: 50%;
+            height: 100%;
+        }
+        .fl11{
+            display: flex;
+            background-color:transparent;
+            
+            flex-direction: column;
+            margin: 50px auto;
+            
+        }
+        .fl1{
+            display: flex;
+            background-color:transparent;
+            width: inherit;
+            flex-direction: column;
+            
+        }
+        .fl2 img{
+            width: 210px;
+            height: 240px;
+            border-radius: 20px;
+        }
+        .fl2{
+            display: flex;
+            background-color:transparent;
+            width: inherit;
+        }
+        .fseg{
+            display:flex;
+            flex-direction: row;
+        }
+
         .heart {
             font-size: 2rem;
             color: red;
@@ -138,23 +119,10 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
-        .outline-text{
-            
-            font-size: 50px;
-            font-weight: bold; 
-            color: wheat;   /*글자내부*/
-            -webkit-text-stroke: 2px rgb(218, 206, 41);/*글자외부*/
-        }
 
-        
-</style>
+    </style>
+</head>
 <body>
-    <div class="head1">
-    <div class="head2">
-        <h1   class="outline-text">나를 소개합니다</h1>
-    <h3 class="outline-text">1조</h3>
-</div>
-</div>
     <aside class="side-bar">
         <section class="side-bar__icon-box">
             <section class="side-bar__icon-1">
@@ -186,42 +154,40 @@
 
         
     </aside>
-    
+    <div class="_0">
+    <div class="fl0">
+        <div class="fl11"><h1 style="text-align: center;">Weekly Me🧸</h1></div>
 
-   
-    <div class="content1"> 
+        <div class="fseg">
+        <div class="fl1">
+            <p>이름 : 윤희준</p>
+            <p>mbti : INTJ</p>
+            <p>취미 : 러닝 </p>
+            <p>한줄소개 : 개발자 공부는 배울게 끝이없어서 하루하루 즐거운 시간을 보내고 있습니다 😂</p>
+            <div class="like-container">
+                <p class="heart">👍</p>
+                <span class="count">0</span>
+            </div>
+            <script>
+                // DOM 요소 가져오기
+                const heart = document.querySelector('.heart');
+                const count = document.querySelector('.count');
         
-        <div class="text1">
-        <p>이름 : 윤희준</p>
-        <p>한줄소개 : 백엔드개발자 취업 화이팅</p>
-        <p>취미 : 러닝</p>
-        <p>mbti : INTJ</p>
-        <p></p>
-        <div class="like-container">
-            <span class="heart">👍</span>
-            <span class="count">0</span>
-        </div>
-        <script>
-            // DOM 요소 가져오기
-            const heart = document.querySelector('.heart');
-            const count = document.querySelector('.count');
-    
-            // 초기 카운트 값
-            let likeCount = 0;
-    
-            // 클릭 이벤트 리스너 추가
-            heart.addEventListener('click', () => {
-                likeCount++; // 카운트 증가
-                count.textContent = likeCount; // 화면에 업데이트
-            });
-        </script>
-    </div>
-       
-       
-       <div class="img1"> <img  src="C:\Users\LG02\Desktop\1주차 과제\htmlProject\HTML_Project\picture\HJ\YHJ.png.png" alt="">
-        </div>
-    </div>
+                // 초기 카운트 값
+                let likeCount = 0;
         
+                // 클릭 이벤트 리스너 추가
+                heart.addEventListener('click', () => {
+                    likeCount++; // 카운트 증가
+                    count.textContent = likeCount; // 화면에 업데이트
+                });
+            </script>
+    
+        </div>
+        <div class="fl2"><img src="../picture/HJ/YHJ.png.png" alt=""></div>
     </div>
+    </div>
+</div>
+
 </body>
 </html>
