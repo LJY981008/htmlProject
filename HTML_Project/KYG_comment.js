@@ -29,8 +29,7 @@ const addComment = (input) => {
   commentPanel.classList.remove("hidden");
 };
 
-const handleCommentClick = (event) => {
-  event.preventDefault();
+const handleCommentClick = () => {
   const input = commentInput.value;
   addComment(input);
   commentInput.value = "";
