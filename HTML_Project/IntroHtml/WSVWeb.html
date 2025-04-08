@@ -14,71 +14,26 @@
         * {
             font-family: "IBM Plex Sans KR", sans-serif;
         }
-        
+
         .name {
             font-family: "Black Han Sans", sans-serif;
         }
 
-        body,
-        ul,
-        li {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
-        }
 
-        a {
-            color: inherit;
-            /* 부모 엘리먼트의 값을 물려받는다 */
-            text-decoration: none;
-            /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+        .sidebar {
+            height: 100vh;
+            width: 250px;
+            background-color: wheat;
+            padding: 50px;
         }
-
-        /* 노멀라이즈 끝 */
-        /* 2차 이상의 메뉴를 숨기기 */
-        .side-bar>ul ul {
-            display: none;
-        }
-
-        /* 사이트의 높이를 5000px로 만들어 스크롤 생성 */
-        body {
-            height: 5000px;
-            background-color: white;
-        }
-
-        /* 사이드바의 너비와 높이를 변수를 통해 통제 */
-        :root {
-            --side-bar-width: 200px;
-            --side-bar-height: 100vh;
-        }
-
-        .side-bar {
-            position: fixed;
-            background-color: white;
-            width: var(--side-bar-width);
-            min-height: var(--side-bar-height);
-        }
-
-        /* 모든 메뉴의 a에 속성값 부여 */
-        .side-bar ul>li>a {
-            display: block;
-            color: black;
-            font-size: 1.4rem;
-            font-weight: bold;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-left: 50px;
-        }
-
 
         .mypage {
-            margin: 0px 100px 0px 300px;
+            margin: 0px 10% 0px 10%;
         }
 
         .header {
             background-color: rgb(255, 230, 2);
-            padding:20px;
+            padding: 20px;
             margin-bottom: 40px;
         }
 
@@ -97,56 +52,67 @@
 </head>
 
 <body>
-    <aside class="side-bar">
-        <section class="side-bar__icon-box">
-            <section class="side-bar__icon-1">
-                <div></div>
-                <div></div>
-                <div></div>
-            </section>
-        </section>
-        <ul>
-            <li>
-                <a href="#"><i class="fa-solid fa-cat"></i> menu1</a>
-            </li>
-            <li>
-                <a href="#">menu2</a>
-            </li>
-            <li>
-                <a href="#">menu3</a>
-            </li>
-            <li>
-                <a href="#">menu4</a>
-            </li>
-        </ul>
-    </aside>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+                <h2>멤버들</h2>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../TeamWeb.html">메인으로</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hyeonhaWEB.html">이현하</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LJYWeb.HTML">이준영</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CHEWeb.html">최경진</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HJ.html">윤희준</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="KYGWeb.html">김용준</a>
+                    </li>
+                </ul>
+            </nav>
 
-    <div class="mypage">
-        <div class="header">
-            <h1><b>나를 소개합니다</b></h1>
-            <p>1조 Weekly Me</p>
-        </div>
+            <main class="col-md-9 ms-sm-auto col-lg-10 content">
+                <div class="mypage">
+                    <div class="header">
+                        <h1><b>나를 소개합니다</b></h1>
+                        <p>1조 Weekly Me</p>
+                    </div>
 
-        <div class="card">
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <img src="../picture/WSV/WSV_p.jpg" class="img-fluid rounded-start" alt="...">
+                    <div class="card">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <img src="../picture/WSV/WSV_p.jpg" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h3 class="name">우새빛✨</h3>
+                                    </li>
+                                    <li class="list-group-item"><b>MBTI</b><br> 통찰력 있는 선지자 INFJ</li>
+                                    <li class="list-group-item"><b>취미</b><br> 일기나 다양한 것들을 기록하길 좋아합니다!</li>
+                                    <li class="list-group-item">
+                                        <div class="sp-bubble">안녕하세요!<br>
+                                            내일배움캠프 Spring 7기를 수강하게 된 우새빛입니다.<br>
+                                            성실함과 꾸준함을 바탕으로 성장해 나가고 싶습니다.<br>
+                                            파이팅~~</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><h3 class="name">우새빛✨</h3></li>
-                        <li class="list-group-item"><b>MBTI</b><br> 통찰력 있는 선지자 INFJ</li>
-                        <li class="list-group-item"><b>취미</b><br> 일기나 다양한 것들을 기록하길 좋아합니다!</li>
-                        <li class="list-group-item"><div class="sp-bubble">안녕하세요!<br>
-                            내일배움캠프 Spring 7기를 수강하게 된 우새빛입니다.<br>
-                            성실함과 꾸준함을 바탕으로 성장해 나가고 싶습니다.<br>
-                            파이팅~~</div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
+            </main>
         </div>
+    </div>
+
+
 </body>
 
 </html>
