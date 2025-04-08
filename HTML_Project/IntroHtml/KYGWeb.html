@@ -162,6 +162,13 @@
         object-fit: cover
       }
 
+      .imgs button,span {
+        all: unset;
+        cursor: pointer;
+        font-size: 30px;
+        margin-top:20px;
+      }
+
       /*버튼 스타일*/
       .hash__btn {
         padding: 10px;
@@ -260,18 +267,30 @@
               <h1>음식</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_picture.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
             <div class="panel hidden">
               <h1>고양이</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_cat.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
             <div class="panel hidden">
               <h1>풍경</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_landscape.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
           </div>
@@ -284,7 +303,6 @@
         </div>
       </div>
     </div>
-    <script src="../comment.js"></script>
     <script>
       const btns = document.querySelectorAll(".hash__btns button");
       const panels = document.querySelectorAll(".hash__box .panel");
@@ -331,6 +349,20 @@
       };
 
       commentBtn.addEventListener("click", handleCommentClick);
+
+      const imgs = document.querySelector(".imgs");
+      const goodButtons = imgs.querySelectorAll("button");
+      const goodTimeText = imgs.querySelector("span");
+      let goodTimeCount = 0;
+
+      const handleGoodBtnClick = (event) => {
+        goodTimeCount += 1;
+        goodTimeText.innerText = goodTimeCount;
+      }
+
+      goodButtons.forEach(button => {
+        button.addEventListener("click", handleGoodBtnClick);
+      })
     </script>
   </body>
 </html>
