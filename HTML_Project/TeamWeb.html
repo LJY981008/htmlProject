@@ -1,182 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weekly Me</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="KYG_comment.css" />
     <style>
       /*배경설정정*/
-        body {
-            height: 5000px;
-            background-image: url('picture/mainBackground.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-blend-mode: overlay;
-            background-color: rgba(0, 0, 255, 0.2);
-        }
+      body {
+        height: 5000px;
+        background-image: url("picture/mainBackground.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-blend-mode: overlay;
+        background-color: rgba(0, 0, 255, 0.2);
+      }
 
-        /*카테고리 폰트*/
-        .nav-link {
-            font-size: 3rem;
-            color: white;
-        }
+      /*카테고리 폰트*/
+      .nav-link {
+        font-size: 3rem;
+        color: white;
+      }
 
-        /*내비게이션 상단고정*/
-        .fixed-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-        }
-        /*팀소개 배경경*/
-        .intro {
-            margin-top: 200px;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-right: 100px;
-            padding-left: 50px
-        }
-        /*팀소개 텍스트*/
-        .introText {
-            align-items: center;
-        }
-        /*이미지 크기 및 오른쪽정렬렬*/
-        .intro img {
-            width: 600px;
-            height: 500px;
-            margin-left: auto;
-        }
-        /*텍스트 폰트트*/
-        .intro p {
-            color: white;
-            /* 텍스트 색상 추가 */
-            font-size: 2rem;
-            /* 텍스트 크기 추가 */
-        }
-        /*팀원 카드 배경*/
-        .team {
-            margin-top: 600px;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-right: 100px;
-            padding-left: 50px
-        }
-        /*방명록*/
-        .comment{
-            margin-top: 600px;
-            padding-top: 50px;
-            padding-bottom: 50px;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-right: 100px;
-            padding-left: 50px
-        }
+      /*내비게이션 상단고정*/
+      .fixed-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+      }
+      /*팀소개 배경경*/
+      .intro {
+        margin-top: 200px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 100px;
+        padding-left: 50px;
+      }
+      /*팀소개 텍스트*/
+      .introText {
+        align-items: center;
+      }
+      /*이미지 크기 및 오른쪽정렬렬*/
+      .intro img {
+        width: 600px;
+        height: 500px;
+        margin-left: auto;
+      }
+      /*텍스트 폰트트*/
+      .intro p {
+        color: white;
+        /* 텍스트 색상 추가 */
+        font-size: 2rem;
+        /* 텍스트 크기 추가 */
+      }
+      /*팀원 카드 배경*/
+      .team {
+        margin-top: 600px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 100px;
+        padding-left: 50px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <ul class="nav justify-content-center fixed-nav">
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">팀 소개</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">팀원들</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">방명록</a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">팀 소개</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">팀원들</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">방명록</a>
+      </li>
     </ul>
 
     <div class="intro">
-        <div class="introText">
-            <p>1조-Weekly Me</p>
-            <p>1조입니다.</p>
-        </div>
-        <img src="picture\teamImg.png">
+      <div class="introText">
+        <p>1조-Weekly Me</p>
+        <p>1조입니다.</p>
+      </div>
+      <img src="picture\teamImg.png" />
     </div>
 
     <div class="team">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card">
-                  <img src="..." class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  </div>
-                </div>
-              </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
             </div>
           </div>
-
-
-    </div>
-
-    <div class="comment">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button type="button" class="btn btn-primary">게시</button>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
           </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
 
+    <div class="comment__box">
+      <h1>방명록</h1>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+        <button type="button" class="btn btn-primary">게시</button>
+      </div>
+    </div>
+    <div class="comment__panel hidden"></div>
+  </body>
+  <script src="KYG_comment.js"></script>
 </html>
