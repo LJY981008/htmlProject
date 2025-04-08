@@ -60,10 +60,23 @@
 
     /*이미지 크기 및 오른쪽정렬렬*/
     .intro img {
-      width: 600px;
-      height: 500px;
-      margin-left: auto;
-    }
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 40%;
+  margin: 0 auto;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border: 5px solid rgba(204, 196, 196, 0.212);
+  filter: grayscale(10%)
+}
+
+.intro img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
 
     /*텍스트 폰트트*/
     .intro p {
