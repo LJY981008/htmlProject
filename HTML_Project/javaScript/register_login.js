@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // 로그인 팝업 관련
-    $("#loginBtn").click(function() {
+    $("#loginButton").click(function() {
         $("#loginPopup").css("display", "block");
     });
 
@@ -9,7 +9,7 @@ $(document).ready(function() {
     });
 
     // 회원가입 팝업 관련
-    $("#registerBtn").click(function() {
+    $("#registerButton").click(function() { // 선택자를 "#registerButton"으로 변경
         $("#registerPopup").css("display", "block");
     });
 

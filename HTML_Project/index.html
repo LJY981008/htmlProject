@@ -191,60 +191,60 @@
 
   <!--로그인회원가입UI-->
   <div class="floating-ui">
-    <button id="loginBtn">로그인</button>
-    <button id="registerBtn">회원가입</button>
+    <button id="loginButton">로그인</button>
+    <button id="registerButton">회원가입</button>
   </div>
 
   <!--로그인 팝업-->
   <div id="loginPopup" class="popup">
     <div class="popup-content">
-        <span class="close-button" id="closeLoginPopup">&times;</span>
-        <h2>로그인</h2>
-        <form>
-            <div class="mb-3">
-                <label for="loginEmail" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="loginEmail" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="loginPassword" class="form-label">비밀번호</label>
-                <input type="password" class="form-control" id="loginPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">로그인</button>
-        </form>
+      <span class="close-button" id="closeLoginPopup">&times;</span>
+      <h2>로그인</h2>
+      <form>
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="loginPassword">
+        </div>
+        <button type="submit" class="btn btn-primary" id="login">로그인</button>
+      </form>
     </div>
-</div>
+  </div>
 
   <!--회원가입 팝업-->
   <div id="registerPopup" class="popup">
     <div class="popup-content">
-        <span class="close-button" id="closeRegisterPopup">&times;</span>
-        <h2>회원가입</h2>
-        <form>
-            <div class="mb-3">
-                <label for="registerNickname" class="form-label">닉네임</label>
-                <input type="text" class="form-control" id="registerNickname">
-            </div>
-            <div class="mb-3">
-                <label for="registerId" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="registerId">
-            </div>
-            <div class="mb-3">
-                <label for="registerPassword" class="form-label">비밀번호</label>
-                <input type="password" class="form-control" id="registerPassword">
-            </div>
-            <div class="mb-3">
-                <label for="registerPasswordConfirm" class="form-label">비밀번호 확인</label>
-                <input type="password" class="form-control" id="registerPasswordConfirm">
-            </div>
-            <button type="submit" class="btn btn-success">회원가입</button>
-        </form>
+      <span class="close-button" id="closeRegisterPopup">&times;</span>
+      <h2>회원가입</h2>
+      <form>
+        <div class="mb-3">
+          <label for="registerNickname" class="form-label">닉네임</label>
+          <input type="text" class="form-control" id="regName">
+        </div>
+        <div class="mb-3">
+          <label for="registerId" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="regID">
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="regPW">
+        </div>
+        <div class="mb-3">
+          <label for="registerPasswordConfirm" class="form-label">비밀번호 확인</label>
+          <input type="password" class="form-control" id="regPWC">
+        </div>
+        <button type="submit" class="btn btn-success" id="register">회원가입</button>
+      </form>
     </div>
-</div>
+  </div>
+  </div>
 
   <script src="javaScript/card.js"></script>
-  <script src="javaScript/firebase.js"></script>
+  <script src="javaScript/firebase.js" type="module"></script>
   <script src="javaScript/KYG_comment.js"></script>
-  <script src="javaScript/login.js"></script>
-  <script src="javaScript/register.js"></script>
+  <script src="javaScript/register_login.js"></script>
 
 </html>
