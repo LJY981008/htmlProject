@@ -162,6 +162,13 @@
         object-fit: cover
       }
 
+      .imgs button,span {
+        all: unset;
+        cursor: pointer;
+        font-size: 30px;
+        margin-top:20px;
+      }
+
       /*버튼 스타일*/
       .hash__btn {
         padding: 10px;
@@ -200,6 +207,23 @@
       .hidden {
         display: none;
       }
+
+      #particlesCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+      }
+      button {
+        position: relative;
+        z-index: 1;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+      }
+
     </style>
   </head>
   <body>
@@ -209,7 +233,7 @@
           <h2>멤버들</h2>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="../TeamWeb.html">메인으로</a>
+              <a class="nav-link" href="../../index.html">메인으로</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="hyeonhaWEB.html">이현하</a>
@@ -260,18 +284,30 @@
               <h1>음식</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_picture.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
             <div class="panel hidden">
               <h1>고양이</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_cat.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
             <div class="panel hidden">
               <h1>풍경</h1>
               <div class="imgs">
                 <img src="../picture/KYG/KYG_landscape.jpg"></img>
+                <div>
+                  <button>❤️</button>
+                  <span>0</span>
+                </div>
               </div>
             </div>
           </div>
@@ -284,53 +320,135 @@
         </div>
       </div>
     </div>
-    <script src="../comment.js"></script>
-    <script>
-      const btns = document.querySelectorAll(".hash__btns button");
-      const panels = document.querySelectorAll(".hash__box .panel");
-
-      btns[0].classList.add("active");
-
-      const handleBtnClick = (event) => {
-        const clickedTarget = event.target;
-        const text = clickedTarget.innerText;
-
-      // 모든 버튼에서 active 클래스 제거
-      btns.forEach((btn) => btn.classList.remove("active"));
-
-      // 클릭한 버튼에 active 클래스 추가
-      clickedTarget.classList.add("active");
-
-        panels.forEach((panel) => {
-          const panelName = panel.querySelector("h1").innerText;
-          panel.classList.toggle("hidden", panelName !== text);
-        });
-      };
-
-      btns.forEach((btn) => {
-        btn.addEventListener("click", handleBtnClick);
-      });
-
-      const commentBox = document.querySelector(".comment__box");
-      const commentInput = commentBox.querySelector("input");
-      const commentBtn = commentBox.querySelector("button");
-
-      const addComment = (input) => {
-        const comment = document.createElement("div");
-        const commentPanel = commentBox.querySelector(".panel");
-        comment.innerText = input;
-        comment.className = "comment";
-        commentPanel.appendChild(comment);
-      };
-
-      const handleCommentClick = (event) => {
-        event.preventDefault();
-        const input = commentInput.value;
-        addComment(input);
-        commentInput.value = "";
-      };
-
-      commentBtn.addEventListener("click", handleCommentClick);
-    </script>
+    <canvas id="particlesCanvas"></canvas>
   </body>
+  <script>
+    const btns = document.querySelectorAll(".hash__btns button");
+    const panels = document.querySelectorAll(".hash__box .panel");
+
+    btns[0].classList.add("active");
+
+    const handleBtnClick = (event) => {
+      const clickedTarget = event.target;
+      const text = clickedTarget.innerText;
+
+    // 모든 버튼에서 active 클래스 제거
+    btns.forEach((btn) => btn.classList.remove("active"));
+
+    // 클릭한 버튼에 active 클래스 추가
+    clickedTarget.classList.add("active");
+
+      panels.forEach((panel) => {
+        const panelName = panel.querySelector("h1").innerText;
+        panel.classList.toggle("hidden", panelName !== text);
+      });
+    };
+
+    btns.forEach((btn) => {
+      btn.addEventListener("click", handleBtnClick);
+    });
+
+    const commentBox = document.querySelector(".comment__box");
+    const commentInput = commentBox.querySelector("input");
+    const commentBtn = commentBox.querySelector("button");
+
+    const addComment = (input) => {
+      const comment = document.createElement("div");
+      const commentPanel = commentBox.querySelector(".panel");
+      comment.innerText = input;
+      comment.className = "comment";
+      commentPanel.appendChild(comment);
+    };
+
+    const handleCommentClick = (event) => {
+      event.preventDefault();
+      const input = commentInput.value;
+      addComment(input);
+      commentInput.value = "";
+    };
+
+    commentBtn.addEventListener("click", handleCommentClick);
+
+    const imgs = document.querySelector(".imgs");
+    const goodButtons = imgs.querySelectorAll("button");
+    const goodTimeText = imgs.querySelector("span");
+    let goodTimeCount = 0;
+
+    const handleGoodBtnClick = (event) => {
+      goodTimeCount += 1;
+      goodTimeText.innerText = goodTimeCount;
+    }
+
+    goodButtons.forEach(button => {
+      button.addEventListener("click", handleGoodBtnClick);
+    })
+
+      const canvas = document.getElementById('particlesCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let animationStarted = false;
+
+      let particles = [];
+
+      function createParticles(x, y) {
+        for (let i = 0; i < 30; i++) {
+          particles.push({
+            x,
+            y,
+            radius: Math.random() * 20 + 10, // 이모지는 크게!
+            emoji: '❤️',
+            speedX: (Math.random() - 0.5) * 4,
+            speedY: (Math.random() - 0.5) * 4,
+            life: 100
+          });
+        }
+      }
+
+      let lastScrollY = window.scrollY;
+
+      // 변경된 updateParticles 함수
+      function updateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter(p => p.life > 0);
+
+        const scrollOffsetY = window.scrollY - lastScrollY;
+
+        particles.forEach(p => {
+          // 위치 업데이트
+          p.x -= p.speedX;
+          p.y -= p.speedY + scrollOffsetY;  // 스크롤 보정!
+
+          p.life--;
+
+          ctx.font = `${p.radius}px serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(p.emoji, p.x, p.y);
+        });
+
+        lastScrollY = window.scrollY;
+        requestAnimationFrame(updateParticles);
+      }
+
+
+      document.querySelectorAll('.imgs button').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        createParticles(x, y);
+
+        if (!animationStarted) {
+          updateParticles();
+          animationStarted = true;
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
 </html>

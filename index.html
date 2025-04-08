@@ -5,17 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weekly Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link rel="stylesheet" href="KYG_comment.css" />
-  <link rel="stylesheet" href="card.css"/>
-  <link rel="stylesheet" href="category.css"/>
+  <link rel="stylesheet" href="HTML_Project/css/card.css" />
+  <link rel="stylesheet" href="HTML_Project/css/category.css" />
+  <link rel="stylesheet" href="HTML_Project/css/KYG_comment.css" />
+  <link rel="stylesheet" href="HTML_Project/css/login.css" />
+  <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
   <style>
     /*배경설정정*/
     body {
       height: 5000px;
-      background-image: url('picture/mainBackground.jpg');
+      background-image: url('HTML_Project/picture/mainBackground.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -89,7 +92,6 @@
   <!--href에 클릭시 이동 위치 추가 -이현하-->
   <ul class="nav justify-content-center fixed-nav">
     <li class="nav-item">
-
       <a class="nav-link" aria-current="page" href="#teamIntro">팀 소개</a>
     </li>
     <li class="nav-item">
@@ -99,6 +101,7 @@
       <a class="nav-link" href="#homeComment">방명록</a>
     </li>
   </ul>
+
   <!--id 추가 및 팀 소개 변경 -이현하-->
   <div class="intro" id="teamIntro">
     <div class="introText">
@@ -111,7 +114,7 @@
         짧지만 각자의 강점을 살려 협력하고, 즐기면서 성장하는 팀을 목표로 합니다!🔥
       </p>
     </div>
-    <img src="picture\teamImg.png">
+    <img src="HTML_Project\picture\mainBackground.jpg">
   </div>
 
   <!--카드 우새빛-->
@@ -119,7 +122,9 @@
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
         <div class="card" id="card_LJY">
-          <img src="picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/LJYWeb.HTML">
+            <img src="HTML_Project/picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>이준영</b></h5>
             <p class="card-text">팀장</p>
@@ -128,7 +133,9 @@
       </div>
       <div class="col">
         <div class="card" id="card_hyeonha">
-          <img src="picture/LHH/LHH_image.jpeg" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/hyeonhaWEB.html">
+            <img src="HTML_Project/picture/LHH/LHH_image.jpeg" class="card-img-top" alt="...">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>이현하</b></h5>
             <p class="card-text">팀원</p>
@@ -137,7 +144,9 @@
       </div>
       <div class="col">
         <div class="card" id="card_WSV">
-          <img src="picture/WSV/WSV_p.jpg" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/WSVWeb.html">
+            <img src="HTML_Project/picture/WSV/WSV_p.jpg" class="card-img-top" alt="...">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>우새빛</b></h5>
             <p class="card-text">팀원</p>
@@ -146,7 +155,9 @@
       </div>
       <div class="col">
         <div class="card" id="card_CHE">
-          <img src="picture/CHE/CHE_face.jpg" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/CHEWeb.html">
+            <img src="HTML_Project/picture/CHE/CHE_face.jpg" class="card-img-top">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>최경진</b></h5>
             <p class="card-text">팀원</p>
@@ -155,7 +166,9 @@
       </div>
       <div class="col">
         <div class="card" id="card_HJ">
-          <img src="picture/HJ/YHJ.png.png" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/HJ.html">
+            <img src="HTML_Project/picture/HJ/YHJ.png.png" class="card-img-top" alt="...">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>윤희준</b></h5>
             <p class="card-text">팀원</p>
@@ -164,7 +177,9 @@
       </div>
       <div class="col">
         <div class="card" id="card_KYG">
-          <img src="picture/KYG/KYG_face.png" class="card-img-top" alt="...">
+          <a href="HTML_Project/IntroHtml/KYGWeb.html">
+            <img src="HTML_Project/picture/KYG/KYG_face.png" class="card-img-top" alt="...">
+          </a>
           <div class="card-body">
             <h5 class="card-title"><b>김용준</b></h5>
             <p class="card-text">팀원</p>
@@ -173,7 +188,6 @@
       </div>
     </div>
   </div>
-
 
   <!--댓글 최경진-->
   <div class="comment__box" id="homeComment">
@@ -186,9 +200,63 @@
   </div>
   <div class="comment__panel hidden"></div>
 
-</body>
 
-<script src="KYG_comment.js"></script>
-<script src="card.js"></script>
+  <!--로그인회원가입UI-->
+  <div class="floating-ui">
+    <button id="loginButton">로그인</button>
+    <button id="registerButton">회원가입</button>
+  </div>
+
+  <!--로그인 팝업-->
+  <div id="loginPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeLoginPopup">&times;</span>
+      <h2>로그인</h2>
+      <form>
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="loginPassword">
+        </div>
+        <button type="submit" class="btn btn-primary" id="login">로그인</button>
+      </form>
+    </div>
+  </div>
+
+  <!--회원가입 팝업-->
+  <div id="registerPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeRegisterPopup">&times;</span>
+      <h2>회원가입</h2>
+      <form>
+        <div class="mb-3">
+          <label for="registerNickname" class="form-label">닉네임</label>
+          <input type="text" class="form-control" id="regName">
+        </div>
+        <div class="mb-3">
+          <label for="registerId" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="regID">
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="regPW">
+        </div>
+        <div class="mb-3">
+          <label for="registerPasswordConfirm" class="form-label">비밀번호 확인</label>
+          <input type="password" class="form-control" id="regPWC">
+        </div>
+        <button type="submit" class="btn btn-success" id="register">회원가입</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <script src="HTML_Project/javaScript/card.js"></script>
+  <script src="HTML_Project/javaScript/firebase.js" type="module"></script>
+  <script src="HTML_Project/javaScript/KYG_comment.js"></script>
+  <script src="HTML_Project/javaScript/register_login.js"></script>
 
 </html>
