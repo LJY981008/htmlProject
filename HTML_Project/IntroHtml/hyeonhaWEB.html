@@ -29,6 +29,10 @@
             background-color: white;
         }
 
+        .mainBackground {
+            background: linear-gradient(to right, #f3e4c9 0%, rgba(250, 255, 214, 0) 100%);
+        }
+
         .sidebar {
             position: fixed;
             height: 100vh;
@@ -53,16 +57,30 @@
             margin: 50px auto 70px auto;
         }
 
+        .shineText {
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg, #ffffff, #ffd700, #ffffff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
+        }
+
         .mainContent {
             display: flex;
             margin: auto;
-<<<<<<< HEAD
-=======
-        }
-
-        .subContent {
-            margin: auto;
->>>>>>> c94863a42027d02301769409f2a6b3ff450156c5
         }
 
         .subContent1 {
@@ -83,7 +101,7 @@
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .container-fluid {
+        .subContent {
             background: linear-gradient(to right, rgba(255, 254, 192, 0.7) 0%, rgba(250, 255, 214, 0) 100%);
         }
 
@@ -94,7 +112,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid mainBackground">
         <div class="row">
             <nav class="col-md-3 col-lg-2 d-md-block sidebar">
                 <h2>멤버들</h2>
@@ -121,7 +139,7 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 content">
                 <div class="headerContent">
-                    <h1>Weekly Me 👑</h1>
+                    <h1><span class="shineText">Weekly Me</span> 👑</h1>
                 </div>
                 <div class="mainContent">
                     <img src="../picture/LHH/LHH_image.jpeg" class="card-img" alt="...">
@@ -137,7 +155,7 @@
                 </div>
                 <div class="subContent1">
                     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                        <div class="container-fluid py-5">
+                        <div class="container-fluid py-5 subContent">
                             <h1 class="display-5 fw-bold">MBTI는 ISFP 입니다</h1>
                             <p class="col-md-8 fs-4">저는 하루종일 누워있을 수 있고, <br>하루종일 아무것도 안할 수 있는 ISFP 입니다.</p>
                             <p>앉아있는 동안은 열심히 코딩 공부를 합니다~</p>
@@ -146,7 +164,7 @@
                 </div>
                 <div class="subContent2">
                     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-                        <div class="container-fluid py-5">
+                        <div class="container-fluid py-5 subContent">
                             <h1 class="display-5 fw-bold">취미는 게임이에요</h1>
                             <p class="col-md-8 fs-4">저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br>
                                 우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.</p>
