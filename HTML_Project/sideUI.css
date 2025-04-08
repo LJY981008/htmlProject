@@ -1,0 +1,26 @@
+.floating-ui {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex; /* Flexbox 레이아웃 사용 */
+    flex-direction: column; /* 주축을 세로로 설정 */
+    align-items: center; /* 가로 방향 중앙 정렬 (선택 사항) */
+  }
+
+  .floating-ui button {
+    background-color: rgba(0, 0, 0, 0.3);
+    color:white;
+    margin-bottom: 10px; /* 버튼 사이 간격 추가 (선택 사항) */
+    padding: 10px 20px; /* 버튼 패딩 (선택 사항) */
+  }
+
+  .floating-ui button:last-child {
+    margin-bottom: 0; /* 마지막 버튼 아래쪽 마진 제거 (선택 사항) */
+  }
