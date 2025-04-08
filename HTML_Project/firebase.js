@@ -39,17 +39,23 @@ $("#login").click(async function () {
         if(inputID == id){
             if(inputPW == pw){
                 /* 로그인 성공 */
-                isLogin = true;
+                this.name = nickname;
+                this.id = id;
+                this.isLogin = true;
+                alert('어서오세요' + this.name + '님');
+                /* ui변경 필요 */
                 return true;
             }
             else{
                 /* 비밀번호 틀림 */
+                alert('비밀번호가 틀렸습니다.');
                 return false;
             }
         }
     });
 
     /* 아이디가 없음 */
+    alert('존재하지 않는 아이디입니다.');
     return false;
 
 })
@@ -64,11 +70,12 @@ $("#register").click(async function () {
 
     if(regPW != regPWCheck){
         /* 비밀번호 서로 다름 */
-        alert("")
+        alert("비밀번호를 확인해주세요.");
         return false;
     }
     if(!regID || !pattern.test(id)){
         /* 공백이 포함되어 있거나 빈값 입력력 */
+        alert('아이디가 잘못되었습니다.');
         return false;
     }
 
@@ -77,10 +84,12 @@ $("#register").click(async function () {
         let id = row['id'];
         if(id == regID){
             /* id중복 */
+            alert('아이디가 이미 존재합니다.');
             return false;
         }
         if(regName == row['name']){
             /* 닉네임 중복 */
+            alert('사용할 수 없는 이름입니다.');
             return false;
         }
     });
@@ -92,12 +101,16 @@ $("#register").click(async function () {
         'name': regName
     };
     await addDoc(collection(db, "info"), doc);
+    this.name = regName;
+    this.id = regID;
+    alert('환영합니다. ' + this.name + '님');
 })
 
 /* 댓글 작성 */
 $('postingComment').click(async function () {
     if(!isLogin){
         /* 비로그인 상태일 때 */
+        alert('로그인을 하고 시도해주세요.');
         return false;
     }
     let comment = $('#comment').val();
@@ -114,6 +127,8 @@ $('postingComment').click(async function () {
         'date': ymd
     }
     await addDoc(collection(db, "comments"), doc);
+    alert('작성이 완료되었습니다.');
+    window.location.reload();
 })
 
 /* 댓글 갱신 */
