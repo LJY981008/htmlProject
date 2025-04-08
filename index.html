@@ -390,7 +390,6 @@
     const commentInput = commentBox.querySelector("input");
     const commentBtn = commentBox.querySelector("button");
 
-    // Firebase 저장 함수 (두 번째 JS 파일의 로직을 가져옴)
     const saveCommentToFirebase = async (commentText) => {
       if (!isLogin) {
         alert('로그인을 하고 시도해주세요.');
@@ -411,7 +410,6 @@
       try {
         await addDoc(collection(db, "comments"), doc);
         console.log('Firebase에 댓글 저장 완료');
-        // alert('작성이 완료되었습니다.'); // Firebase 저장이 완료되면 알림 (선택 사항)
       } catch (error) {
         console.error("Firebase 댓글 저장 오류:", error);
         alert('댓글 저장 중 오류가 발생했습니다.');
@@ -443,7 +441,6 @@
       comment.appendChild(todayDate);
       commentPanel.classList.remove("hidden");
 
-      // 댓글이 화면에 추가된 후 Firebase 저장 함수 호출
       saveCommentToFirebase(input);
     };
 
