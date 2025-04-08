@@ -185,7 +185,7 @@
     <h1>방명록</h1>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-        aria-describedby="button-addon2" id="commentInput"/>
+        aria-describedby="button-addon2" id="commentIn"/>
       <button type="button" class="btn btn-primary" id="postingComment">게시</button>
     </div>
   </div>
@@ -209,7 +209,7 @@
           <input type="text" class="form-control" id="loginID" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-          <label for="loginPassword" class="form-label">비밀번호</label>
+          <label for="l" class="form-label">비밀번호</label>
           <input type="password" class="form-control" id="loginPW">
         </div>
         <button type="button" class="btn btn-primary" id="login">로그인</button>
@@ -374,12 +374,12 @@
             alert('로그인을 하고 시도해주세요.');
             return false;
         }
-        let comment = $('#homeCommentText').val();
+        let comment = $('#commentIn').val();
         let today = new Date();
         let year = today.getFullYear();
         let month = today.getMonth();
         let date = today.getDate();
-        let ymd = year + '/' + month + '/' + date
+        let ymd = year + '/' + month + '/' + date;
         console.log(comment);
         let doc = {
             'id': myid,
