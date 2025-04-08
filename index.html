@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="HTML_Project/css/card.css" />
+  <link rel="stylesheet" href="HTML_Project/css/category.css" />
+  <link rel="stylesheet" href="HTML_Project/css/KYG_comment.css" />
+  <link rel="stylesheet" href="HTML_Project/css/login.css" />
+  <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
+  <style>
+    /*배경설정정*/
+    body {
+      height: 5000px;
+      background-image: url('HTML_Project/picture/mainBackground.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 255, 0.2);
+    }
+
+    /*카테고리 폰트*/
+    .nav-link {
+      font-size: 3rem;
+      color: white;
+    }
+
+    /*내비게이션 상단고정*/
+    .fixed-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    /*팀소개 배경경*/
+    .intro {
+      margin-top: 200px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 100px;
+      padding-left: 50px;
+    }
+
+    /*팀소개 텍스트*/
+    .introText {
+      align-items: center;
+    }
+
+    /*이미지 크기 및 오른쪽정렬렬*/
+    .intro img {
+      width: 600px;
+      height: 500px;
+      margin-left: auto;
+    }
+
+    /*텍스트 폰트트*/
+    .intro p {
+      color: white;
+      /* 텍스트 색상 추가 */
+      font-size: 2rem;
+      /* 텍스트 크기 추가 */
+    }
+
+    /*팀원 카드 배경*/
+    .team {
+      margin-top: 600px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 100px;
+      padding-left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--href에 클릭시 이동 위치 추가 -이현하-->
+  <ul class="nav justify-content-center fixed-nav">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#teamIntro">팀 소개</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#teamMember">팀원들</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#homeComment">방명록</a>
+    </li>
+  </ul>
+
+  <!--id 추가 및 팀 소개 변경 -이현하-->
+  <div class="intro" id="teamIntro">
+    <div class="introText">
+      <h1><span class="shine-text">Weekly Me</span> 👑</h1>
+      <p>“이번 주의 주인공은 누구?” <br>
+        바로 저희 Weekly Me, 1조입니다! <br>
+      </p>
+      <p style="font-size: 1.5rem;">이름처럼 이번 주의 주인공(일주인공)은 바로 우리이고,<br>
+        매주 더 성장하는 나를 만들어가자는 의미를 담고 있습니다.<br>
+        짧지만 각자의 강점을 살려 협력하고, 즐기면서 성장하는 팀을 목표로 합니다!🔥
+      </p>
+    </div>
+    <img src="HTML_Project\picture\mainBackground.jpg">
+  </div>
+
+  <!--카드 우새빛-->
+  <div class="team" id="teamMember">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card" id="card_LJY">
+            <img src="HTML_Project/picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>이준영</b></h5>
+              <p class="card-text">팀장</p>
+            </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_hyeonha">
+          <img src="HTML_Project/picture/LHH/LHH_image.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>이현하</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_WSV">
+          <img src="HTML_Project/picture/WSV/WSV_p.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>우새빛</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_CHE">
+          <img src="HTML_Project/picture/CHE/CHE_face.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><b>최경진</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_HJ">
+          <img src="HTML_Project/picture/HJ/YHJ.png.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>윤희준</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_KYG">
+            <img src="HTML_Project/picture/KYG/KYG_face.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>김용준</b></h5>
+              <p class="card-text">팀원</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--댓글 최경진-->
+  <div class="comment__box" id="homeComment">
+    <h1>방명록</h1>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+        aria-describedby="button-addon2" />
+      <button type="button" class="btn btn-primary">게시</button>
+    </div>
+  </div>
+  <div class="comment__panel hidden"></div>
+
+
+  <!--로그인회원가입UI-->
+  <div class="floating-ui">
+    <button id="loginButton">로그인</button>
+    <button id="registerButton">회원가입</button>
+  </div>
+
+  <!--로그인 팝업-->
+  <div id="loginPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeLoginPopup">&times;</span>
+      <h2>로그인</h2>
+      <form>
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="loginEmail" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="loginPassword">
+        </div>
+        <button type="submit" class="btn btn-primary" id="login">로그인</button>
+      </form>
+    </div>
+  </div>
+
+  <!--회원가입 팝업-->
+  <div id="registerPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeRegisterPopup">&times;</span>
+      <h2>회원가입</h2>
+      <form>
+        <div class="mb-3">
+          <label for="registerNickname" class="form-label">닉네임</label>
+          <input type="text" class="form-control" id="regName">
+        </div>
+        <div class="mb-3">
+          <label for="registerId" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="regID">
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="regPW">
+        </div>
+        <div class="mb-3">
+          <label for="registerPasswordConfirm" class="form-label">비밀번호 확인</label>
+          <input type="password" class="form-control" id="regPWC">
+        </div>
+        <button type="submit" class="btn btn-success" id="register">회원가입</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <script src="HTML_Project/javaScript/card.js"></script>
+  <script src="HTML_Project/javaScript/KYG_comment.js"></script>
+  <script src="HTML_Project/javaScript/register_login.js"></script>
+  <script  type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyDIYr5xaD01ndxx0anOhCgoKRHT6rAHWnc",
+        authDomain: "weeklyme-4e92d.firebaseapp.com",
+        projectId: "weeklyme-4e92d",
+        storageBucket: "weeklyme-4e92d.firebasestorage.app",
+        messagingSenderId: "499565676750",
+        appId: "1:499565676750:web:60aa159f30a4917fe6689f",
+        measurementId: "G-2D8RFG5CVT"
+      };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    let isLogin = false;
+    var name = '';
+    var id = '';
+    var pattern = /\s/g;
+
+    /* 로그인 버튼 */
+    $("#login").click(async function () {
+        let docs = await getDocs(collection(db, "info"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let nickname = row['name'];
+            let id = row['id'];
+            let pw = row['pw'];
+
+            let inputID = $('#ID').val();
+            let inputPW = $('#taPW').val();
+
+            if (inputID == id) {
+                if (inputPW == pw) {
+                    /* 로그인 성공 */
+                    this.name = nickname;
+                    this.id = id;
+                    this.isLogin = true;
+                    alert('어서오세요' + this.name + '님');
+                    /* ui변경 필요 */
+                    return true;
+                }
+                else {
+                    /* 비밀번호 틀림 */
+                    alert('비밀번호가 틀렸습니다.');
+                    return false;
+                }
+            }
+        });
+    })
+
+    /* 가입 버튼  */
+    $("#register").click(async function () {
+        console.log("회원가입 버튼 클릭됨");
+        let regID = $('#regID').val();
+        let regPW = $('#regPW').val();
+        let regPWCheck = $('#regPWC').val();
+        let regName = $('#regName').val();
+        let flag = false;
+
+        console.log("입력값:", regID, regPW, regPWCheck, regName);
+
+        if (regPW != regPWCheck) {
+            alert("비밀번호를 확인해주세요.");
+            return false;
+        }
+        else if (!regID || pattern.test(regID)) { // 수정된 부분
+            alert('아이디에 공백을 포함할 수 없습니다.');
+            return false;
+        }
+        else {
+            let docs = await getDocs(collection(db, "info"));
+            docs.forEach((doc) => {
+                let row = doc.data();
+                let id = row['id'];
+                if (id == regID) {
+                    alert('아이디가 이미 존재합니다.');
+                    flag = true;
+                    return false;
+                }
+                if (regName == row['name']) {
+                    alert('사용할 수 없는 이름입니다.');
+                    flag = true;
+                    return false;
+                }
+            });
+
+            console.log("중복 검사 후 flag:", flag);
+
+            if (!flag) {
+                let doc = {
+                    'id': regID,
+                    'pw': regPW,
+                    'name': regName
+                };
+                try {
+                    const addedDocRef = await addDoc(collection(db, "info"), doc);
+                    console.log("회원가입 성공, 문서 ID:", addedDocRef.id);
+                    alert('환영합니다. ' + regName + '님');
+                    // 필요하다면 로그인 상태 업데이트
+                } catch (error) {
+                    console.error("Firebase 회원가입 오류:", error);
+                    alert('회원가입 중 오류가 발생했습니다.');
+                }
+            }
+        }
+    });
+
+    /* 댓글 작성 */
+    $('#postingComment').click(async function () {
+        if (!isLogin) {
+            /* 비로그인 상태일 때 */
+            alert('로그인을 하고 시도해주세요.');
+            return false;
+        }
+        let comment = $('#comment').val();
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        let ymd = year + '/' + month + '/' + date
+
+        let doc = {
+            'id': this.id,
+            'name': this.name,
+            'comment': comment,
+            'date': ymd
+        }
+        await addDoc(collection(db, "comments"), doc);
+        alert('작성이 완료되었습니다.');
+        window.location.reload();
+    })
+
+    /* 댓글 갱신 */
+    let commentsDocs = await getDocs(collection(db, "comments"));
+    commentsDocs.forEach((doc) => {
+        let row = doc.data();
+        let name = row['name'];
+        let date = row['date'];
+        let comment = row['comment'];
+
+        /* 댓글 html코드 */
+        let text = ``;
+
+        $('#commentArea').append(text);
+    })
+  </script>
+  
+</html>
