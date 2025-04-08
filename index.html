@@ -117,7 +117,7 @@
         짧지만 각자의 강점을 살려 협력하고, 즐기면서 성장하는 팀을 목표로 합니다!🔥
       </p>
     </div>
-    <img src="HTML_Project\picture\mainBackground.jpg">
+    <img src="HTML_Project\picture\teamImg.jpg">
   </div>
 
   <!--카드 우새빛-->
@@ -185,7 +185,7 @@
     <h1>방명록</h1>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-        aria-describedby="button-addon2" />
+        aria-describedby="button-addon2" id="commentInput"/>
       <button type="button" class="btn btn-primary" id="postingComment">게시</button>
     </div>
   </div>
@@ -271,7 +271,7 @@
 
     var isLogin = false;
     var name = '';
-    var id = '';
+    var myid = '';
     var pattern = /\s/g;
 
     /* 로그인 버튼 */
@@ -290,7 +290,7 @@
                 if (inputPW == pw) {
                     /* 로그인 성공 */
                     name = nickname;
-                    this.id = id;
+                    myid = id;
                     isLogin = true;
                     alert('어서오세요' + name + '님');
                     /* ui변경 필요 */
@@ -352,7 +352,7 @@
                 try {
                     const addedDocRef = await addDoc(collection(db, "info"), doc);
                     alert('환영합니다. ' + regName + '님');
-                    id = regID;
+                    myid = regID;
                     name = regName;
                     isLogin = true;
                     $('#registerPopup').css("display", "none");
@@ -374,22 +374,21 @@
             alert('로그인을 하고 시도해주세요.');
             return false;
         }
-        let comment = $('#comment').val();
+        let comment = $('#homeCommentText').val();
         let today = new Date();
         let year = today.getFullYear();
         let month = today.getMonth();
         let date = today.getDate();
         let ymd = year + '/' + month + '/' + date
-
+        console.log(comment);
         let doc = {
-            'id': this.id,
-            'name': this.name,
+            'id': myid,
+            'name':name,
             'comment': comment,
             'date': ymd
         }
         await addDoc(collection(db, "comments"), doc);
         alert('작성이 완료되었습니다.');
-        window.location.reload();
     })
 
     /* 댓글 갱신 */
