@@ -27,11 +27,6 @@
         /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
       }
 
-      .my_page {
-        width: 55%;
-        margin: 20px auto 0px auto;
-      }
-
       /* 노멀라이즈 끝 */
       /* 2차 이상의 메뉴를 숨기기 */
       .side-bar > ul ul {
@@ -71,7 +66,9 @@
       .my_page {
         background-color: black;
         height: 100%;
+        width: 55%;
         padding: 25px;
+        margin: 20px auto 0px auto;
       }
 
       .introduce__myInfo {
@@ -96,7 +93,7 @@
         font-weight: 600;
       }
 
-      .introduce_container {
+      .introduce__box {
         display: flex;
         justify-content: center;
       }
@@ -130,32 +127,39 @@
         text-align: center;
       }
 
-      .hash {
+      .hash__box {
         border-radius: 8px;
         background-color: white;
         padding: 25px;
+        margin-bottom: 80px;
       }
 
       .hash__btns {
         display: flex;
       }
 
+      .hash__box > .panel {
+        background-color: black;
+        color: white;
+        text-align: center;
+        margin: 0px;
+        border-radius: 0px 0px 8px 8px;
+      }
+
+      .hash__box h1 {
+        margin-bottom: 25px;
+      }
+
       .imgs {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
-      .imgs > div {
-        width: 200px;
-        height: 200px;
-
-        background-image: url("https://media.istockphoto.com/id/1317323736/ko/%EC%82%AC%EC%A7%84/%EB%82%98%EB%AC%B4-%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C-%ED%95%98%EB%8A%98%EB%A1%9C-%EB%B0%94%EB%9D%BC%EB%B3%B4%EB%8A%94-%EA%B2%BD%EC%B9%98.jpg?s=612x612&w=0&k=20&c=0xTghmMTXJ5ITCZ-LKTABbaPIK_1kWNf0FSFl_GL_7I=");
+      .imgs > img {
+        width: 100%;
         background-position: center;
-        background-size: cover;
-      }
-
-      .hash {
-        margin-bottom: 80px;
+        object-fit: cover
       }
 
       /*버튼 스타일*/
@@ -180,14 +184,6 @@
       .hash__btn:hover,
       :focus {
         background-color: gray;
-      }
-
-      .hash > .panel {
-        background-color: black;
-        color: white;
-        text-align: center;
-        margin: 0px 0px 0px 0px;
-        border-radius: 0px 0px 8px 8px;
       }
 
       .comment__box > .panel {
@@ -234,57 +230,49 @@
           </ul>
         </nav>
         <div class="my_page">
-          <div class="introduce">
-            <h3 class="title">#자기소개</h3>
-            <div class="introduce_container panel">
-              <div class="introduce__myInfo">
-                <div class="name">이름 : 김용준</div>
-                <span>- 백엔드 개발자 취준생 -</span>
-                <ul>
-                  <li>취미 : 코딩</li>
-                  <li>운동 : 헬스</li>
-                  <li>MBTI : ISTP</li>
-                </ul>
-              </div>
-              <div class="my_profile"></div>
+          <h3 class="title">#자기소개</h3>
+          <div class="introduce__box panel">
+            <div class="introduce__myInfo">
+              <div class="name">이름 : 김용준</div>
+              <span>- 백엔드 개발자 취준생 -</span>
+              <ul>
+                <li>취미 : 코딩</li>
+                <li>운동 : 헬스</li>
+                <li>MBTI : ISTP</li>
+              </ul>
             </div>
-            <h3 class="title">#한줄소개</h3>
-            <div class="panel">
-              <p>
-                안녕하세요. 저는 이번에 백엔드로 취업하기위해 내일배움캠프를
-                시작하게 되었습니다.
-              </p>
-            </div>
+            <div class="my_profile"></div>
           </div>
-          <h3 class="title">#해쉬태그</h3>
-          <div class="hash">
+          <h3 class="title">#한줄소개</h3>
+          <div class="panel">
+            <p>
+              안녕하세요. 저는 이번에 백엔드로 취업하기위해 내일배움캠프를
+              시작하게 되었습니다.
+            </p>
+          </div>
+          <h3 class="title">#사진</h3>
+          <div class="hash__box">
             <div class="hash__btns">
-              <button class="hash__btn">#사진</button>
-              <button class="hash__btn">#고양이</button>
-              <button class="hash__btn">#풍경</button>
+              <button class="hash__btn" style="background-color: gray;">음식</button>
+              <button class="hash__btn">고양이</button>
+              <button class="hash__btn">풍경</button>
             </div>
             <div class="panel">
-              <h1>사진</h1>
+              <h1>음식</h1>
               <div class="imgs">
-                <div></div>
-                <div></div>
-                <div></div>
+                <img src="../picture/KYG/KYG_picture.jpg"></img>
               </div>
             </div>
             <div class="panel hidden">
               <h1>고양이</h1>
               <div class="imgs">
-                <div></div>
-                <div></div>
-                <div></div>
+                <img src="../picture/KYG/KYG_cat.jpg"></img>
               </div>
             </div>
             <div class="panel hidden">
               <h1>풍경</h1>
               <div class="imgs">
-                <div></div>
-                <div></div>
-                <div></div>
+                <img src="../picture/KYG/KYG_landscape.jpg"></img>
               </div>
             </div>
           </div>
@@ -301,11 +289,11 @@
     </div>
     <script>
       const btns = document.querySelectorAll(".hash__btns button");
-      const panels = document.querySelectorAll(".hash .panel");
+      const panels = document.querySelectorAll(".hash__box .panel");
 
       const handleBtnClick = (event) => {
         const clickedTarget = event.target;
-        const text = clickedTarget.innerText.split("#")[1];
+        const text = clickedTarget.innerText;
 
         panels.forEach((panel) => {
           const panelName = panel.querySelector("h1").innerText;
