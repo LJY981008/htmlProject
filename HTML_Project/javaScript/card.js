@@ -1,5 +1,4 @@
 /*멤버카드 클릭시 해당 페이지로 이동*/
-
 $("#card_LJY").click(async function () {
     location.href = 'HTML_Project/IntroHtml/LJYWeb.HTML';
 })
