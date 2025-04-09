@@ -5,15 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Weekly Me</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
   <link rel="stylesheet" href="HTML_Project/css/card.css" />
   <link rel="stylesheet" href="HTML_Project/css/category.css" />
   <link rel="stylesheet" href="HTML_Project/css/KYG_comment.css" />
   <link rel="stylesheet" href="HTML_Project/css/login.css" />
   <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
+
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR");
 
@@ -325,9 +326,9 @@
   <script src="HTML_Project/javaScript/card.js">/*카드 이벤트*/</script>
   <script src="HTML_Project/javaScript/register_login.js">/*로그인, 회원가입입 팝업*/</script>
   <script src="HTML_Project/javaScript/todayMent.js">/*멘트기능*/</script>
-  <script type="module">
-    /* 파이어베이스 */
+  <script type="module">/* 파이어베이스 */
     // 로그인, 회원가입, 댓글 등의 기능
+
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import {
@@ -353,13 +354,13 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    //로그인상태, 로그인한 닉네임, ID 저장장
+    /* 로그인상태, 로그인한 닉네임, ID 저장 */
     var isLogin = false;
     var myName = '';
     var myID = '';
 
     /* 엔터 키 이벤트 처리 */
-    /* 엔터를 누르면 클릭 작동*/
+    /* 엔터를 누르면 클릭 작동 */
     $("#loginID, #loginPW").keypress(function (event) {
       if (event.which === 13) {
         $("#login").click();
@@ -420,7 +421,7 @@
           }
         });
 
-        if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우에만 메시지 표시
+        if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우
           const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
           if (!foundId) {
             alert('존재하지 않는 아이디입니다.');
@@ -438,7 +439,7 @@
       }
     });
 
-    /* 가입 버튼  */
+    /* 가입 버튼 */
     $("#register").click(async function () {
       const regID = $('#registerId').val();
       const regPW = $('#registerPassword').val();
@@ -531,7 +532,7 @@
       };
 
       try {
-        /* DB에 저장 완료 후, 리얼 타임으로 화면에 등록 */
+        // DB에 저장 완료 후, 리얼 타임으로 화면에 등록 
         await addDoc(collection(db, "comments"), doc);
         realtimeUpdateComment(ymd, commentText);
       } catch (error) {
@@ -574,7 +575,7 @@
       let date = row['date'];
       let comment = row['comment'];
 
-      /* 댓글 html코드 */
+      // 댓글 html코드
       let text = `
       <div class="comment">
         <span class="comment__name">${name}</span>
