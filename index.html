@@ -27,7 +27,7 @@
       font-family: "Black Han Sans", sans-serif;
     }
 
-    /*배경설정정*/
+    /*배경설정*/
     body {
       height: 5000px;
       background-image: url('HTML_Project/picture/mainBackground.jpeg');
@@ -52,7 +52,7 @@
       z-index: 100;
     }
 
-    /*팀소개 배경경*/
+    /*팀소개 배경*/
     .intro {
       margin-top: 200px;
       padding-top: 50px;
@@ -71,7 +71,7 @@
       align-items: center;
     }
 
-    /*이미지 크기 및 오른쪽정렬렬*/
+    /*이미지 크기 및 오른쪽정렬*/
     .intro img {
       width: 100%;
       max-width: 600px;
@@ -91,12 +91,10 @@
     }
 
 
-    /*텍스트 폰트트*/
+    /*텍스트 폰트*/
     .intro p {
       color: white;
-      /* 텍스트 색상 추가 */
       font-size: 2rem;
-      /* 텍스트 크기 추가 */
     }
 
     /*팀원 카드 배경*/
@@ -112,11 +110,11 @@
       padding-left: 50px;
     }
 
+    /*댓글 창창*/
     .comment__box {
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
     }
-
     .comment_text {
       font-weight: 900;
     }
@@ -152,6 +150,7 @@
 </head>
 
 <body>
+  <!--카테고리-->
   <!--href에 클릭시 이동 위치 추가 -이현하-->
   <ul class="nav justify-content-center fixed-nav">
     <li class="nav-item">
@@ -185,6 +184,7 @@
   </div>
 
   <!--카드 우새빛-->
+  <!--card.js를 통해 해당 페이지로 이동동-->
   <div class="team" id="teamMember">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
@@ -271,6 +271,7 @@
   </div>
 
   <!--로그인 팝업-->
+  <!--form사용-->
   <div id="loginPopup" class="popup">
     <div class="popup-content">
       <span class="close-button" id="closeLoginPopup">&times;</span>
@@ -290,6 +291,7 @@
   </div>
 
   <!--회원가입 팝업-->
+  <!--form사용-->
   <div id="registerPopup" class="popup">
     <div class="popup-content">
       <span class="close-button" id="closeRegisterPopup">&times;</span>
@@ -426,13 +428,13 @@
       let isIdTaken = false;
       let isNameTaken = false;
 
-      if (regPW !== regPWCheck) {
+      if (regPW !== regPWCheck) { // 비밀번호와 비밀번호 확인란이 다를 때
         alert("비밀번호를 확인해주세요.");
         return false;
-      } else if (!regID || /\s/.test(regID)) { // 공백 체크
+      } else if (!regID || /\s/.test(regID) || !regPW) { // 공백 체크
         alert('아이디에 공백을 포함할 수 없습니다.');
         return false;
-      } else {
+      } else {  // 입력 조건 충족
         try {
           const querySnapshot = await getDocs(collection(db, "info"));
 
@@ -441,7 +443,7 @@
             if (row['id'] === regID) {
               alert('아이디가 이미 존재합니다.');
               isIdTaken = true;
-              return false; // 아이디가 이미 존재할 경우 종료료
+              return false; // 아이디가 이미 존재할 경우 종료
             }
             if (row['name'] === regName) {
               alert('사용할 수 없는 이름입니다.');
@@ -449,7 +451,7 @@
               return false; // 닉네임이 이미 존재할 경우 종료
             }
           });
-
+          // 가입 조건 충족
           if (!isIdTaken && !isNameTaken) {
             const newUser = {
               'id': regID,
@@ -458,6 +460,7 @@
             };
             const addedDocRef = await addDoc(collection(db, "info"), newUser);
             alert(`환영합니다. ${regName}님`);
+            // 회원가입 후 자동로그인
             myID = regID;
             myName = regName;
             isLogin = true;
