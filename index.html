@@ -222,7 +222,7 @@
       <button type="button" class="btn btn-primary" id="postingComment">게시</button>
     </div>
   </div>
-  <div class="comment__panel hidden"></div>
+  <div class="comment__panel"></div>
 
 
   <!--로그인회원가입UI-->
@@ -283,9 +283,14 @@
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      getDocs,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
@@ -413,9 +418,11 @@
       }
       let today = new Date();
       let year = today.getFullYear();
-      let month = today.getMonth();
+      let month = today.getMonth()+1;
       let date = today.getDate();
-      let ymd = year + '/' + month + '/' + date;
+      let hour = today.getHours();
+      let minute = today.getMinutes();
+      let ymd = `${year}/${month}/${date} ${hour}:${minute}`;
       console.log("Firebase에 저장할 댓글:", commentText);
       let doc = {
         'id': myid,
@@ -437,19 +444,19 @@
 
       const commentName = document.createElement("span");
       commentName.classList.add("comment__name");
-      commentName.innerText = "김아무개";
+      commentName.innerText = name;
 
       const commentTextarea = document.createElement("span");
       commentTextarea.classList.add("comment__text");
 
       const todayDate = document.createElement("span");
       todayDate.classList.add("comment__date");
-      todayDate.innerText = `방문 날짜 : ${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 ${today.getHours()}시 ${today.getMinutes()}분`
+      todayDate.innerText = `${year}/${month}/${date} ${hour}:${minute}`
 
       commentTextarea.innerText = commentText;
       comment.className = "comment";
 
-      commentPanel.appendChild(comment);
+      commentPanel.prepend(comment);
       comment.appendChild(commentName);
       comment.appendChild(commentTextarea);
       comment.appendChild(todayDate);
@@ -475,7 +482,7 @@
 
 
     /* 댓글 갱신 */
-    let commentsDocs = await getDocs(collection(db, "comments"));
+    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date","desc")));
     commentsDocs.forEach((doc) => {
       let row = doc.data();
       let name = row['name'];
@@ -483,9 +490,14 @@
       let comment = row['comment'];
 
       /* 댓글 html코드 */
-      let text = ``;
-
-      $('#commentArea').append(text);
+      let text = `
+      <div class="comment">
+        <span class="comment__name">${name}</span>
+        <span class="comment__text">${comment}</span>
+        <span class="comment__date">${date}</span>
+      </div>
+      `;
+      $('.comment__panel').append(text);
     })
   </script>
 
