@@ -148,6 +148,60 @@
       color: #000000;
       font-style: italic;
     }
+
+    /* 플로팅 버튼 */
+    .floating-ui {
+      position: fixed;
+      top: 200px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: transparent;
+      border: none;
+    }
+
+    /* 로그인 버튼 */
+    #loginButton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* 회원가입 버튼 */
+    #registerButton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* 버튼에 마우스를 올렸을 때 효과 */
+    #loginButton:hover {
+      background-color: #0056b3;
+    }
+
+    #registerButton:hover {
+      background-color: #218838;
+    }
+
+    .card {
+      border-radius: 70%;
+      background-color: white;
+    }
+
+    .card-img-top {
+      border-radius: 10%;
+    }
   </style>
 </head>
 
@@ -546,7 +600,7 @@
       }
     };
 
-    const handleCommentDeleteClick = async(event) => {
+    const handleCommentDeleteClick = async (event) => {
       const commentId = event.target.parentElement.dataset.id;
       const commentPanel = document.querySelector(".comment__panel");
 
@@ -560,7 +614,7 @@
 
     }
 
-    const initInfo = async() => {
+    const initInfo = async () => {
       const commentPanel = document.querySelector(".comment__panel");
       commentPanel.innerHTML = '';
       await getComments();
@@ -568,7 +622,7 @@
       const commentDeleteBtns = document.querySelectorAll(".commentDelete");
       commentDeleteBtns.forEach(deleteBtn => {
         deleteBtn.addEventListener("click", handleCommentDeleteClick);
-    });
+      });
     }
 
     /* 새로고침하지 않고 화면에 리얼타임으로 댓글 업데이트 */
