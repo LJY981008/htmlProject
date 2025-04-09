@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=fire-animation">
 
     <style>
         ul,
@@ -89,35 +90,46 @@
             background-color:transparent;
             width: inherit;
             flex-direction: column;
+            margin: 10px;
             
         }
         .fl2 img{
             width: 210px;
             height: 240px;
             border-radius: 20px;
+            border: 1px solid rgb(167, 157, 9);
+
         }
         .fl2{
             display: flex;
             background-color:transparent;
             width: inherit;
+            margin: 10px 10px 10px 20px;
         }
         .fseg{
+            border: 2px solid rgb(167, 157, 9);
             display:flex;
             flex-direction: row;
+            height: 700px;
+            border-radius: 20px;
         }
 
-        .heart {
-            font-size: 2rem;
-            color: red;
+        .good1 {
+            font-size: 3rem;
+            
             cursor: pointer;
             transition: transform 0.2s;
+            display: inline-block;
         }
-        .heart:hover {
+        .good1:hover {
             transform: scale(1.2);
         }
         .count {
             font-size: 1.5rem;
             font-weight: bold;
+        }
+        p{
+            font-weight: bold ;
         }
 
     </style>
@@ -156,38 +168,51 @@
     </aside>
     <div class="_0">
     <div class="fl0">
-        <div class="fl11"><h1 style="text-align: center;">Weekly Me🧸</h1></div>
+        <div class="fl11" >
+            <div class="font-effect-fire-animation"><h1 >Weekly Me🧸</h1></div>
+        </div>
 
         <div class="fseg">
         <div class="fl1">
             <p>이름 : 윤희준</p>
             <p>mbti : INTJ</p>
             <p>취미 : 러닝 </p>
-            <p>한줄소개 : 개발자 공부는 배울게 끝이없어서 하루하루 즐거운 시간을 보내고 있습니다 😂</p>
-            <div class="like-container">
-                <p class="heart">👍</p>
+            <p>한줄소개 : 개발자 공부는 배울게 끝이없어서 하루하루</p> 
+               <p>즐거운 시간을 보내고 있습니다 😂</p>
+            <div >
+                <p class="good1">👍</p>
                 <span class="count">0</span>
             </div>
             <script>
                 // DOM 요소 가져오기
-                const heart = document.querySelector('.heart');
+                const good1 = document.querySelector('.good1');
                 const count = document.querySelector('.count');
         
-                // 초기 카운트 값
+                
                 let likeCount = 0;
         
                 // 클릭 이벤트 리스너 추가
-                heart.addEventListener('click', () => {
+                good1.addEventListener('click', () => {
                     likeCount++; // 카운트 증가
                     count.textContent = likeCount; // 화면에 업데이트
                 });
+            </script>
+
+            <h3 id="hey"></h3>
+            <script>
+                const visitor = prompt("이름을 입력해주세요");
+               
+                document.getElementById("hey").textContent= `반갑습니다! ${visitor}님 같이 많이 배워가요 개발자 화이팅!`
             </script>
     
         </div>
         <div class="fl2"><img src="../picture/HJ/YHJ.png.png" alt=""></div>
     </div>
+    
     </div>
 </div>
+
+
 
 </body>
 </html>
