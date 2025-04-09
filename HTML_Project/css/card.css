@@ -21,9 +21,15 @@
     width: 100%;
     height: 300px;
     object-fit: cover;
+    border-radius: 10%;
 }
 
 /*우새빛: 팀원 카드의 글 중앙배열*/
 .team .card {
     text-align: center;
+}
+
+.card {
+    border-radius: 70%;
+    background-color: white;
 }
