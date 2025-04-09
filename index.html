@@ -348,7 +348,7 @@
     const db = getFirestore(app);
 
     //로그인상태, 로그인한 닉네임, ID 저장장
-        var isLogin = false;
+    var isLogin = false;
     var myName = '';
     var myID = '';
 
@@ -498,7 +498,7 @@
     /* 댓글 firebase에 저장 */
     const saveCommentToFirebase = async (commentText) => {
       const today = new Date();
-      const ymd = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
+      const ymd = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
 
       let doc = {
         'id': myid,
@@ -544,7 +544,7 @@
     }
 
     /* 페이지 로딩 시, 댓글 내림차순(최신순)으로 정렬하여 보여주기 */
-    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date","desc")));
+    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
     commentsDocs.forEach((doc) => {
       let row = doc.data();
       let name = row['name'];
