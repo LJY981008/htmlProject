@@ -16,12 +16,14 @@
   <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR");
-    
+
     * {
       font-family: "Noto Sans KR", sans-serif;
     }
 
-    .nav-link, .shine-text, .introsub_text {
+    .nav-link,
+    .shine-text,
+    .introsub_text {
       font-family: "Black Han Sans", sans-serif;
     }
 
@@ -61,7 +63,7 @@
       justify-content: space-between;
       padding-right: 100px;
       padding-left: 50px;
-      
+
     }
 
     /*팀소개 텍스트*/
@@ -71,22 +73,22 @@
 
     /*이미지 크기 및 오른쪽정렬렬*/
     .intro img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 40%;
-  margin: 0 auto;
-  display: block;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, filter 0.3s ease;
-  border: 5px solid rgba(204, 196, 196, 0.212);
-  filter: grayscale(10%)
-}
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 40%;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      border: 5px solid rgba(204, 196, 196, 0.212);
+      filter: grayscale(10%)
+    }
 
-.intro img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.05);
-}
+    .intro img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.05);
+    }
 
 
     /*텍스트 폰트트*/
@@ -118,8 +120,9 @@
     .comment_text {
       font-weight: 900;
     }
-     /*멘트 박스*/
-     .speakingbox {
+
+    /*멘트 박스*/
+    .speakingbox {
       padding: 6rem;
       margin: 12rem auto 12rem auto;
       border-radius: 1rem;
@@ -145,7 +148,6 @@
       color: #000000;
       font-style: italic;
     }
-
   </style>
 </head>
 
@@ -161,7 +163,7 @@
     <li class="nav-item">
       <a class="nav-link" href="#todayMent">방명록</a>
     </li>
-    
+
     <div class="loginName" id="loginName">
       <p id="loginNameText">aaa</p>
     </div>
@@ -247,7 +249,7 @@
     <h3>📌 오늘의 팀 멘트</h3>
     <p id="team-quote" class="quote-text"></p>
     <p id="team-author" class="quote-author"></p>
-  </div> 
+  </div>
 
 
   <!--댓글 김용준-->
@@ -319,7 +321,7 @@
   <script src="HTML_Project/javaScript/register_login.js"></script>
   <script type="module">
     /* 파이어베이스 */
-    // 로그인, 회원가입, 댓글 등의 기능능
+    // 로그인, 회원가입, 댓글 등의 기능
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import {
@@ -346,131 +348,130 @@
     const db = getFirestore(app);
 
     var isLogin = false;
-    var name = '';
-    var myid = '';
-    var pattern = /\s/g;
+    var myName = '';
+    var myID = '';
 
     /* 로그인 버튼 */
     $("#login").click(async function () {
-  const $loginIdInput = $("#loginID");
-  const $loginPwInput = $("#loginPW");
-  const $loginPopup = $("#loginPopup");
-  const $floatingUI = $("#floatingUI");
-  const $loginNameElement = $("#loginName");
-  const $loginNameTextElement = $("#loginNameText");
+      const $loginIdInput = $("#loginID");
+      const $loginPwInput = $("#loginPW");
+      const $loginPopup = $("#loginPopup");
+      const $floatingUI = $("#floatingUI");
+      const $loginNameElement = $("#loginName");
+      const $loginNameTextElement = $("#loginNameText");
 
-  const inputID = $loginIdInput.val();
-  const inputPW = $loginPwInput.val();
+      const inputID = $loginIdInput.val();
+      const inputPW = $loginPwInput.val();
 
-  try {
-    const querySnapshot = await getDocs(collection(db, "info"));
-    let loggedIn = false;
+      try {
+        const querySnapshot = await getDocs(collection(db, "info"));
+        let loggedIn = false;
 
-    querySnapshot.forEach((doc) => {
-      const row = doc.data();
-      const nickname = row['name'];
-      const id = row['id'];
-      const pw = row['pw'];
+        querySnapshot.forEach((doc) => {
+          const row = doc.data();
+          const nickname = row['name'];
+          const id = row['id'];
+          const pw = row['pw'];
 
-      if (inputID === id) {
-        if (inputPW === pw) {
-          // 로그인 성공
-          name = nickname;
-          myid = id;
-          isLogin = true;
-          alert(`어서오세요 ${name}님`);
+          if (inputID === id) {
+            if (inputPW === pw) {
+              // 로그인 성공
+              myName = nickname;
+              myID = id;
+              isLogin = true;
+              alert(`어서오세요 ${myName}님`);
 
-          // UI 변경
-          isLogin = true;
-          $loginPopup.hide();
-          $floatingUI.hide();
-          $loginNameElement.css("display", "flex");
-          $loginNameTextElement.text(name);
-          loggedIn = true;
-          return false; // forEach 루프 종료
-        } else {
-          // 비밀번호 틀림
-          alert('비밀번호가 틀렸습니다.');
-          loggedIn = false;
-          return false; // forEach 루프 종료 (아이디는 맞지만 비밀번호가 틀리므로 더 이상 순회할 필요 없음)
+              // UI 변경
+              isLogin = true;
+              $loginPopup.hide();
+              $floatingUI.hide();
+              $loginNameElement.css("display", "flex");
+              $loginNameTextElement.text(myName);
+              loggedIn = true;
+              return false; // forEach 루프 종료
+            } else {
+              // 비밀번호 틀림
+              alert('비밀번호가 틀렸습니다.');
+              loggedIn = false;
+              return false; // forEach 루프 종료 (아이디는 맞지만 비밀번호가 틀리므로 더 이상 순회할 필요 없음)
+            }
+          }
+        });
+
+        if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우에만 메시지 표시
+          const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
+          if (!foundId) {
+            alert('존재하지 않는 아이디입니다.');
+          }
+        } else if (querySnapshot.empty) {
+          alert('등록된 사용자 정보가 없습니다.');
         }
+
+        return loggedIn;
+
+      } catch (error) {
+        console.error("로그인 오류:", error);
+        alert('로그인 처리 중 오류가 발생했습니다.');
+        return false;
       }
     });
 
-    if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우에만 메시지 표시
-      const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
-      if (!foundId) {
-        alert('존재하지 않는 아이디입니다.');
-      }
-    } else if (querySnapshot.empty) {
-      alert('등록된 사용자 정보가 없습니다.');
-    }
-
-    return loggedIn;
-
-  } catch (error) {
-    console.error("로그인 오류:", error);
-    alert('로그인 처리 중 오류가 발생했습니다.');
-    return false;
-  }
-});
-
     /* 가입 버튼  */
     $("#register").click(async function () {
-  const regID = $('#registerId').val();
-  const regPW = $('#registerPassword').val();
-  const regPWCheck = $('#registerPasswordConfirm').val();
-  const regName = $('#regName').val();
-  let isIdTaken = false;
-  let isNameTaken = false;
+      const regID = $('#registerId').val();
+      const regPW = $('#registerPassword').val();
+      const regPWCheck = $('#registerPasswordConfirm').val();
+      const regName = $('#regName').val();
+      let isIdTaken = false;
+      let isNameTaken = false;
 
-  if (regPW !== regPWCheck) {
-    alert("비밀번호를 확인해주세요.");
-    return false;
-  } else if (!regID || /\s/.test(regID)) { // 정규 표현식으로 공백 체크
-    alert('아이디에 공백을 포함할 수 없습니다.');
-    return false;
-  } else {
-    try {
-      const querySnapshot = await getDocs(collection(db, "info"));
+      if (regPW !== regPWCheck) {
+        alert("비밀번호를 확인해주세요.");
+        return false;
+      } else if (!regID || /\s/.test(regID)) { // 공백 체크
+        alert('아이디에 공백을 포함할 수 없습니다.');
+        return false;
+      } else {
+        try {
+          const querySnapshot = await getDocs(collection(db, "info"));
 
-      querySnapshot.forEach((doc) => {
-        const row = doc.data();
-        if (row['id'] === regID) {
-          alert('아이디가 이미 존재합니다.');
-          isIdTaken = true;
-          return false; // forEach 루프 종료
+          querySnapshot.forEach((doc) => {
+            const row = doc.data();
+            if (row['id'] === regID) {
+              alert('아이디가 이미 존재합니다.');
+              isIdTaken = true;
+              return false; // forEach 루프 종료
+            }
+            if (row['name'] === regName) {
+              alert('사용할 수 없는 이름입니다.');
+              isNameTaken = true;
+              return false; // forEach 루프 종료
+            }
+          });
+
+          if (!isIdTaken && !isNameTaken) {
+            const newUser = {
+              'id': regID,
+              'pw': regPW,
+              'name': regName
+            };
+            const addedDocRef = await addDoc(collection(db, "info"), newUser);
+            alert(`환영합니다. ${regName}님`);
+            myID = regID;
+            myName = regName;
+            isLogin = true;
+            $('#registerPopup').hide();
+            $('#floatingUI').hide();
+            $('#loginName').css("display", "flex");
+            $('#loginNameText').text(myName);
+          }
+
+        } catch (error) {
+          console.error("Firebase 회원가입 오류:", error);
+          alert('회원가입 중 오류가 발생했습니다.');
         }
-        if (row['name'] === regName) {
-          alert('사용할 수 없는 이름입니다.');
-          isNameTaken = true;
-          return false; // forEach 루프 종료
-        }
-      });
-
-      if (!isIdTaken && !isNameTaken) {
-        const newUser = {
-          'id': regID,
-          'pw': regPW,
-          'name': regName
-        };
-        const addedDocRef = await addDoc(collection(db, "info"), newUser);
-        alert(`환영합니다. ${regName}님`);
-        myid = regID;
-        name = regName;
-        isLogin = true;
-        $('#registerPopup').hide();
-        $('#floatingUI').hide();
-        $('#loginName').css("display", "flex");
-        $('#loginNameText').text(name);
       }
-
-    } catch (error) {
-      console.error("Firebase 회원가입 오류:", error);
-      alert('회원가입 중 오류가 발생했습니다.');
-    }
-  }
-});
+    });
 
     /* 댓글 작성 */
     const commentBox = document.querySelector(".comment__box");
@@ -478,23 +479,21 @@
     const commentBtn = commentBox.querySelector("button");
 
     const saveCommentToFirebase = async (commentText) => {
-      
-      console.log(isLogin);
       if (!isLogin) {
         alert('로그인을 하고 시도해주세요.');
         return false;
       }
       let today = new Date();
       let year = today.getFullYear();
-      let month = today.getMonth()+1;
+      let month = today.getMonth() + 1;
       let date = today.getDate();
       let hour = today.getHours();
       let minute = today.getMinutes();
       let ymd = `${year}/${month}/${date} ${hour}:${minute}`;
       console.log("Firebase에 저장할 댓글:", commentText);
       let doc = {
-        'id': myid,
-        'name': name,
+        'id': myID,
+        'name': myName,
         'comment': commentText,
         'date': ymd
       };
@@ -512,7 +511,7 @@
 
       const commentName = document.createElement("span");
       commentName.classList.add("comment__name");
-      commentName.innerText = name;
+      commentName.innerText = myName;
 
       const commentTextarea = document.createElement("span");
       commentTextarea.classList.add("comment__text");
@@ -534,7 +533,7 @@
     };
     const addComment = (input) => {
       if (input == "") return;
-      
+
       saveCommentToFirebase(input);
     };
 
@@ -550,7 +549,7 @@
 
 
     /* 댓글 갱신 */
-    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date","desc")));
+    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
     commentsDocs.forEach((doc) => {
       let row = doc.data();
       let name = row['name'];
@@ -567,7 +566,7 @@
       `;
       $('.comment__panel').append(text);
     })
-    
+
     // 멘트리스트트 (멘트 + 작성자)
     const quotes = [
       { text: "좋은 코드는 대화를 멈추게 한다.", author: "지훈" },
