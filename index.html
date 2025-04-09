@@ -221,7 +221,7 @@
 
     <div class="loginName" id="loginName">
       <p id="loginNameText">aaa</p>
-      <button id="logout">로그아웃</button>
+      <button id="logoutButton">로그아웃</button>
     </div>
   </ul>
 
@@ -497,7 +497,6 @@
               isLogin = true;
               alert(`어서오세요 ${myName}님`);
 
-
               madeCookie();
 
               // UI 변경
@@ -595,6 +594,16 @@
           alert('회원가입 중 오류가 발생했습니다.');
         }
       }
+    });
+
+    /* 로그아웃 */
+    $('logoutButton').click(function () {
+        //쿠키 삭제제
+        myID = '';
+        myName = '';
+        $('#floatingUI').show();
+        $('#loginName').css("display", "flex");
+        $('#loginNameText').text('');
     });
 
     /* 댓글 작성 */
