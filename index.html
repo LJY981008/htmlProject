@@ -478,47 +478,59 @@
     const commentInput = commentBox.querySelector("input");
     const commentBtn = commentBox.querySelector("button");
 
-    const saveCommentToFirebase = async (commentText) => {
+    const handleCommentClick = async () => {
       if (!isLogin) {
         alert('로그인을 하고 시도해주세요.');
         return false;
       }
-      let today = new Date();
-      let year = today.getFullYear();
-      let month = today.getMonth() + 1;
-      let date = today.getDate();
-      let hour = today.getHours();
-      let minute = today.getMinutes();
-      let ymd = `${year}/${month}/${date} ${hour}:${minute}`;
-      console.log("Firebase에 저장할 댓글:", commentText);
+
+      const input = commentInput.value;
+      if (input == "") return;
+
+      saveCommentToFirebase(input);
+
+      commentInput.value = "";
+    };
+
+    commentBtn.addEventListener("click", handleCommentClick);
+
+    /* 댓글 firebase에 저장 */
+    const saveCommentToFirebase = async (commentText) => {
+      const today = new Date();
+      const ymd = `${today.getFullYear()}/${today.getMonth()+1}/${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
+
       let doc = {
-        'id': myID,
-        'name': myName,
+        'id': myid,
+        'name': name,
         'comment': commentText,
         'date': ymd
       };
+
       try {
+        /* DB에 저장 완료 후, 리얼 타임으로 화면에 등록 */
         await addDoc(collection(db, "comments"), doc);
-        console.log('Firebase에 댓글 저장 완료');
+        realtimeUpdateComment(ymd, commentText);
       } catch (error) {
         console.error("Firebase 댓글 저장 오류:", error);
         alert('댓글 저장 중 오류가 발생했습니다.');
       }
+    };
 
-      /*용준님이 작성하신 부분*/
+    /* 새로고침하지 않고 화면에 리얼타임으로 댓글 업데이트 */
+    const realtimeUpdateComment = (ymd, commentText) => {
       const comment = document.createElement("div");
       const commentPanel = document.querySelector(".comment__panel");
 
       const commentName = document.createElement("span");
       commentName.classList.add("comment__name");
-      commentName.innerText = myName;
+      commentName.innerText = name;
 
       const commentTextarea = document.createElement("span");
       commentTextarea.classList.add("comment__text");
 
       const todayDate = document.createElement("span");
       todayDate.classList.add("comment__date");
-      todayDate.innerText = `${year}/${month}/${date} ${hour}:${minute}`
+      todayDate.innerText = ymd;
 
       commentTextarea.innerText = commentText;
       comment.className = "comment";
@@ -528,28 +540,10 @@
       comment.appendChild(commentTextarea);
       comment.appendChild(todayDate);
       commentPanel.classList.remove("hidden");
+    }
 
-
-    };
-    const addComment = (input) => {
-      if (input == "") return;
-
-      saveCommentToFirebase(input);
-    };
-
-    const handleCommentClick = () => {
-      const input = commentInput.value;
-      addComment(input);
-      commentInput.value = "";
-    };
-
-    commentBtn.addEventListener("click", handleCommentClick);
-
-
-
-
-    /* 댓글 갱신 */
-    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
+    /* 페이지 로딩 시, 댓글 내림차순(최신순)으로 정렬하여 보여주기 */
+    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date","desc")));
     commentsDocs.forEach((doc) => {
       let row = doc.data();
       let name = row['name'];
