@@ -221,6 +221,7 @@
 
     <div class="loginName" id="loginName">
       <p id="loginNameText">aaa</p>
+      <button id="logout">로그아웃</button>
     </div>
   </ul>
 
@@ -450,6 +451,7 @@
       }
     }
     cheakedCookie();
+
     /* 엔터 키 이벤트 처리 */
     /* 엔터를 누르면 클릭 작동 */
     $("#loginID, #loginPW").keypress(function (event) {
@@ -494,6 +496,9 @@
               myID = id;
               isLogin = true;
               alert(`어서오세요 ${myName}님`);
+
+
+              madeCookie();
 
               // UI 변경
               isLogin = true;
@@ -578,6 +583,7 @@
             myID = regID;
             myName = regName;
             isLogin = true;
+            madeCookie();
             $('#registerPopup').hide();
             $('#floatingUI').hide();
             $('#loginName').css("display", "flex");
