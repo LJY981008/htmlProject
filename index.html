@@ -150,7 +150,7 @@
 </head>
 
 <body>
-  <!--카테고리-->
+  <!--카테고리 수직정렬 내비게이션탭 부트스트랩 사용-->
   <!--href에 클릭시 이동 위치 추가 -이현하-->
   <ul class="nav justify-content-center fixed-nav">
     <li class="nav-item">
@@ -168,6 +168,7 @@
     </div>
   </ul>
 
+  
   <!--id 추가 및 팀 소개 변경 -이현하-->
   <div class="intro" id="teamIntro">
     <div class="introText">
@@ -184,7 +185,8 @@
   </div>
 
   <!--카드 우새빛-->
-  <!--card.js를 통해 해당 페이지로 이동동-->
+  <!--팀원 요약 그리드카드 부트스트랩 사용용-->
+  <!--card.js를 통해 해당 페이지로 이동-->
   <div class="team" id="teamMember">
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
@@ -319,8 +321,8 @@
   </div>
   </div>
 
-  <script src="HTML_Project/javaScript/card.js"></script>
-  <script src="HTML_Project/javaScript/register_login.js"></script>
+  <script src="HTML_Project/javaScript/card.js">/*카드 이벤트*/</script>
+  <script src="HTML_Project/javaScript/register_login.js">/*로그인, 회원가입입 팝업*/</script>
   <script type="module">
     /* 파이어베이스 */
     // 로그인, 회원가입, 댓글 등의 기능
@@ -565,7 +567,11 @@
       $('.comment__panel').append(text);
     })
 
-    // 멘트리스트트 (멘트 + 작성자)
+    
+  </script>
+  <script>
+    /*멘트 기능*/
+    // 멘트리스트 (멘트 + 작성자)
     const quotes = [
       { text: "버그 잡다가 나를 잡겠다 😅🫠🐞", author: "김용준" },
       { text: "돌아는 가는데 왜 돌아가는진 모르겠음 🌀🔧", author: "최경진" },
