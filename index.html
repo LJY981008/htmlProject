@@ -351,97 +351,126 @@
     var pattern = /\s/g;
 
     /* 로그인 버튼 */
-      $("#login").click(async function () {
-        let docs = await getDocs(collection(db, "info"));
-        docs.forEach((doc) => {
-          let row = doc.data();
-          let nickname = row['name'];
-          let id = row['id'];
-          let pw = row['pw'];
+    $("#login").click(async function () {
+  const $loginIdInput = $("#loginID");
+  const $loginPwInput = $("#loginPW");
+  const $loginPopup = $("#loginPopup");
+  const $floatingUI = $("#floatingUI");
+  const $loginNameElement = $("#loginName");
+  const $loginNameTextElement = $("#loginNameText");
 
-          let inputID = $('#loginID').val();
-          let inputPW = $('#loginPW').val();
+  const inputID = $loginIdInput.val();
+  const inputPW = $loginPwInput.val();
 
-          if (inputID == id) {
-            if (inputPW == pw) {
-              /* 로그인 성공 */
-              name = nickname;
-              myid = id;
-              isLogin = true;
-              alert('어서오세요' + name + '님');
-              /* ui변경 필요 */
-              isLogin = true;
-              $('#loginPopup').css("display", "none");
-              $('#floatingUI').css("display", "none");
-              $('#loginName').css("display", "flex");
-              $('#loginNameText').text(name);
-              return true;
-            }
-            else {
-              /* 비밀번호 틀림 */
-              alert('비밀번호가 틀렸습니다.');
-              return false;
-            }
-          }
-        });
-      })
+  try {
+    const querySnapshot = await getDocs(collection(db, "info"));
+    let loggedIn = false;
 
-    /* 가입 버튼  */
-    $("#register").click(async function () {
-      let regID = $('#registerId').val();
-      let regPW = $('#registerPassword').val();
-      let regPWCheck = $('#registerPasswordConfirm').val();
-      let regName = $('#regName').val();
-      let flag = false;
+    querySnapshot.forEach((doc) => {
+      const row = doc.data();
+      const nickname = row['name'];
+      const id = row['id'];
+      const pw = row['pw'];
 
-      if (regPW != regPWCheck) {
-        alert("비밀번호를 확인해주세요.");
-        return false;
-      }
-      else if (!regID || pattern.test(regID)) { // 수정된 부분
-        alert('아이디에 공백을 포함할 수 없습니다.');
-        return false;
-      }
-      else {
-        let docs = await getDocs(collection(db, "info"));
-        docs.forEach((doc) => {
-          let row = doc.data();
-          let id = row['id'];
-          if (id == regID) {
-            alert('아이디가 이미 존재합니다.');
-            flag = true;
-            return false;
-          }
-          if (regName == row['name']) {
-            alert('사용할 수 없는 이름입니다.');
-            flag = true;
-            return false;
-          }
-        });
+      if (inputID === id) {
+        if (inputPW === pw) {
+          // 로그인 성공
+          name = nickname;
+          myid = id;
+          isLogin = true;
+          alert(`어서오세요 ${name}님`);
 
-        if (!flag) {
-          let doc = {
-            'id': regID,
-            'pw': regPW,
-            'name': regName
-          };
-          try {
-            const addedDocRef = await addDoc(collection(db, "info"), doc);
-            alert('환영합니다. ' + regName + '님');
-            myid = regID;
-            name = regName;
-            isLogin = true;
-            $('#registerPopup').css("display", "none");
-            $('#floatingUI').css("display", "none");
-            $('#loginName').css("display", "flex");
-            $('#loginNameText').text(name);
-          } catch (error) {
-            console.error("Firebase 회원가입 오류:", error);
-            alert('회원가입 중 오류가 발생했습니다.');
-          }
+          // UI 변경
+          isLogin = true;
+          $loginPopup.hide();
+          $floatingUI.hide();
+          $loginNameElement.css("display", "flex");
+          $loginNameTextElement.text(name);
+          loggedIn = true;
+          return false; // forEach 루프 종료
+        } else {
+          // 비밀번호 틀림
+          alert('비밀번호가 틀렸습니다.');
+          loggedIn = false;
+          return false; // forEach 루프 종료 (아이디는 맞지만 비밀번호가 틀리므로 더 이상 순회할 필요 없음)
         }
       }
     });
+
+    if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우에만 메시지 표시
+      const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
+      if (!foundId) {
+        alert('존재하지 않는 아이디입니다.');
+      }
+    } else if (querySnapshot.empty) {
+      alert('등록된 사용자 정보가 없습니다.');
+    }
+
+    return loggedIn;
+
+  } catch (error) {
+    console.error("로그인 오류:", error);
+    alert('로그인 처리 중 오류가 발생했습니다.');
+    return false;
+  }
+});
+
+    /* 가입 버튼  */
+    $("#register").click(async function () {
+  const regID = $('#registerId').val();
+  const regPW = $('#registerPassword').val();
+  const regPWCheck = $('#registerPasswordConfirm').val();
+  const regName = $('#regName').val();
+  let isIdTaken = false;
+  let isNameTaken = false;
+
+  if (regPW !== regPWCheck) {
+    alert("비밀번호를 확인해주세요.");
+    return false;
+  } else if (!regID || /\s/.test(regID)) { // 정규 표현식으로 공백 체크
+    alert('아이디에 공백을 포함할 수 없습니다.');
+    return false;
+  } else {
+    try {
+      const querySnapshot = await getDocs(collection(db, "info"));
+
+      querySnapshot.forEach((doc) => {
+        const row = doc.data();
+        if (row['id'] === regID) {
+          alert('아이디가 이미 존재합니다.');
+          isIdTaken = true;
+          return false; // forEach 루프 종료
+        }
+        if (row['name'] === regName) {
+          alert('사용할 수 없는 이름입니다.');
+          isNameTaken = true;
+          return false; // forEach 루프 종료
+        }
+      });
+
+      if (!isIdTaken && !isNameTaken) {
+        const newUser = {
+          'id': regID,
+          'pw': regPW,
+          'name': regName
+        };
+        const addedDocRef = await addDoc(collection(db, "info"), newUser);
+        alert(`환영합니다. ${regName}님`);
+        myid = regID;
+        name = regName;
+        isLogin = true;
+        $('#registerPopup').hide();
+        $('#floatingUI').hide();
+        $('#loginName').css("display", "flex");
+        $('#loginNameText').text(name);
+      }
+
+    } catch (error) {
+      console.error("Firebase 회원가입 오류:", error);
+      alert('회원가입 중 오류가 발생했습니다.');
+    }
+  }
+});
 
     /* 댓글 작성 */
     const commentBox = document.querySelector(".comment__box");
