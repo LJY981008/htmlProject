@@ -6,7 +6,7 @@ const quotes = [
     { text: "포기란 없다, 구글과 함께라면.💪🌐" , author: "이현하" },
     { text:"코드가 안 돌아가면, 우리가 돌면 된다.🤪🔧", author: "이현하" },
     { text: "처음은 어렵지만, 안 되는 건 없다. 코드도 인생도!🌱✨" , author: "우새빛" },
-    { text: "코드 한 줄보다 마음 한 줄이 더 깊다.", author: "소연" }
+    { text: "내 코드는 완벽해. 컴파일러가 문제인 거지.", author: "이준영" }
 ];
 //현재 날짜 정보 값 불러오기
 const today = new Date().toISOString().slice(0, 10);
