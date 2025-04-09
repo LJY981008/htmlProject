@@ -405,6 +405,8 @@
     const commentBtn = commentBox.querySelector("button");
 
     const saveCommentToFirebase = async (commentText) => {
+      
+      console.log(isLogin);
       if (!isLogin) {
         alert('로그인을 하고 시도해주세요.');
         return false;
@@ -437,19 +439,19 @@
       commentName.classList.add("comment__name");
       commentName.innerText = "김아무개";
 
-      const commentText = document.createElement("span");
-      commentText.classList.add("comment__text");
+      const commentTextarea = document.createElement("span");
+      commentTextarea.classList.add("comment__text");
 
       const todayDate = document.createElement("span");
       todayDate.classList.add("comment__date");
       todayDate.innerText = `방문 날짜 : ${today.getFullYear()}년 ${today.getMonth() + 1}월 ${today.getDate()}일 ${today.getHours()}시 ${today.getMinutes()}분`
 
-      commentText.innerText = input;
+      commentTextarea.innerText = commentText;
       comment.className = "comment";
 
       commentPanel.appendChild(comment);
       comment.appendChild(commentName);
-      comment.appendChild(commentText);
+      comment.appendChild(commentTextarea);
       comment.appendChild(todayDate);
       commentPanel.classList.remove("hidden");
 
@@ -458,7 +460,6 @@
     const addComment = (input) => {
       if (input == "") return;
       
-
       saveCommentToFirebase(input);
     };
 
