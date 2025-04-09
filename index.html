@@ -347,7 +347,8 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    var isLogin = false;
+    //로그인상태, 로그인한 닉네임, ID 저장장
+        var isLogin = false;
     var myName = '';
     var myID = '';
 
@@ -375,7 +376,7 @@
 
           if (inputID === id) {
             if (inputPW === pw) {
-              // 로그인 성공
+              // 로그인 성공 불러온 값 저장
               myName = nickname;
               myID = id;
               isLogin = true;
@@ -388,12 +389,12 @@
               $loginNameElement.css("display", "flex");
               $loginNameTextElement.text(myName);
               loggedIn = true;
-              return false; // forEach 루프 종료
+              return false; // 아이디와 비밀번호가 일치하면 종료료
             } else {
               // 비밀번호 틀림
               alert('비밀번호가 틀렸습니다.');
               loggedIn = false;
-              return false; // forEach 루프 종료 (아이디는 맞지만 비밀번호가 틀리므로 더 이상 순회할 필요 없음)
+              return false; // 아이디가 맞으나 비밀번호가 틀리면 종료료
             }
           }
         });
@@ -440,12 +441,12 @@
             if (row['id'] === regID) {
               alert('아이디가 이미 존재합니다.');
               isIdTaken = true;
-              return false; // forEach 루프 종료
+              return false; // 아이디가 이미 존재할 경우 종료료
             }
             if (row['name'] === regName) {
               alert('사용할 수 없는 이름입니다.');
               isNameTaken = true;
-              return false; // forEach 루프 종료
+              return false; // 닉네임이 이미 존재할 경우 종료
             }
           });
 
