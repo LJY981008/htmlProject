@@ -1,3 +1,6 @@
+
+// 팝업여는 버튼을 누르면 해당 디스플레이가 보이고
+// 닫는 버튼을 누르면 안보이게
 $(document).ready(function() {
     // 로그인 팝업 관련
     $("#loginButton").click(function() {
@@ -9,7 +12,7 @@ $(document).ready(function() {
     });
 
     // 회원가입 팝업 관련
-    $("#registerButton").click(function() { // 선택자를 "#registerButton"으로 변경
+    $("#registerButton").click(function() { 
         $("#registerPopup").css("display", "block");
     });
 
