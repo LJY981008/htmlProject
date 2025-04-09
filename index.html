@@ -588,26 +588,29 @@
       }
     });
 
+    /*----------------------------------여기까지 분할됨---------------------------------------------*/
+    // initinfo << 물어보고 넣어야해서 분할한 내용에서 뺐음음
+
     /* 로그아웃 */
     $('#logoutButton').click(function () {
-    // 쿠키 삭제
-    document.cookie = "myID=; max-age=0; path=/";
-    document.cookie = "myName=; max-age=0; path=/";
+      // 쿠키 삭제
+      document.cookie = "myID=; max-age=0; path=/";
+      document.cookie = "myName=; max-age=0; path=/";
 
-    // 변수 초기화
-    myID = '';
-    myName = '';
-    isLogin = false;
+      // 변수 초기화
+      myID = '';
+      myName = '';
+      isLogin = false;
 
-    // 로그인 창 다시 보여주기
-    $('#floatingUI').show();
+      // 로그인 창 다시 보여주기
+      $('#floatingUI').show();
 
-    // 로그인 상태 표시 숨기기
-    $('#loginName').hide();
+      // 로그인 상태 표시 숨기기
+      $('#loginName').hide();
 
-    // 이름 텍스트 비우기
-    $('#loginNameText').text('');
-});
+      // 이름 텍스트 비우기
+      $('#loginNameText').text('');
+    });
 
 
     /* 댓글 작성 */
