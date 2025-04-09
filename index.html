@@ -115,6 +115,7 @@
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
     }
+
     .comment_text {
       font-weight: 900;
     }
@@ -168,7 +169,7 @@
     </div>
   </ul>
 
-  
+
   <!--id 추가 및 팀 소개 변경 -이현하-->
   <div class="intro" id="teamIntro">
     <div class="introText">
@@ -323,7 +324,7 @@
 
   <script src="HTML_Project/javaScript/card.js">/*카드 이벤트*/</script>
   <script src="HTML_Project/javaScript/register_login.js">/*로그인, 회원가입입 팝업*/</script>
-  <script src="HTML_Project/javaScript/todayMent.js">/*멘트기능*/ </script>
+  <script src="HTML_Project/javaScript/todayMent.js">/*멘트기능*/</script>
   <script type="module">
     /* 파이어베이스 */
     // 로그인, 회원가입, 댓글 등의 기능
@@ -356,6 +357,21 @@
     var isLogin = false;
     var myName = '';
     var myID = '';
+
+    /* 엔터 키 이벤트 처리 */
+    /* 엔터를 누르면 클릭 작동*/
+    $("#loginID, #loginPW").keypress(function (event) {
+      if (event.which === 13) {
+        $("#login").click();
+        return false;
+      }
+    });
+    $('#registerId, #registerPassword, #registerPasswordConfirm, #regName').keypress(function (event) {
+      if (event.which === 13) {
+        $("#register").click();
+        return false;
+      }
+    });
 
     /* 로그인 버튼 */
     $("#login").click(async function () {
@@ -431,11 +447,12 @@
       let isIdTaken = false;
       let isNameTaken = false;
 
-      if (regPW !== regPWCheck) { // 비밀번호와 비밀번호 확인란이 다를 때
-        alert("비밀번호를 확인해주세요.");
+      if (!regID || /\s/.test(regID) || !regPW || !regName) { // 공백 체크
+        alert('공백을 포함할 수 없습니다.');
         return false;
-      } else if (!regID || /\s/.test(regID) || !regPW) { // 공백 체크
-        alert('아이디에 공백을 포함할 수 없습니다.');
+      }
+      else if (regPW !== regPWCheck) { // 비밀번호와 비밀번호 확인란이 다를 때
+        alert("비밀번호를 확인해주세요.");
         return false;
       } else {  // 입력 조건 충족
         try {
@@ -568,8 +585,8 @@
       $('.comment__panel').append(text);
     })
 
-    
+
   </script>
-  
+
 
 </html>
