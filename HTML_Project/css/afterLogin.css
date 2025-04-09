@@ -1,0 +1,36 @@
+/* 로그아웃 버튼 기본 스타일 */
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* 마우스를 올렸을 때 */
+.logout-btn {
+    background-color: #d32f2f;
+    /* 더 진한 빨강으로 */
+}
+
+#loginNameText {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+
+    margin-right: 10px;
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+    background-color: #ecf0f1;
+
+    padding: 6px 12px;
+    border-radius: 10px;
+
+}
