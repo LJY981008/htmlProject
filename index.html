@@ -380,6 +380,8 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import {
       getFirestore,
+      doc,
+      deleteDoc,
       collection,
       addDoc,
       getDocs,
@@ -458,6 +460,8 @@
               $loginNameElement.css("display", "flex");
               $loginNameTextElement.text(myName);
               loggedIn = true;
+
+              initInfo();
               return false; // 아이디와 비밀번호가 일치하면 종료료
             } else {
               // 비밀번호 틀림
@@ -582,11 +586,37 @@
         // DB에 저장 완료 후, 리얼 타임으로 화면에 등록 
         await addDoc(collection(db, "comments"), doc);
         realtimeUpdateComment(ymd, commentText);
+        initInfo();
       } catch (error) {
         console.error("Firebase 댓글 저장 오류:", error);
         alert('댓글 저장 중 오류가 발생했습니다.');
       }
     };
+
+    const handleCommentDeleteClick = async(event) => {
+      const commentId = event.target.parentElement.dataset.id;
+      const commentPanel = document.querySelector(".comment__panel");
+
+      try {
+        await deleteDoc(doc(db, "comments", commentId));
+        alert("댓글이 삭제되었습니다.");
+        initInfo();
+      } catch (error) {
+        console.error("댓글 삭제 중 오류:", error);
+      }
+
+    }
+
+    const initInfo = async() => {
+      const commentPanel = document.querySelector(".comment__panel");
+      commentPanel.innerHTML = '';
+      await getComments();
+
+      const commentDeleteBtns = document.querySelectorAll(".commentDelete");
+      commentDeleteBtns.forEach(deleteBtn => {
+        deleteBtn.addEventListener("click", handleCommentDeleteClick);
+    });
+    }
 
     /* 새로고침하지 않고 화면에 리얼타임으로 댓글 업데이트 */
     const realtimeUpdateComment = (ymd, commentText) => {
@@ -615,23 +645,32 @@
     }
 
     /* 페이지 로딩 시, 댓글 내림차순(최신순)으로 정렬하여 보여주기 */
-    let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
-    commentsDocs.forEach((doc) => {
-      let row = doc.data();
-      let name = row['name'];
-      let date = row['date'];
-      let comment = row['comment'];
+    const getComments = async () => {
+      let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
+      commentsDocs.forEach((doc) => {
+        const documentId = doc.id;
+        let row = doc.data();
+        let id = row['id'];
+        let name = row['name'];
+        let date = row['date'];
+        let comment = row['comment'];
 
-      // 댓글 html코드
-      let text = `
-      <div class="comment">
-        <span class="comment__name">${name}</span>
-        <span class="comment__text">${comment}</span>
-        <span class="comment__date">${date}</span>
-      </div>
-      `;
-      $('.comment__panel').append(text);
-    })
+        /* 댓글 html코드 */
+        let text = `
+        <div class="comment__wrap" data-id=${doc.id}>
+          <div class="comment">
+            <span class="comment__name">${name}</span>
+            <span class="comment__text">${comment}</span>
+            <span class="comment__date">${date}</span>
+          </div>
+          ${id === myID ? '<button class="commentDelete">삭제</button>' : ''}
+        </div>
+        `;
+        $('.comment__panel').append(text);
+      })
+    }
+
+    initInfo();
 
 
   </script>
