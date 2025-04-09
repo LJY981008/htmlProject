@@ -316,7 +316,7 @@
 
 
   <!--로그인회원가입UI-->
-  <div class="floating-ui" id="floatingUI">
+  <div class="floating-ui" id="floatingUI" style="display: none;">
     <button id="loginButton">로그인</button>
     <button id="registerButton">회원가입</button>
   </div>
@@ -419,27 +419,27 @@
       }, 200);
     }
     function cheakedCookie() {
-      const cookieName = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('myID='))
-        ?.split('=')[1];
-
       const cookieID = document.cookie
         .split('; ')
         .find(row => row.startsWith('myID='))
         ?.split('=')[1];
 
-      if (cookieName && cookieID) {
-        console.log("불러온 myName:", cookieName, " 불러온 myID:", cookieID);
+      const cookieName = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('myName='))
+        ?.split('=')[1];
 
+      if (cookieName && cookieID) {
+        // 로그인 상태
         myName = cookieName;
         myID = cookieID;
-
         isLogin = true;
 
-        $('#floatingUI').hide();
         $('#loginName').css("display", "flex");
         $('#loginNameText').text(myName);
+      } else {
+        // 로그인 안 된 상태만 로그인 UI 보여주기
+        $('#floatingUI').show();
       }
     }
     cheakedCookie();
