@@ -281,6 +281,8 @@
   <script src="HTML_Project/javaScript/card.js"></script>
   <script src="HTML_Project/javaScript/register_login.js"></script>
   <script type="module">
+    /* 파이어베이스 */
+    // 로그인, 회원가입, 댓글 등의 기능능
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
     import {
@@ -312,40 +314,40 @@
     var pattern = /\s/g;
 
     /* 로그인 버튼 */
-    $("#login").click(async function () {
-      let docs = await getDocs(collection(db, "info"));
-      docs.forEach((doc) => {
-        let row = doc.data();
-        let nickname = row['name'];
-        let id = row['id'];
-        let pw = row['pw'];
+      $("#login").click(async function () {
+        let docs = await getDocs(collection(db, "info"));
+        docs.forEach((doc) => {
+          let row = doc.data();
+          let nickname = row['name'];
+          let id = row['id'];
+          let pw = row['pw'];
 
-        let inputID = $('#loginID').val();
-        let inputPW = $('#loginPW').val();
+          let inputID = $('#loginID').val();
+          let inputPW = $('#loginPW').val();
 
-        if (inputID == id) {
-          if (inputPW == pw) {
-            /* 로그인 성공 */
-            name = nickname;
-            myid = id;
-            isLogin = true;
-            alert('어서오세요' + name + '님');
-            /* ui변경 필요 */
-            isLogin = true;
-            $('#loginPopup').css("display", "none");
-            $('#floatingUI').css("display", "none");
-            $('#loginName').css("display", "flex");
-            $('#loginNameText').text(name);
-            return true;
+          if (inputID == id) {
+            if (inputPW == pw) {
+              /* 로그인 성공 */
+              name = nickname;
+              myid = id;
+              isLogin = true;
+              alert('어서오세요' + name + '님');
+              /* ui변경 필요 */
+              isLogin = true;
+              $('#loginPopup').css("display", "none");
+              $('#floatingUI').css("display", "none");
+              $('#loginName').css("display", "flex");
+              $('#loginNameText').text(name);
+              return true;
+            }
+            else {
+              /* 비밀번호 틀림 */
+              alert('비밀번호가 틀렸습니다.');
+              return false;
+            }
           }
-          else {
-            /* 비밀번호 틀림 */
-            alert('비밀번호가 틀렸습니다.');
-            return false;
-          }
-        }
-      });
-    })
+        });
+      })
 
     /* 가입 버튼  */
     $("#register").click(async function () {
