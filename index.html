@@ -118,6 +118,34 @@
     .comment_text {
       font-weight: 900;
     }
+     /*멘트 박스*/
+     .speakingbox {
+      padding: 6rem;
+      margin: 12rem auto 12rem auto;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 1000px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .quote-text {
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .quote-author {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #000000;
+      font-style: italic;
+    }
+
   </style>
 </head>
 
@@ -213,7 +241,15 @@
     </div>
   </div>
 
-  <!--댓글 최경진-->
+  <!-- 멘트 박스 -->
+  <div class="speakingbox">
+    <h3>📌 오늘의 팀 멘트</h3>
+    <p id="team-quote" class="quote-text"></p>
+    <p id="team-author" class="quote-author"></p>
+  </div> 
+
+
+  <!--댓글 김용준-->
   <div class="comment__box" id="homeComment">
     <h1 class="comment_text">방명록</h1>
     <div class="input-group">
@@ -499,6 +535,33 @@
       `;
       $('.comment__panel').append(text);
     })
+    
+    // 멘트리스트트 (멘트 + 작성자)
+    const quotes = [
+      { text: "좋은 코드는 대화를 멈추게 한다.", author: "지훈" },
+      { text: "우리는 더 나은 협업을 위해 오늘도 한 줄씩 나아간다.", author: "민지" },
+      { text: "에러는 팀워크를 강화하는 기회다.", author: "영우" },
+      { text: "마감은 끝이 아니라 또 다른 시작이다.", author: "하린" },
+      { text: "깃 충돌은 잠시, 이해는 영원히.", author: "준서" },
+      { text: "코드 한 줄보다 마음 한 줄이 더 깊다.", author: "소연" }
+    ];
+    //현재 날짜 정보 값 불러오기
+    const today = new Date().toISOString().slice(0, 10);
+    const stored = localStorage.getItem("quote_" + today);
+
+    let quote;
+    if (stored) {
+      // 저장된 값 있으면 사용
+      quote = JSON.parse(stored);
+    } else {
+      // 없으면 랜덤 선택 후 저장
+      quote = quotes[Math.floor(Math.random() * quotes.length)];
+      localStorage.setItem("quote_" + today, JSON.stringify(quote));
+    }
+
+    // 출력
+    document.getElementById("team-quote").innerText = `"${quote.text}"`;
+    document.getElementById("team-author").innerText = `— ${quote.author}`;
   </script>
 
 </html>
