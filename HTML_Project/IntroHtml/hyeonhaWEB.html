@@ -1,223 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>이현하</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Black+Han+Sans&display=swa");
 
-      * {
-        font-family: "42dot Sans", sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이현하</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&family=Black+Han+Sans&display=swa");
 
-      body,
-      ul,
-      li {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
-      }
+    /*폰트 적용*/
+    * {
+      font-family: "42dot Sans", sans-serif;
+    }
 
-      body {
-        background-color: white;
-      }
+    body {
+      background-color: white;
+    }
 
-      .mainBackground {
-        background: linear-gradient(
-          to right,
+    /*페이지 바탕화면 그라데이션 효과*/
+    .mainBackground {
+      background: linear-gradient(to right,
           #f3e4c9 0%,
-          rgba(250, 255, 214, 0) 100%
-        );
+          rgba(250, 255, 214, 0) 100%);
+    }
+
+    /*사이드 메뉴*/
+    .sidebar {
+      position: fixed;
+      height: 100vh;
+      width: 250px;
+      background-color: wheat;
+      padding: 50px;
+    }
+
+    /*소개 카드 이미지*/
+    .card-img {
+      width: 700px;
+      position: left;
+      box-shadow: 3px 3px 10px rgba(242, 255, 66, 0.3);
+    }
+
+    /*소개 카드 큰 제목*/
+    .card-header {
+      font-size: 1.5rem;
+      font-weight: 900;
+      background-color: #ffc83d;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+    }
+
+    .card-subtitle {
+      font-weight: bold;
+    }
+
+    /*본문 위 50px 아래 70px 여백주기*/
+    .headerContent {
+      margin: 50px auto 70px auto;
+    }
+
+    /*본문 큰 제목 빛나는 효과*/
+    .shineText {
+      color: rgb(255, 255, 255);
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ffffff, #3d8bd4, #ffffff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 7s linear infinite;
+    }
+
+    #cheerBtn {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 200% center;
       }
 
-      .sidebar {
-        position: fixed;
-        height: 100vh;
-        width: 250px;
-        background-color: wheat;
-        padding: 50px;
+      100% {
+        background-position: -200% center;
       }
+    }
 
-      .card-img {
-        width: 700px;
-        position: left;
-        box-shadow: 3px 3px 10px rgba(242, 255, 66, 0.3);
-      }
+    .mainContent {
+      display: flex;
+      margin: auto;
+    }
 
-      .card-header {
-        font-weight: bold;
-        background-color: #ffc83d;
-      }
+    /*자기소개 첫번째 카드*/
+    .subContent1 {
+      margin-top: 100px;
+      width: 1200px;
+      background-image: url("../picture/LHH/yellow1.jpeg");
+      background-position: center;
+      background-size: 1200px 300px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
 
-      /*본문 위 50px 아래 70px 여백주기*/
-      .headerContent {
-        margin: 50px auto 70px auto;
-      }
+    /*자기소개 두번째 카드*/
+    .subContent2 {
+      margin-top: 100px;
+      width: 1200px;
+      background-image: url("../picture/LHH/yellow2.jpg");
+      background-position: center;
+      background-size: 1000px 300px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
 
-      .shineText {
-        color: white;
-        font-size: 3rem;
-        font-weight: bold;
-        color: #fff;
-        background: linear-gradient(90deg, #ffffff, #ffd700, #ffffff);
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: shine 4s linear infinite;
-      }
-      @keyframes shine {
-        0% {
-          background-position: 200% center;
-        }
-
-        100% {
-          background-position: -200% center;
-        }
-      }
-
-      .mainContent {
-        display: flex;
-        margin: auto;
-      }
-
-      .subContent1 {
-        margin-top: 100px;
-        width: 1200px;
-        background-image: url("../picture/LHH/yellow1.jpeg");
-        background-position: center;
-        background-size: 1200px 300px;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .subContent2 {
-        margin-top: 100px;
-        width: 1200px;
-        background-image: url("../picture/LHH/yellow2.jpg");
-        background-position: center;
-        background-size: 1000px 300px;
-        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .subContent {
-        background: linear-gradient(
-          to right,
+    /*자기소개 카드 텍스트 박스*/
+    .subContent {
+      background: linear-gradient(to right,
           rgba(255, 254, 192, 0.7) 0%,
-          rgba(250, 255, 214, 0) 100%
-        );
-      }
+          rgba(250, 255, 214, 0) 100%);
+    }
 
-      .btn {
-        color: rgb(75, 75, 75);
-      }
-    </style>
-  </head>
+    /*응원 버튼*/
+    #cheerBtn {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  </style>
 
-  <body>
-    <div class="container-fluid mainBackground">
-      <div class="row">
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-          <h2>멤버들</h2>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html">메인으로</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="LJYWeb.HTML">이준영</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="WSVWeb.html">우새빛</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="CHEWeb.html">최경진</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="HJ.html">윤희준</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="KYGWeb.html">김용준</a>
-            </li>
-          </ul>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 content">
-          <div class="headerContent">
-            <h1><span class="shineText">Weekly Me</span> 👑</h1>
-          </div>
-          <div class="mainContent">
-            <img
-              src="../picture/LHH/LHH_image.jpeg"
-              class="card-img"
-              alt="..."
-            />
-            <div
-              class="card text-bg-warning mb-3"
-              style="max-width: 18rem; margin-left: 30px"
-            >
-              <div class="card-header">It's Me</div>
-              <div class="card-body">
-                <h5 class="card-title">이현하</h5>
-                <p class="card-text" style="margin-top: 30px">MBTI : ISFP</p>
-                <p class="card-text">취미 : 게임</p>
-                <p class="card-text">
-                  한 줄 소개 : <br />백엔드 개발은 처음이지만 코딩 기억을 되살려
-                  잘 따라가보려고 합니다.
-                </p>
-              </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs, doc, getDoc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCTKCwq7jqeGsxYGvF8gUlkWsXVtDj0sXQ",
+      authDomain: "sparta-9c522.firebaseapp.com",
+      projectId: "sparta-9c522",
+      storageBucket: "sparta-9c522.firebasestorage.app",
+      messagingSenderId: "727469859581",
+      appId: "1:727469859581:web:ba8fc7c2f70e3f269d1494"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    //로드 시 카운트 조회
+    async function loadCheerCount() {
+      //파이어베이스 문서 조회
+      const docRef = doc(db, "likes", "cheerCount");
+      const docSnap = await getDoc(docRef);
+
+      //문서 존재 시 값 반환, 문서 미존재 시 0 반환
+      if (docSnap.exists()) {
+        $("#cheerCount").text(docSnap.data().count);
+      } else {
+        await setDoc(docRef, { count: 0 });
+        $("#cheerCount").text(0);
+      }
+    }
+    loadCheerCount();
+
+    //응원 버튼 클릭 시 카운트 증가
+    $("#cheerBtn").click(async function () {
+      const docRef = doc(db, "likes", "cheerCount");
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const currentCount = docSnap.data().count;
+        const newCount = currentCount + 1;
+
+        await updateDoc(docRef, { count: newCount });
+        $("#cheerCount").text(newCount);
+      } else {
+        await setDoc(docRef, { count: 1 });
+        $("#cheerCount").text(1);
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid mainBackground">
+    <div class="row">
+      <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+        <h2>멤버들</h2>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">메인으로</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="LJYWeb.HTML">이준영</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="WSVWeb.html">우새빛</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="CHEWeb.html">최경진</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="HJ.html">윤희준</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="KYGWeb.html">김용준</a>
+          </li>
+        </ul>
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 content">
+        <div class="headerContent">
+          <h1><span class="shineText">Weekly Me</span> 👑</h1>
+        </div>
+        <div class="mainContent">
+          <img src="../picture/LHH/LHH_image.jpeg" class="card-img" alt="..." />
+          <div class="card text-bg-warning mb-3" style="max-width: 18rem; margin-left: 30px">
+            <div class="card-header">It's Me</div>
+            <div class="card-body">
+              <h5 class="card-title">이현하</h5>
+              <p class="card-text" style="margin-top: 30px">MBTI : ISFP</p>
+              <p class="card-text">취미 : 게임</p>
+              <p class="card-text">
+                한 줄 소개 : <br />백엔드 개발은 처음이지만 코딩 기억을 되살려
+                잘 따라가보려고 합니다.
+              </p>
+              <p id="cheerBtn"><span style="font-weight:900;">↓ click!</span> <br />
+                🔥 응원 <span id="cheerCount"></span>회 받는 중!</p>
             </div>
           </div>
-          <div class="subContent1">
-            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-              <div class="container-fluid py-5 subContent">
-                <h1 class="display-5 fw-bold">MBTI는 ISFP 입니다</h1>
-                <p class="col-md-8 fs-4">
-                  저는 하루종일 누워있을 수 있고, <br />하루종일 아무것도 안할
-                  수 있는 ISFP 입니다.
-                </p>
-                <p>앉아있는 동안은 열심히 코딩 공부를 합니다~</p>
-              </div>
+        </div>
+        <div class="subContent1">
+          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5 subContent">
+              <h1 class="display-5 fw-bold">MBTI는 ISFP 입니다</h1>
+              <p class="col-md-8 fs-4">
+                저는 하루종일 누워있을 수 있고, <br />하루종일 아무것도 안할
+                수 있는 ISFP 입니다.
+              </p>
+              <p>앉아있는 동안은 열심히 코딩 공부를 합니다~</p>
             </div>
           </div>
-          <div class="subContent2">
-            <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-              <div class="container-fluid py-5 subContent">
-                <h1 class="display-5 fw-bold">취미는 게임이에요</h1>
-                <p class="col-md-8 fs-4">
-                  저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br />
-                  우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.
-                </p>
-                <p>
-                  대회 영상이 궁금하시다면 아래 버튼을 눌러 구경 해주셔도
-                  좋습니다!
-                  <span style="color: dimgray">잘하진 못했지만..</span>
-                </p>
-                <button
-                  type="button"
-                  class="btn btn-warning"
-                  onclick="window.open('https://youtu.be/Xu8prsaWhb0?si=LMP1ynzHVkdCViq0')"
-                >
-                  오버워치 직장인 토너먼트
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-warning"
-                  onclick="window.open('https://www.youtube.com/live/Fm7p4aEbnPs?si=pEfZKVpNH-0NZ4W2&t=5737')"
-                >
-                  R6 유니버시티리그
-                </button>
-              </div>
+        </div>
+        <div class="subContent2">
+          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5 subContent">
+              <h1 class="display-5 fw-bold">취미는 게임이에요</h1>
+              <p class="col-md-8 fs-4">
+                저는 온라인 게임, 특히 FPS 게임을 좋아합니다!<br />
+                우승까지는 못했지만 아마추어 대회도 나가본 적이 있습니다.
+              </p>
+              <p>
+                대회 영상이 궁금하시다면 아래 버튼을 눌러 구경 해주셔도
+                좋습니다!
+                <span style="color: dimgray">잘하진 못했지만..</span>
+              </p>
+              <button type="button" class="btn btn-warning"
+                onclick="window.open('https://youtu.be/Xu8prsaWhb0?si=LMP1ynzHVkdCViq0')">
+                오버워치 직장인 토너먼트
+              </button>
+              <button type="button" class="btn btn-warning"
+                onclick="window.open('https://www.youtube.com/live/Fm7p4aEbnPs?si=pEfZKVpNH-0NZ4W2&t=5737')">
+                R6 유니버시티리그
+              </button>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
