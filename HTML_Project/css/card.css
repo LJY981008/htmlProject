@@ -27,9 +27,7 @@
 /*우새빛: 팀원 카드의 글 중앙배열*/
 .team .card {
     text-align: center;
-}
-
-.card {
+    
     border-radius: 70%;
-    background-color: white;
+    overflow: hidden;
 }
