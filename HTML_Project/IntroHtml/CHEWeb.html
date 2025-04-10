@@ -22,6 +22,7 @@
                 height: 100%;
                 background: linear-gradient(135deg, #fffef2, #ffeb3b);
                 font-family: 'Do Hyeon', sans-serif;
+                display: flex;
             }
 
             :root {
@@ -29,12 +30,16 @@
             }
 
             .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
                 height: 100vh;
                 width: 250px;
                 background-color: #ffecb3;
-
                 padding: 50px;
                 box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+                box-sizing: border-box;
+                z-index: 1000;
             }
 
             .프로필사진 {
@@ -47,11 +52,14 @@
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             }
 
-
             .content {
-                width: 70%;
-                margin-left: 220px;
+                margin-left: 250px;
+                /* 사이드바의 너비만큼 공간을 띄워서 콘텐츠 영역 시작 */
                 padding: 2rem;
+                width: calc(100% - 250px);
+                /* 전체 화면에서 사이드바 넓이만큼 빼기 */
+                box-sizing: border-box;
+                min-height: 100vh;
             }
 
             .card-header {
@@ -91,22 +99,22 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="LJYWeb.HTML">이준영</a>
-                      </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="WSVWeb.html">우새빛</a>
-                      </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="CHEWeb.html">최경진</a>
-                      </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="HJ.html">윤희준</a>
-                      </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="KYGWeb.html">김용준</a>
-                      </li>
-                      <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="hyeonhaWEB.html">이현하</a>
-                      </li>
+                    </li>
                 </ul>
             </nav>
 
@@ -115,8 +123,7 @@
                 <h2 class="mb-4 border-bottom pb-2">🙋‍♂️ 최경진 - Weekly Me</h2>
 
                 <div class="text-center">
-                    <img src="/HTML_Project/picture/CHE/CHE_face.jpg"
-                        class="프로필사진" alt="최경진 프로필사진">
+                    <img src="../picture/CHE/CHE_face.jpg" class="프로필사진" alt="최경진 프로필사진">
                 </div>
 
                 <div class="card bg-white shadow-sm mb-4">
