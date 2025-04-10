@@ -32,7 +32,6 @@ const db = getFirestore(app);
 export const infoData = await getDocs(collection(db, "info"));
 export const commentsData = await getDocs(collection(db, "comments"));
 
-
 export async function regist(id, pw, name) {
     const newUser = {
         'id': id,

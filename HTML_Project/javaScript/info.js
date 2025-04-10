@@ -171,4 +171,7 @@ $('#logoutButton').click(function () {
 
     // 이름 텍스트 비우기
     $('#loginNameText').text('');
+
+
+    location.reload(true);
   });
