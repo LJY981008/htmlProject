@@ -1,11 +1,18 @@
 import { commentSaveToDB, getCommentDocs, deleteComment } from "./firebase.js";
 import { createPageBtn, showPageBtn, preparePagination } from "./page.js";
-
-let myID;
-let myName;
-let isLogin = false;
+import { cheakedCookie } from "./cookies.js";
 
 let commentCursors;
+
+const cookie = cheakedCookie();
+let myID = cookie['ID'];
+let myName = cookie['name'] ;
+let isLogin = cookie['isLogin'];
+
+console.log (myID)
+console.log (myName)
+console.log (isLogin)
+
 
 /* 댓글 작성 */
 const commentBox = document.querySelector(".comment__box");
@@ -13,9 +20,7 @@ const commentInput = commentBox.querySelector("input");
 const commentBtn = commentBox.querySelector("button");
 
 const handleCommentClick = async () => {
-    console.log("로그인 후 입력 전");
     if (!isLogin) {
-        console.log("로그인 후 입력 후");
         alert('로그인을 하고 시도해주세요.');
         return false;
     }
@@ -105,7 +110,6 @@ export const showComments = async (pageIndex = 0) => {
 
     snapshot.forEach((doc) => {
         const row = doc.data();
-        console.log(row)
         const text = `
             <div class="comment__wrap" data-id=${doc.id}>
                 <div class="comment">
