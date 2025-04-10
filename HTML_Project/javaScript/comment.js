@@ -13,9 +13,11 @@ const commentInput = commentBox.querySelector("input");
 const commentBtn = commentBox.querySelector("button");
 
 const handleCommentClick = async () => {
+    console.log("로그인 후 입력 전");
     if (!isLogin) {
-    alert('로그인을 하고 시도해주세요.');
-    return false;
+        console.log("로그인 후 입력 후");
+        alert('로그인을 하고 시도해주세요.');
+        return false;
     }
 
     const input = commentInput.value;
@@ -103,6 +105,7 @@ export const showComments = async (pageIndex = 0) => {
 
     snapshot.forEach((doc) => {
         const row = doc.data();
+        console.log(row)
         const text = `
             <div class="comment__wrap" data-id=${doc.id}>
                 <div class="comment">

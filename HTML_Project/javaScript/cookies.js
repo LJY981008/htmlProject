@@ -1,3 +1,5 @@
+import { initInfo, getUserId } from "./comment.js";
+
 //쿠키 저장
 export function madeCookie(myID, myName) {
     document.cookie = `myID=${myID}; max-age=180; path=/`; //max-age 초단위 시간 지속 : 3분
@@ -30,7 +32,7 @@ export function cheakedCookie() {
             'name' : cookieName,
             'ID' : cookieID
         }
-
+        getUserId(cookieName, cookieID);
         return myInfo;
     }
     else{

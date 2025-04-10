@@ -146,6 +146,9 @@ $("#register").click(async function () {
                 $('#floatingUI').hide();
                 $('#loginNameBox').css("display", "flex");
                 $('#loginNameText').text(myName);
+
+                getIsLogin(isLogin);
+                getUserId(myName, myID);
             }
 
         } catch (error) {

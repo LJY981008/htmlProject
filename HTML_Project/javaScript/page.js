@@ -12,7 +12,6 @@ export async function createPageBtn() {
     if (count % 5 === 1) {
         // 버튼이 추가될 컨테이너 선택
         const existingButtons = document.querySelectorAll(".pageBtn").length;
-        console.log(existingButtons)
         // 새로운 버튼 생성
         const newButton = document.createElement("button");
         newButton.innerText = `(${existingButtons + 1})`; // 버튼 텍스트 설정 (예: 3, 4 등 순차적으로 추가)
