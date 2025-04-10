@@ -43,7 +43,7 @@
 }
 
 .loginName {
-    display: none;
+    display: flex;
     position: absolute;
     right: 30px;
     margin-top: 1.5%;
