@@ -2,91 +2,94 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나를 소개합니다.</title>
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>나를 소개합니다.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Poor+Story&display=swap" rel="stylesheet">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Poor+Story&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #fffef2, #ffeb3b);
+            font-family: 'Do Hyeon', sans-serif;
+            display: flex;
+        }
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        :root {
+            --highlight-yellow: #ffc107;
+        }
 
-        <title>나를 소개합니다.</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                background: linear-gradient(135deg, #fffef2, #ffeb3b);
-                font-family: 'Do Hyeon', sans-serif;
-                display: flex;
-            }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: #ffecb3;
+            padding: 50px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            z-index: 1000;
+        }
 
-            :root {
-                --highlight-yellow: #ffc107;
-            }
+        .프로필사진 {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #ffc107;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-            .sidebar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                height: 100vh;
-                width: 250px;
-                background-color: #ffecb3;
-                padding: 50px;
-                box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-                box-sizing: border-box;
-                z-index: 1000;
-            }
+        .content {
+            margin-left: 250px;
+            padding: 2rem;
+            width: calc(100% - 250px);
+            box-sizing: border-box;
+            min-height: 100vh;
+        }
 
-            .프로필사진 {
-                width: 300px;
-                height: 300px;
-                object-fit: cover;
-                border-radius: 50%;
-                border: 8px solid #ffc107;
-                margin-bottom: 1rem;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
+        .card-header {
+            background-color: var(--highlight-yellow);
+            font-weight: bold;
+        }
 
-            .content {
-                margin-left: 250px;
-                /* 사이드바의 너비만큼 공간을 띄워서 콘텐츠 영역 시작 */
-                padding: 2rem;
-                width: calc(100% - 250px);
-                /* 전체 화면에서 사이드바 넓이만큼 빼기 */
-                box-sizing: border-box;
-                min-height: 100vh;
-            }
+        .card-title {
+            color: #ff9900;
+        }
 
-            .card-header {
-                background-color: var(--highlight-yellow);
-                font-weight: bold;
-            }
+        .badge.bg-secondary {
+            background-color: #f0ad4e;
+        }
 
-            .card-title {
-                color: #ff9900;
-            }
+        h2,
+        h4 {
+            color: #000000;
+        }
 
-            .badge.bg-secondary {
-                background-color: #f0ad4e;
-            }
+        .card {
+            border: 2px solid #fff3cd;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-            h2,
-            h4 {
-                color: #000000;
-            }
-
-            .card {
-                border: 2px solid #fff3cd;
-                margin-bottom: 1.5rem;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            }
-        </style>
-    </head>
+        /* Greeting message */
+        .greeting {
+            position: fixed;
+            top: 20px;
+            left: 1000px;
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            z-index: 1100;
+        }
+    </style>
+</head>
 
 <body>
     <div class="container-fluid">
@@ -117,6 +120,11 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Greeting Message -->
+            <div class="greeting">
+                <h2 id="greeting-message"></h2>
+            </div>
 
             <!-- Main Content -->
             <div class="content">
@@ -169,6 +177,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <script>
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let greetingMessage = '';
+
+            if (hour < 12) {
+                greetingMessage = '좋은 아침! 😊';
+            } else if (hour < 18) {
+                greetingMessage = '좋은 오후! 😎';
+            } else {
+                greetingMessage = '좋은 저녁! 🌙';
+            }
+
+            document.getElementById("greeting-message").textContent = greetingMessage;
+        }
+
+        setGreeting();  // 페이지 로드 시 인사말 설정
+    </script>
 </body>
 
 </html>
