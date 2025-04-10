@@ -11,7 +11,7 @@ export function madeCookie(myID, myName) {
 export function cheakedCookie() {
     const cookieName = document.cookie
         .split('; ')
-        .find(row => row.startsWith('myID='))
+        .find(row => row.startsWith('myName='))
         ?.split('=')[1];
 
     const cookieID = document.cookie
@@ -37,10 +37,6 @@ export function cheakedCookie() {
         return myInfo;
     }
 }
-export function isCookie(){
-
-}
-
 export function removeCookie(){
     document.cookie = "myID=; max-age=0; path=/";
     document.cookie = "myName=; max-age=0; path=/";
