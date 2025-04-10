@@ -98,7 +98,6 @@ export const initInfo = async () => {
 export const showComments = async (pageIndex = 0) => {
     const commentPanel = document.querySelector(".comment__panel");
     commentPanel.innerHTML = '';
-
     // 댓글 반환
     const snapshot = await getCommentDocs(pageIndex, commentCursors);
 

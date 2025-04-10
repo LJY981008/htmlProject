@@ -3,7 +3,7 @@ import { showComments } from "./comment.js";
 
 export async function createPageBtn() {
     const pageLink = document.querySelector(".pageLink");
-    console.log(pageLink)
+
     let count;
     
     count = await getCommentDocNum() + 1;
@@ -18,7 +18,6 @@ export async function createPageBtn() {
         newButton.innerText = `(${existingButtons + 1})`; // 버튼 텍스트 설정 (예: 3, 4 등 순차적으로 추가)
         newButton.value = existingButtons;
         newButton.classList.add("pageBtn"); // 버튼 클래스 추가
-        console.log(newButton)
         pageLink.appendChild(newButton); // .pageLink에 버튼 추가
         // 버튼 클릭 이벤트 추가
         newButton.addEventListener("click", () => {

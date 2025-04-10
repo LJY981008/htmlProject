@@ -50,7 +50,6 @@ $("#login").click(async function () {
             const nickname = row['name'];
             const id = row['id'];
             const pw = row['pw'];
-            console.log(nickname + id + pw);
             if (inputID === id) {
                 if (inputPW === pw) {
                     // 로그인 성공 불러온 값 저장
