@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Me</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="HTML_Project/css/card.css" />
+  <link rel="stylesheet" href="HTML_Project/css/category.css" />
+  <link rel="stylesheet" href="HTML_Project/css/KYG_comment.css" />
+  <link rel="stylesheet" href="HTML_Project/css/login.css" />
+  <link rel="stylesheet" href="HTML_Project/css/sideUI.css" />
+  <link rel="stylesheet" href="HTML_Project/css/afterLogin.css" />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR");
+
+    * {
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .nav-link,
+    .shine-text,
+    .introsub_text {
+      font-family: "Black Han Sans", sans-serif;
+    }
+
+    /*배경설정*/
+    body {
+      height: 5000px;
+      background-image: url('HTML_Project/picture/mainBackground.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-blend-mode: overlay;
+      background-color: rgba(0, 0, 255, 0.1);
+    }
+
+    /*카테고리 폰트*/
+    .nav-link {
+      font-size: 3rem;
+      color: white;
+    }
+
+    /*내비게이션 상단고정*/
+    .fixed-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    /*팀소개 배경*/
+    .intro {
+      margin-top: 200px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 100px;
+      padding-left: 50px;
+
+    }
+
+    /*팀소개 텍스트*/
+    .introText {
+      align-items: center;
+    }
+
+    /*이미지 크기 및 오른쪽정렬*/
+    .intro img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 40%;
+      margin: 0 auto;
+      display: block;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, filter 0.3s ease;
+      border: 5px solid rgba(204, 196, 196, 0.212);
+      filter: grayscale(10%)
+    }
+
+    .intro img:hover {
+      transform: scale(1.03);
+      filter: brightness(1.05);
+    }
+
+
+    /*텍스트 폰트*/
+    .intro p {
+      color: white;
+      font-size: 2rem;
+    }
+
+    /*팀원 카드 배경*/
+    .team {
+      margin-top: 600px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 100px;
+      padding-left: 50px;
+    }
+
+    /*댓글 창창*/
+    .comment__box {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+
+    .comment_text {
+      font-weight: 900;
+    }
+
+    /*멘트 박스*/
+    .speakingbox {
+      padding: 6rem;
+      margin: 12rem auto 12rem auto;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 1000px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .quote-text {
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .quote-author {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #000000;
+      font-style: italic;
+    }
+
+    /* 플로팅 버튼 */
+    .floating-ui {
+      position: fixed;
+      top: 200px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: transparent;
+      border: none;
+    }
+
+    /* 로그인 버튼 */
+    #loginButton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* 회원가입 버튼 */
+    #registerButton {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* 버튼에 마우스를 올렸을 때 효과 */
+    #loginButton:hover {
+      background-color: #0056b3;
+    }
+
+    #registerButton:hover {
+      background-color: #218838;
+    }
+
+    .pageLink {
+      text-align: center;
+      color:white
+    }
+
+    .pageBtn {
+      all:unset;
+    }
+  </style>
+</head>
+
+<body>
+  <!--카테고리 수직정렬 내비게이션탭 부트스트랩 사용-->
+  <!--href에 클릭시 이동 위치 추가 -이현하-->
+  <ul class="nav justify-content-center fixed-nav">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="#teamIntro">팀 소개</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#teamMember">팀원들</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#todayMent">방명록</a>
+    </li>
+
+    <div class="loginName" id="loginName">
+      <p id="loginNameText">aaa</p>
+      <button id="logoutButton" class="logoutButton">로그아웃</button>
+    </div>
+  </ul>
+
+
+  <!--id 추가 및 팀 소개 변경 -이현하-->
+  <div class="intro" id="teamIntro">
+    <div class="introText">
+      <h1><span class="shine-text">Weekly Me</span> 👑</h1>
+      <p class="introsub_text">“이번 주의 주인공은 누구?” <br>
+        바로 저희 Weekly Me, 1조입니다! <br>
+      </p>
+      <p style="font-size: 1.5rem;">이름처럼 이번 주의 주인공(일주인공)은 바로 우리이고,<br>
+        매주 더 성장하는 나를 만들어가자는 의미를 담고 있습니다.<br>
+        짧지만 각자의 강점을 살려 협력하고, 즐기면서 성장하는 팀을 목표로 합니다!🔥
+      </p>
+    </div>
+    <img src="HTML_Project\picture\teamImg.jpg">
+  </div>
+
+  <!--카드 우새빛-->
+  <!--팀원 요약 그리드카드 부트스트랩 사용용-->
+  <!--card.js를 통해 해당 페이지로 이동-->
+  <div class="team" id="teamMember">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card" id="card_LJY">
+          <img src="HTML_Project/picture/LJY/LJY_Picture.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>이준영</b></h5>
+            <p class="card-text">팀장</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_hyeonha">
+          <img src="HTML_Project/picture/LHH/LHH_image.jpeg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>이현하</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_WSV">
+          <img src="HTML_Project/picture/WSV/WSV_p.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>우새빛</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_CHE">
+          <img src="HTML_Project/picture/CHE/CHE_face.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><b>최경진</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_HJ">
+          <img src="HTML_Project/picture/HJ/YHJ.png.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>윤희준</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" id="card_KYG">
+          <img src="HTML_Project/picture/KYG/KYG_face.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>김용준</b></h5>
+            <p class="card-text">팀원</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 멘트 박스 -->
+  <div class="speakingbox" id="todayMent">
+    <h3>📌 오늘의 팀 멘트</h3>
+    <p id="team-quote" class="quote-text"></p>
+    <p id="team-author" class="quote-author"></p>
+  </div>
+
+
+  <!--댓글 김용준-->
+  <div class="comment__box" id="homeComment">
+    <h1 class="comment_text">방명록</h1>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+        aria-describedby="button-addon2" id="homeCommentText" />
+      <button type="button" class="btn btn-primary" id="postingComment">게시</button>
+    </div>
+  </div>
+  <div class="comment__panel"></div>
+  <div class="pageLink"></div>
+
+
+  <!--로그인회원가입UI-->
+  <div class="floating-ui" id="floatingUI" style="display: none;">
+    <button id="loginButton">로그인</button>
+    <button id="registerButton">회원가입</button>
+  </div>
+
+  <!--로그인 팝업-->
+  <!--form사용-->
+  <div id="loginPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeLoginPopup">&times;</span>
+      <h2>로그인</h2>
+      <form>
+        <div class="mb-3">
+          <label for="loginID" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="loginID" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="loginPW" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="loginPW">
+        </div>
+        <button type="button" class="btn btn-primary" id="login">로그인</button>
+      </form>
+    </div>
+  </div>
+
+  <!--회원가입 팝업-->
+  <!--form사용-->
+  <div id="registerPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-button" id="closeRegisterPopup">&times;</span>
+      <h2>회원가입</h2>
+      <form>
+        <div class="mb-3">
+          <label for="regName" class="form-label">닉네임</label>
+          <input type="text" class="form-control" id="regName">
+        </div>
+        <div class="mb-3">
+          <label for="registerId" class="form-label">아이디</label>
+          <input type="text" class="form-control" id="registerId">
+        </div>
+        <div class="mb-3">
+          <label for="registerPassword" class="form-label">비밀번호</label>
+          <input type="password" class="form-control" id="registerPassword">
+        </div>
+        <div class="mb-3">
+          <label for="registerPasswordConfirm" class="form-label">비밀번호 확인</label>
+          <input type="password" class="form-control" id="registerPasswordConfirm">
+        </div>
+        <button type="button" class="btn btn-success" id="register">회원가입</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <script src="HTML_Project/javaScript/card.js">/*카드 이벤트*/</script>
+  <script src="HTML_Project/javaScript/register_login.js">/*로그인, 회원가입입 팝업*/</script>
+  <script src="HTML_Project/javaScript/todayMent.js">/*멘트기능*/</script>
+  <script src="HTML_Project/javaScript/comment.js" type="module">/*댓글기능*/</script>
+  <script src="HTML_Project/javaScript/page.js" type="module">/*페이지네이션 기능*/</script>
+  <script type="module">/* 파이어베이스 */
+    // 로그인, 회원가입, 댓글 등의 기능
+
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import {
+      getFirestore,
+      doc,
+      deleteDoc,
+      startAt,
+      limit,
+      getCountFromServer,
+      collection,
+      addDoc,
+      getDocs,
+      query,
+      orderBy
+    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getUserId, getIsLogin, initInfo, saveCommentToFirebase } from "./HTML_Project/javaScript/comment.js"
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIYr5xaD01ndxx0anOhCgoKRHT6rAHWnc",
+      authDomain: "weeklyme-4e92d.firebaseapp.com",
+      projectId: "weeklyme-4e92d",
+      storageBucket: "weeklyme-4e92d.firebasestorage.app",
+      messagingSenderId: "499565676750",
+      appId: "1:499565676750:web:60aa159f30a4917fe6689f",
+      measurementId: "G-2D8RFG5CVT"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    /* 로그인상태, 로그인한 닉네임, ID 저장 */
+    var isLogin = false;
+    var myName = '';
+    var myID = '';
+
+    function madeCookie() {
+      document.cookie = `myID=${myID}; max-age=180; path=/`; //max-age 초단위 시간 지속 (조정하면서 테스트 해 주세요)
+      document.cookie = `myName=${myName}; max-age=180; path=/`;
+
+      //쿠키 확인
+      setTimeout(() => {
+        const cookieID = document.cookie.split('; ').find(row => row.startsWith('myID='))?.split('=')[1];
+        console.log("저장된 myID:", cookieID);
+      }, 200);
+    }
+    function cheakedCookie() {
+      const cookieID = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('myID='))
+        ?.split('=')[1];
+
+      const cookieName = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('myName='))
+        ?.split('=')[1];
+
+      if (cookieName && cookieID) {
+        // 로그인 상태
+        myName = cookieName;
+        myID = cookieID;
+        isLogin = true;
+
+        $('#loginName').css("display", "flex");
+        $('#loginNameText').text(myName);
+      } else {
+        // 로그인 안 된 상태만 로그인 UI 보여주기
+        $('#floatingUI').show();
+      }
+    }
+    cheakedCookie();
+
+    /* 엔터 키 이벤트 처리 */
+    /* 엔터를 누르면 클릭 작동 */
+    $("#loginID, #loginPW").keypress(function (event) {
+      if (event.which === 13) {
+        $("#login").click();
+        return false;
+      }
+    });
+    $('#registerId, #registerPassword, #registerPasswordConfirm, #regName').keypress(function (event) {
+      if (event.which === 13) {
+        $("#register").click();
+        return false;
+      }
+    });
+
+    /* 로그인 버튼 */
+    $("#login").click(async function () {
+      const $loginIdInput = $("#loginID");
+      const $loginPwInput = $("#loginPW");
+      const $loginPopup = $("#loginPopup");
+      const $floatingUI = $("#floatingUI");
+      const $loginNameElement = $("#loginName");
+      const $loginNameTextElement = $("#loginNameText");
+
+      const inputID = $loginIdInput.val();
+      const inputPW = $loginPwInput.val();
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "info"));
+        let loggedIn = false;
+
+        querySnapshot.forEach((doc) => {
+          const row = doc.data();
+          const nickname = row['name'];
+          const id = row['id'];
+          const pw = row['pw'];
+
+          if (inputID === id) {
+            if (inputPW === pw) {
+              // 로그인 성공 불러온 값 저장
+              myName = nickname;
+              myID = id;
+              isLogin = true;
+              alert(`어서오세요 ${myName}님`);
+
+              madeCookie();
+
+              // UI 변경
+              isLogin = true;
+              $loginPopup.hide();
+              $floatingUI.hide();
+              $loginNameElement.css("display", "flex");
+              $loginNameTextElement.text(myName);
+              loggedIn = true;
+
+              getUserId(myName, myID);
+              getIsLogin(isLogin);
+              initInfo();
+              return false; // 아이디와 비밀번호가 일치하면 종료
+            } else {
+              // 비밀번호 틀림
+              alert('비밀번호가 틀렸습니다.');
+              loggedIn = false;
+              return false; // 아이디가 맞으나 비밀번호가 틀리면 종료
+            }
+          }
+        });
+
+        if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우
+          const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
+          if (!foundId) {
+            alert('존재하지 않는 아이디입니다.');
+          }
+        } else if (querySnapshot.empty) {
+          alert('등록된 사용자 정보가 없습니다.');
+        }
+
+        return loggedIn;
+
+      } catch (error) {
+        console.error("로그인 오류:", error);
+        alert('로그인 처리 중 오류가 발생했습니다.');
+        return false;
+      }
+    });
+
+    /* 가입 버튼 */
+    $("#register").click(async function () {
+      const regID = $('#registerId').val();
+      const regPW = $('#registerPassword').val();
+      const regPWCheck = $('#registerPasswordConfirm').val();
+      const regName = $('#regName').val();
+      let isIdTaken = false;
+      let isNameTaken = false;
+
+      if (!regID || /\s/.test(regID) || !regPW || !regName) { // 공백 체크
+        alert('공백을 포함할 수 없습니다.');
+        return false;
+      }
+      else if (regPW !== regPWCheck) { // 비밀번호와 비밀번호 확인란이 다를 때
+        alert("비밀번호를 확인해주세요.");
+        return false;
+      } else {  // 입력 조건 충족
+        try {
+          const querySnapshot = await getDocs(collection(db, "info"));
+
+          querySnapshot.forEach((doc) => {
+            const row = doc.data();
+            if (row['id'] === regID) {
+              alert('아이디가 이미 존재합니다.');
+              isIdTaken = true;
+              return false; // 아이디가 이미 존재할 경우 종료
+            }
+            if (row['name'] === regName) {
+              alert('사용할 수 없는 이름입니다.');
+              isNameTaken = true;
+              return false; // 닉네임이 이미 존재할 경우 종료
+            }
+          });
+          // 가입 조건 충족
+          if (!isIdTaken && !isNameTaken) {
+            const newUser = {
+              'id': regID,
+              'pw': regPW,
+              'name': regName
+            };
+            const addedDocRef = await addDoc(collection(db, "info"), newUser);
+            alert(`환영합니다. ${regName}님`);
+            // 회원가입 후 자동로그인
+            myID = regID;
+            myName = regName;
+            isLogin = true;
+            madeCookie();
+            $('#registerPopup').hide();
+            $('#floatingUI').hide();
+            $('#loginName').css("display", "flex");
+            $('#loginNameText').text(myName);
+          }
+
+        } catch (error) {
+          console.error("Firebase 회원가입 오류:", error);
+          alert('회원가입 중 오류가 발생했습니다.');
+        }
+      }
+    });
+
+    /* 로그아웃 */
+    $('#logoutButton').click(function () {
+      // 쿠키 삭제
+      document.cookie = "myID=; max-age=0; path=/";
+      document.cookie = "myName=; max-age=0; path=/";
+
+      // 변수 초기화
+      myID = '';
+      myName = '';
+      isLogin = false;
+
+      // 로그인 창 다시 보여주기
+      $('#floatingUI').show();
+
+      // 로그인 상태 표시 숨기기
+      $('#loginName').hide();
+
+      // 이름 텍스트 비우기
+      $('#loginNameText').text('');
+    });
+  </script>
+
+
+</html>
