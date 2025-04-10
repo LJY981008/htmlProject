@@ -1,5 +1,6 @@
 import { infoData, regist } from "/HTML_Project/javaScript/firebase.js";
 import { madeCookie, cheakedCookie, removeCookie } from "/HTML_Project/javaScript/cookies.js";
+import { initInfo, getUserId, getIsLogin } from "/comment.js";
 
 const myInfo = cheakedCookie();
 
@@ -68,7 +69,9 @@ $("#login").click(async function () {
                     $('#loginNameText').text(myName);
                     loggedIn = true;
 
-                    //initInfo();
+                    getUserId(myID);
+                    getIsLogin(isLogin);
+                    initInfo();
                     return false; // 아이디와 비밀번호가 일치하면 종료료
                 } else {
                     // 비밀번호 틀림
