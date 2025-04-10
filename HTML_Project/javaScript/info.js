@@ -1,15 +1,16 @@
-import { infoData, regist } from "/firebase.js";
-import { madeCookie, cheakedCookie,removeCookie } from "/cookies.js";
+import { infoData, regist } from "/HTML_Project/javaScript/firebase.js";
+import { madeCookie, cheakedCookie, removeCookie } from "/HTML_Project/javaScript/cookies.js";
 
 const myInfo = cheakedCookie();
 
-var isLogin = myInfo['is'];
+
 var myName = myInfo['name'];
 var myID = myInfo['ID'];
+var isLogin = (myName && myID) ? true : false;
 
 if (isLogin) {
-    $('#floatingUI').hide();
-    $('#loginName').css("display", "flex");
+    $('#floatingUI').css("display", "none");
+    $('#loginNameBox').css("display", "flex");
     $('#loginNameText').text(myName);
 }
 
@@ -62,8 +63,8 @@ $("#login").click(async function () {
                     // UI 변경
                     isLogin = true;
                     $loginPopup.hide();
-                    $('#floatingUI').hide();
-                    $('#loginName').css("display", "flex");
+                    $('#floatingUI').css("display", "none");
+                    $('#loginNameBox').css("display", "flex");
                     $('#loginNameText').text(myName);
                     loggedIn = true;
 
@@ -141,7 +142,7 @@ $("#register").click(async function () {
                 madeCookie(myID, myName);
                 registerPopup.hide();
                 $('#floatingUI').hide();
-                $('#loginName').css("display", "flex");
+                $('#loginNameBox').css("display", "flex");
                 $('#loginNameText').text(myName);
             }
 
@@ -161,10 +162,10 @@ $('#logoutButton').click(function () {
     isLogin = false;
 
     // 로그인 창 다시 보여주기
-    $('#floatingUI').show();
+    $('#floatingUI').css("display", "flex");
 
     // 로그인 상태 표시 숨기기
-    $('#loginName').hide();
+    $('#loginNameBox').css("display", "none");
 
     // 이름 텍스트 비우기
     $('#loginNameText').text('');

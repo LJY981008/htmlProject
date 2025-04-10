@@ -24,8 +24,7 @@ export function cheakedCookie() {
 
         const myInfo = {
             'name' : cookieName,
-            'ID' : cookieID,
-            'is' : true
+            'ID' : cookieID
         }
 
         return myInfo;
@@ -33,11 +32,13 @@ export function cheakedCookie() {
     else{
         const myInfo = {
             'name' : '',
-            'ID' : '',
-            'is' : false
+            'ID' : ''
         }
         return myInfo;
     }
+}
+export function isCookie(){
+
 }
 
 export function removeCookie(){
