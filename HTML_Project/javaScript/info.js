@@ -1,5 +1,5 @@
-import { infoData, regist } from "/HTML_Project/javaScript/firebase.js";
-import { madeCookie, cheakedCookie, removeCookie } from "/HTML_Project/javaScript/cookies.js";
+import { infoData, regist } from "./firebase.js";
+import { madeCookie, cheakedCookie, removeCookie } from "./cookies.js";
 import { initInfo, getUserId, getIsLogin } from "./comment.js";
 
 const myInfo = cheakedCookie();
