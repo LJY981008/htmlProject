@@ -68,7 +68,7 @@ $("#login").click(async function () {
                     $('#loginNameText').text(myName);
                     loggedIn = true;
 
-                    getUserId(myID);
+                    getUserId(myName, myID);
                     getIsLogin(isLogin);
                     initInfo();
                     return false; // 아이디와 비밀번호가 일치하면 종료료
