@@ -29,14 +29,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-export const infoData = await getDocs(collection(db, "info"));;
+export const infoData = getDocs(collection(db, "info"));
 export const commentsData = await getDocs(collection(db, "comments"));
 
-// 유저정보 호출출
-export async function getInfoData() {
-  infoData = await getDocs(collection(db, "info"));
-  return infoData;
-}
 // 회원가입
 export async function regist(id, pw, name) {
     const newUser = {
