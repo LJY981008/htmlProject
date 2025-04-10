@@ -29,10 +29,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-export const infoData = getDocs(collection(db, "info"));
+export const infoData = await getDocs(collection(db, "info"));
 export const commentsData = await getDocs(collection(db, "comments"));
 
-// 회원가입
 export async function regist(id, pw, name) {
     const newUser = {
         'id': id,
@@ -41,7 +40,7 @@ export async function regist(id, pw, name) {
     };
     const addedDocRef = await addDoc(collection(db, "info"), newUser);
 }
-// 댓글 저장
+
 export async function commentSaveToDB (id, name, text, ymd, today) {
   const newComment = {
     'id': id,
@@ -52,17 +51,20 @@ export async function commentSaveToDB (id, name, text, ymd, today) {
   };
   await addDoc(collection(db, "comments"), newComment);
 }
+
 // 댓글 총 갯수 반환
 export async function getCommentDocNum() {
       const colRef = collection(getFirestore(), "comments");
       const a = await getCountFromServer(colRef)
       return a.data().count;
 }
+
 // 댓글 전체 반환
 export async function getAllCommentDocs() {
   const q = query(collection(db, "comments"), orderBy("dateObj", "desc"));
   return await getDocs(q);
 }
+
 // 댓글 Doc Index 값에 따라 반환
 export async function getCommentDocs(pageIndex, commentCursors) {
   const commentsRef = collection(db, "comments");
@@ -82,7 +84,8 @@ export async function getCommentDocs(pageIndex, commentCursors) {
   }
 
   return await getDocs(q);
-} 
+}
+
 // 특정 댓글 삭제
 export async function deleteComment(commentId) {
   await deleteDoc(doc(db, "comments", commentId));
