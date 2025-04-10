@@ -194,15 +194,6 @@
     #registerButton:hover {
       background-color: #218838;
     }
-
-    .pageLink {
-      text-align: center;
-      color:white
-    }
-
-    .pageBtn {
-      all:unset;
-    }
   </style>
 </head>
 
@@ -322,11 +313,10 @@
     </div>
   </div>
   <div class="comment__panel"></div>
-  <div class="pageLink"></div>
 
 
   <!--로그인회원가입UI-->
-  <div class="floating-ui" id="floatingUI" style="display: none;">
+  <div class="floating-ui" id="floatingUI">
     <button id="loginButton">로그인</button>
     <button id="registerButton">회원가입</button>
   </div>
@@ -382,250 +372,10 @@
 
   <script src="HTML_Project/javaScript/card.js">/*카드 이벤트*/</script>
   <script src="HTML_Project/javaScript/register_login.js">/*로그인, 회원가입입 팝업*/</script>
+  <script src="HTML_Project/javaScript/firebase.js"></script>
+  <script type="module" src="/HTML_Project//javaScript/info.js"></script>
   <script src="HTML_Project/javaScript/todayMent.js">/*멘트기능*/</script>
   <script type="module">/* 파이어베이스 */
-    // 로그인, 회원가입, 댓글 등의 기능
-
-    // Firebase SDK 라이브러리 가져오기
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import {
-      getFirestore,
-      doc,
-      deleteDoc,
-      startAt,
-      limit,
-      getCountFromServer,
-      collection,
-      addDoc,
-      getDocs,
-      query,
-      orderBy
-    } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDIYr5xaD01ndxx0anOhCgoKRHT6rAHWnc",
-      authDomain: "weeklyme-4e92d.firebaseapp.com",
-      projectId: "weeklyme-4e92d",
-      storageBucket: "weeklyme-4e92d.firebasestorage.app",
-      messagingSenderId: "499565676750",
-      appId: "1:499565676750:web:60aa159f30a4917fe6689f",
-      measurementId: "G-2D8RFG5CVT"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    /* 로그인상태, 로그인한 닉네임, ID 저장 */
-    var isLogin = false;
-    var myName = '';
-    var myID = '';
-
-    function madeCookie() {
-      document.cookie = `myID=${myID}; max-age=180; path=/`; //max-age 초단위 시간 지속 (조정하면서 테스트 해 주세요)
-      document.cookie = `myName=${myName}; max-age=180; path=/`;
-
-      //쿠키 확인
-      setTimeout(() => {
-        const cookieID = document.cookie.split('; ').find(row => row.startsWith('myID='))?.split('=')[1];
-        console.log("저장된 myID:", cookieID);
-      }, 200);
-    }
-    function cheakedCookie() {
-      const cookieID = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('myID='))
-        ?.split('=')[1];
-
-      const cookieName = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('myName='))
-        ?.split('=')[1];
-
-      if (cookieName && cookieID) {
-        // 로그인 상태
-        myName = cookieName;
-        myID = cookieID;
-        isLogin = true;
-
-        $('#loginName').css("display", "flex");
-        $('#loginNameText').text(myName);
-      } else {
-        // 로그인 안 된 상태만 로그인 UI 보여주기
-        $('#floatingUI').show();
-      }
-    }
-    cheakedCookie();
-
-    /* 엔터 키 이벤트 처리 */
-    /* 엔터를 누르면 클릭 작동 */
-    $("#loginID, #loginPW").keypress(function (event) {
-      if (event.which === 13) {
-        $("#login").click();
-        return false;
-      }
-    });
-    $('#registerId, #registerPassword, #registerPasswordConfirm, #regName').keypress(function (event) {
-      if (event.which === 13) {
-        $("#register").click();
-        return false;
-      }
-    });
-
-    /* 로그인 버튼 */
-    $("#login").click(async function () {
-      const $loginIdInput = $("#loginID");
-      const $loginPwInput = $("#loginPW");
-      const $loginPopup = $("#loginPopup");
-      const $floatingUI = $("#floatingUI");
-      const $loginNameElement = $("#loginName");
-      const $loginNameTextElement = $("#loginNameText");
-
-      const inputID = $loginIdInput.val();
-      const inputPW = $loginPwInput.val();
-
-      try {
-        const querySnapshot = await getDocs(collection(db, "info"));
-        let loggedIn = false;
-
-        querySnapshot.forEach((doc) => {
-          const row = doc.data();
-          const nickname = row['name'];
-          const id = row['id'];
-          const pw = row['pw'];
-
-          if (inputID === id) {
-            if (inputPW === pw) {
-              // 로그인 성공 불러온 값 저장
-              myName = nickname;
-              myID = id;
-              isLogin = true;
-              alert(`어서오세요 ${myName}님`);
-
-              madeCookie();
-
-              // UI 변경
-              isLogin = true;
-              $loginPopup.hide();
-              $floatingUI.hide();
-              $loginNameElement.css("display", "flex");
-              $loginNameTextElement.text(myName);
-              loggedIn = true;
-
-              initInfo();
-              return false; // 아이디와 비밀번호가 일치하면 종료료
-            } else {
-              // 비밀번호 틀림
-              alert('비밀번호가 틀렸습니다.');
-              loggedIn = false;
-              return false; // 아이디가 맞으나 비밀번호가 틀리면 종료료
-            }
-          }
-        });
-
-        if (!loggedIn && querySnapshot.size > 0) { // 아이디를 찾지 못했고, 데이터가 있는 경우
-          const foundId = querySnapshot.docs.some(doc => doc.data().id === inputID);
-          if (!foundId) {
-            alert('존재하지 않는 아이디입니다.');
-          }
-        } else if (querySnapshot.empty) {
-          alert('등록된 사용자 정보가 없습니다.');
-        }
-
-        return loggedIn;
-
-      } catch (error) {
-        console.error("로그인 오류:", error);
-        alert('로그인 처리 중 오류가 발생했습니다.');
-        return false;
-      }
-    });
-
-    /* 가입 버튼 */
-    $("#register").click(async function () {
-      const regID = $('#registerId').val();
-      const regPW = $('#registerPassword').val();
-      const regPWCheck = $('#registerPasswordConfirm').val();
-      const regName = $('#regName').val();
-      let isIdTaken = false;
-      let isNameTaken = false;
-
-      if (!regID || /\s/.test(regID) || !regPW || !regName) { // 공백 체크
-        alert('공백을 포함할 수 없습니다.');
-        return false;
-      }
-      else if (regPW !== regPWCheck) { // 비밀번호와 비밀번호 확인란이 다를 때
-        alert("비밀번호를 확인해주세요.");
-        return false;
-      } else {  // 입력 조건 충족
-        try {
-          const querySnapshot = await getDocs(collection(db, "info"));
-
-          querySnapshot.forEach((doc) => {
-            const row = doc.data();
-            if (row['id'] === regID) {
-              alert('아이디가 이미 존재합니다.');
-              isIdTaken = true;
-              return false; // 아이디가 이미 존재할 경우 종료
-            }
-            if (row['name'] === regName) {
-              alert('사용할 수 없는 이름입니다.');
-              isNameTaken = true;
-              return false; // 닉네임이 이미 존재할 경우 종료
-            }
-          });
-          // 가입 조건 충족
-          if (!isIdTaken && !isNameTaken) {
-            const newUser = {
-              'id': regID,
-              'pw': regPW,
-              'name': regName
-            };
-            const addedDocRef = await addDoc(collection(db, "info"), newUser);
-            alert(`환영합니다. ${regName}님`);
-            // 회원가입 후 자동로그인
-            myID = regID;
-            myName = regName;
-            isLogin = true;
-            madeCookie();
-            $('#registerPopup').hide();
-            $('#floatingUI').hide();
-            $('#loginName').css("display", "flex");
-            $('#loginNameText').text(myName);
-          }
-
-        } catch (error) {
-          console.error("Firebase 회원가입 오류:", error);
-          alert('회원가입 중 오류가 발생했습니다.');
-        }
-      }
-    });
-
-    /*----------------------------------여기까지 분할됨---------------------------------------------*/
-    // initinfo << 물어보고 넣어야해서 분할한 내용에서 뺐음음
-
-    /* 로그아웃 */
-    $('#logoutButton').click(function () {
-      // 쿠키 삭제
-      document.cookie = "myID=; max-age=0; path=/";
-      document.cookie = "myName=; max-age=0; path=/";
-
-      // 변수 초기화
-      myID = '';
-      myName = '';
-      isLogin = false;
-
-      // 로그인 창 다시 보여주기
-      $('#floatingUI').show();
-
-      // 로그인 상태 표시 숨기기
-      $('#loginName').hide();
-
-      // 이름 텍스트 비우기
-      $('#loginNameText').text('');
-    });
-
-
     /* 댓글 작성 */
     const commentBox = document.querySelector(".comment__box");
     const commentInput = commentBox.querySelector("input");
@@ -656,15 +406,13 @@
         'id': myID,
         'name': myName,
         'comment': commentText,
-        'date': ymd,
-        'dateObj': today 
+        'date': ymd
       };
 
       try {
         // DB에 저장 완료 후, 리얼 타임으로 화면에 등록 
         await addDoc(collection(db, "comments"), doc);
         realtimeUpdateComment(ymd, commentText);
-        createPageBtn();
         initInfo();
       } catch (error) {
         console.error("Firebase 댓글 저장 오류:", error);
@@ -687,9 +435,9 @@
     }
 
     const initInfo = async () => {
-      await showComments();
-      showPageBtn();
-      await preparePagination();
+      const commentPanel = document.querySelector(".comment__panel");
+      commentPanel.innerHTML = '';
+      await getComments();
 
       const commentDeleteBtns = document.querySelectorAll(".commentDelete");
       commentDeleteBtns.forEach(deleteBtn => {
@@ -723,140 +471,35 @@
       commentPanel.classList.remove("hidden");
     }
 
-    let pageSize = 5;
-    let commentCursors = []; // 각 페이지의 시작 문서를 저장
-
-    async function preparePagination() {
-      const q = query(collection(db, "comments"), orderBy("dateObj", "desc"));
-      const snapshot = await getDocs(q);
-
-      commentCursors = [];
-      snapshot.docs.forEach((doc, i) => {
-        if ((i+1) % pageSize === 1) {
-          commentCursors.push(doc);
-        }
-      });
-    }
-
     /* 페이지 로딩 시, 댓글 내림차순(최신순)으로 정렬하여 보여주기 */
-    const showComments = async (pageIndex = 0) => {
-      const commentPanel = document.querySelector(".comment__panel");
-      commentPanel.innerHTML = '';
+    const getComments = async () => {
+      let commentsDocs = await getDocs(query(collection(db, "comments"), orderBy("date", "desc")));
+      commentsDocs.forEach((doc) => {
+        const documentId = doc.id;
+        let row = doc.data();
+        let id = row['id'];
+        let name = row['name'];
+        let date = row['date'];
+        let comment = row['comment'];
 
-      // 페이지 
-      const commentDoc = checkPageIndexAndReturnComments(pageIndex);
-
-      const snapshot = await getDocs(commentDoc);
-      const comments = snapshot.docs.map((doc) => doc.data());
-
-      snapshot.forEach((doc) => {
-        const row = doc.data();
-        const text = `
-          <div class="comment__wrap" data-id=${doc.id}>
-            <div class="comment">
-              <span class="comment__name">${row.name}</span>
-              <span class="comment__text">${row.comment}</span>
-              <span class="comment__date">${row.date}</span>
-            </div>
-            ${row.id === myID ? '<button class="commentDelete">삭제</button>' : ''}
+        /* 댓글 html코드 */
+        let text = `
+        <div class="comment__wrap" data-id=${doc.id}>
+          <div class="comment">
+            <span class="comment__name">${name}</span>
+            <span class="comment__text">${comment}</span>
+            <span class="comment__date">${date}</span>
           </div>
+          ${id === myID ? '<button class="commentDelete">삭제</button>' : ''}
+        </div>
         `;
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = text;
-        const commentElement = tempDiv.firstElementChild;
-
-        // append 시 실제 element를 append해야 이벤트도 붙습니다.
-        document.querySelector(".comment__panel").appendChild(commentElement);
-
-        // 이벤트 바인딩
-        const deleteButton = commentElement.querySelector(".commentDelete");
-        if (deleteButton) {
-          deleteButton.addEventListener("click", handleCommentDeleteClick);
-        }
-      });
-    };
-
-    const checkPageIndexAndReturnComments = (pageIndex) => {
-      let q;
-  
-      // 첫 페이지
-      if (pageIndex === 0) {
-        q = query(
-          collection(db, "comments"),
-          orderBy("dateObj", "desc"),
-          limit(pageSize)
-        );
-      } else {
-        const startDoc = commentCursors[pageIndex];
-        if (!startDoc) return console.warn("없는 페이지입니다.");
-        q = query(
-          collection(db, "comments"),
-          orderBy("dateObj", "desc"),
-          startAt(startDoc),
-          limit(pageSize)
-        );
-      }
-      return q;
+        $('.comment__panel').append(text);
+      })
     }
 
-    async function createPageBtn() {
-      // "comments" 컬렉션 참조
-      const colRef = collection(getFirestore(), "comments");
-  
-      const snapshot = await getCountFromServer(colRef); // 총 문서 수 가져오기
-      const docCount = snapshot.data().count; // 문서 수 확인
-  
-      const pageLink = document.querySelector(".pageLink");
-      // 총 문서 수가 5로 나눈 나머지가 1일 경우 버튼 생성
-      if (docCount % 5 === 1) {
-          // 버튼이 추가될 컨테이너 선택
-          const existingButtons = document.querySelectorAll(".pageBtn").length;
-          // 새로운 버튼 생성
-          const newButton = document.createElement("button");
-          newButton.innerText = `(${existingButtons + 1})`; // 버튼 텍스트 설정 (예: 3, 4 등 순차적으로 추가)
-          newButton.value = existingButtons;
-          newButton.classList.add("pageBtn"); // 버튼 클래스 추가
-          pageLink.appendChild(newButton); // .pageLink에 버튼 추가
-          // 버튼 클릭 이벤트 추가
-          newButton.addEventListener("click", () => {
-            const pageIndex = parseInt(newButton.value);
-            showComments(pageIndex);
-          });
-      } else {
-        return;
-      }
-    }
-
-    const showPageBtn = async () => {
-      const colRef = collection(getFirestore(), "comments");
-  
-      const snapshot = await getCountFromServer(colRef); // 총 문서 수 가져오기
-      let docCount = snapshot.data().count; 
-  
-      const pageLink = document.querySelector(".pageLink");
-      pageLink.innerHTML = "";
-      while(docCount > 0) {
-        const existingButtons = document.querySelectorAll(".pageBtn").length;
-          
-        // 새로운 버튼 생성
-        const newButton = document.createElement("button");
-        newButton.innerText = `(${existingButtons + 1})`; // 버튼 텍스트 설정 (예: 3, 4 등 순차적으로 추가)
-        newButton.value = existingButtons;
-        newButton.classList.add("pageBtn"); // 버튼 클래스 추가
-        pageLink.appendChild(newButton); // .pageLink에 버튼 추가
-        // 버튼 클릭 이벤트 추가
-        newButton.addEventListener("click", () => {
-          const pageIndex = parseInt(newButton.value);
-          showComments(pageIndex);
-          }
-        );
-        docCount-=5;
-        }
-    }
-
-    // 호출: 첫 시작할 때 한 번만 실행
-    showPageBtn();
     initInfo();
+
+
   </script>
 
 
